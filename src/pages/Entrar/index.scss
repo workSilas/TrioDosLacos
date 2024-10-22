@@ -1,0 +1,166 @@
+.pagina-entrar {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    height: 100vh;
+
+
+    img {
+        height: 200px;
+        margin-bottom: 20px;
+    }
+
+    .info{
+        display: flex;
+        flex-direction: column;
+        padding: 15px;
+
+        label {
+            justify-content: flex-start;
+
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+        }
+
+        input {
+            border: none;
+            outline: none;
+            box-shadow: none;
+
+            background-color: #FFDBD0;
+            height: 30px;
+            width: 400px;
+        }
+    }
+
+    .entrar {
+        padding: 20px;
+
+        p {
+            background-color: #C1796D;
+            color: #fff;
+            padding: 10px 30px;
+
+            text-decoration: none;
+            font-family: "Krona One";
+            font-weight: 300;
+        }
+
+        p:hover {
+            background-color: #FFDBD0;
+            color: #000;
+            cursor: pointer;
+        }
+    }
+
+    .conectarse {
+        display: flex;
+        flex-direction: row;
+
+        p {
+            padding: 10px;
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+        }
+        
+        .link{
+            color: #1400FF;
+            text-decoration: none;
+            padding-left: 3px;
+        }
+
+        .link:hover{
+            text-decoration: underline;
+        }
+    }
+
+
+    /*Responsividade*/
+    @media (min-width: 1024px) {
+        img {
+            height: 350px;
+        }
+
+        .info{
+            label{
+                font-size: 20px;
+            }
+
+            input{
+                height: 45px;
+                width: 600px;
+            }
+        }
+
+        .entrar{
+            padding: 35px;
+
+            p{
+                font-size: 21px;
+                padding: 20px 50px;
+            }
+        }
+
+        .conectarse{
+            p{
+                padding: 20px;
+                font-size: 22px;
+            }
+        }
+    }
+
+
+    @media (min-width: 768px) {
+        img{
+            height: 330px;
+        }
+
+        .info{
+            label{
+                font-size: 23px;
+            }
+            
+            input{
+                height: 40px;
+                width: 550px;
+            }
+        }
+
+        .entrar{
+            padding: 30px;
+
+            p{
+                font-size: 21px;
+                padding: 15px 50px;
+            }
+        }
+
+        .conectarse{
+            p{
+                padding: 20px;
+                font-size: 15px;
+            }
+        }
+    }
+
+
+    @media (min-width: 320px) {
+        img{
+            height: 230px;
+        }
+
+        .info{
+            label{
+                font-size: 18px;
+            }
+
+            input{
+                height: 30px;
+                width: 300px;
+            }
+        }
+    }
+}
