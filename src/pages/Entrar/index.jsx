@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
 
-export default function PaginaEntrar() {
+export default function Entrar() {
     const [nome, setNome] = useState('')
     const [senha, setSenha] = useState('')
 
@@ -28,24 +28,24 @@ export default function PaginaEntrar() {
     }
 
     return (
-        <div className="pagina-entrar">
-            <img src="/assets/images/LogoOficial.png" alt="" />
+        <div className="entrar">
+            <img src="/assets/images/LogoOficial.png" alt="Logo Trio dos Laços" />
 
-            <div className='info'>
+            <div className='inputEntrar'>
                 <label>NOME DE USUÁRIO</label>
                 <input type="text" value={nome} onChange={a => setNome(a.target.value)}/>
             </div>
 
-            <div className='info'>
+            <div className='inputEntrar'>
                 <label>SENHA</label>
                 <input type="password" value={senha} onChange={a => setSenha(a.target.value)}/>
             </div>
 
-            <div className='entrar'>
+            <div className='botaoEntrarInsert'>
                 <p onClick={inserir}>ENTRAR</p>
             </div>
 
-            <div className='conectarse'>
+            <div className='botaoCadastrarSelect'>
                 <p>Já possui uma conta? 
                 <Link to="/cadastro" className='link'>Conectar-se</Link>
                 </p>
