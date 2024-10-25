@@ -36,7 +36,7 @@
         }
     }
 
-    .botaoEntrarInsert {
+    .botaoEntrarSelect {
         padding: 20px;
 
         p {
@@ -56,7 +56,7 @@
         }
     }
 
-    .botaoCadastrarSelect {
+    .botaoCadastrarInsert {
         display: flex;
         flex-direction: row;
 
@@ -95,7 +95,7 @@
             }
         }
 
-        .botaoEntrarInsert{
+        .botaoEntrarSelect{
             padding: 35px;
 
             p{
@@ -104,7 +104,7 @@
             }
         }
 
-        .botaoCadastrarSelect{
+        .botaoCadastrarInsert{
             p{
                 padding: 20px;
                 font-size: 22px;
@@ -129,7 +129,7 @@
             }
         }
 
-        .botaoEntrarInsert{
+        .botaoEntrarSelect{
             padding: 30px;
 
             p{
@@ -138,7 +138,7 @@
             }
         }
 
-        .botaoCadastrarSelect{
+        .botaoCadastrarInsert{
             p{
                 padding: 20px;
                 font-size: 15px;

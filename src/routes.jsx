@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import Cadastro from "./pages/Cadastro";
+import Cadastrar from "./pages/Cadastrar";
 import Entrar from "./pages/Entrar";
 
 export default function Rotas() {
@@ -8,7 +8,7 @@ export default function Rotas() {
         <BrowserRouter>
             <Routes>
                 <Route path="/" element={<Home/>} /> 
-                <Route path="/cadastro" element={<Cadastro/>} /> 
+                <Route path="/cadastro" element={<Cadastrar/>} /> 
                 <Route path="/entrar" element={<Entrar/>} /> 
             </Routes>
         </BrowserRouter>

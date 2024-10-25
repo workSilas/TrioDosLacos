@@ -10,7 +10,7 @@ export default function Entrar() {
 
     const navigate = useNavigate()
 
-    async function inserir() {
+    async function inserirUsuario() {
         const paramCorpo = {
             nome: nome,
             senha: senha
@@ -23,7 +23,8 @@ export default function Entrar() {
             alert(resp.data.erro)
         } else {
             localStorage.setItem('USUARIO', resp.data.token)
-            navigate('/')
+            alert(`Login finalizado! Token do Usuário: ${resp.data.token}`)
+            navigate('/cadastro')
         }
     }
 
@@ -41,13 +42,13 @@ export default function Entrar() {
                 <input type="password" value={senha} onChange={a => setSenha(a.target.value)}/>
             </div>
 
-            <div className='botaoEntrarInsert'>
-                <p onClick={inserir}>ENTRAR</p>
+            <div className='botaoEntrarSelect'>
+                <p onClick={inserirUsuario}>ENTRAR</p>
             </div>
 
-            <div className='botaoCadastrarSelect'>
-                <p>Já possui uma conta? 
-                <Link to="/cadastro" className='link'>Conectar-se</Link>
+            <div className='botaoCadastrarInsert'>
+                <p>Já possui uma conta?
+                <Link to="/cadastrar" className='link'>Conectar-se</Link>
                 </p>
             </div>
         </div>
