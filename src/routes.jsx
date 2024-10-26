@@ -1,14 +1,12 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import PaginaCadastro from "./pages/Cadastro";
+import Home from "./pages/user/Home";
 import PaginaEntrar from "./pages/Entrar";
 
 export default function Rotas() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home/>} /> 
-                <Route path="/cadastro" element={<PaginaCadastro/>} /> 
+                <Route path="/" element={<Home/>} />   
                 <Route path="/entrar" element={<PaginaEntrar/>} /> 
             </Routes>
         </BrowserRouter>

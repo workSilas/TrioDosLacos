@@ -5,4 +5,38 @@
 * {
   margin: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
+
+  h1 {
+    font-family: Krona One;
+    color: #3D3D3D;
+  }
+
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: Inter;
+    color: #3D3D3D;
+  }
+
+  p,
+  a {
+    font-family: Poppins;
+  }
+
+  a {
+    text-decoration: none;
+    font-weight: 500;
+    color: #3D3D3D;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: #3D3D3D;
+    font-weight: 600;
+    transition: 1s;
+  }
+
 }

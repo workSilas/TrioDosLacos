@@ -1,7 +1,7 @@
 import './index.scss'
 import axios from 'axios'
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function PaginaEntrar() {
@@ -43,12 +43,6 @@ export default function PaginaEntrar() {
 
             <div className='entrar'>
                 <p onClick={inserir}>ENTRAR</p>
-            </div>
-
-            <div className='conectarse'>
-                <p>Já possui uma conta? 
-                <Link to="/cadastro" className='link'>Conectar-se</Link>
-                </p>
             </div>
         </div>
     )
