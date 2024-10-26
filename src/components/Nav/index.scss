@@ -47,7 +47,7 @@
     }
 
     .sessaoNavMob {
-        position: absolute;
+        position: fixed;
         top: 0;
         right: 0;
         display: none;
@@ -115,6 +115,16 @@
 
         .sessaoNavMob {
             display: flex;
+
+            ul {
+
+                li {
+                    
+                    a {
+                        font-size: 2rem;
+                    }
+                }
+            }
         }
     }
 }
