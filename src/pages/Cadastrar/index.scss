@@ -1,4 +1,4 @@
-.entrar {
+.cadastrar {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -13,7 +13,7 @@
         margin-bottom: 20px;
     }
 
-    .inputEntrar{
+    .inputCadastrar{
         display: flex;
         flex-direction: column;
         padding: 15px;
@@ -36,7 +36,7 @@
         }
     }
 
-    .botaoEntrarSelect {
+    .botaoCadastrarInsert {
         padding: 20px;
 
         p {
@@ -55,10 +55,8 @@
             cursor: pointer;
         }
     }
-<<<<<<< HEAD
-=======
 
-    .botaoCadastrarInsert {
+    .botaoEntrarSelect {
         display: flex;
         flex-direction: row;
 
@@ -86,7 +84,7 @@
             height: 350px;
         }
 
-        .inputEntrar{
+        .inputCadastrar{
             label{
                 font-size: 20px;
             }
@@ -97,7 +95,7 @@
             }
         }
 
-        .botaoEntrarSelect{
+        .botaoCadastrarInsert{
             padding: 35px;
 
             p{
@@ -106,7 +104,7 @@
             }
         }
 
-        .botaoCadastrarInsert{
+        .botaoEntrarSelect{
             p{
                 padding: 20px;
                 font-size: 22px;
@@ -120,7 +118,7 @@
             height: 330px;
         }
 
-        .inputEntrar{
+        .inputCadastrar{
             label{
                 font-size: 23px;
             }
@@ -131,7 +129,7 @@
             }
         }
 
-        .botaoEntrarSelect{
+        .botaoCadastrarInsert{
             padding: 30px;
 
             p{
@@ -140,7 +138,7 @@
             }
         }
 
-        .botaoCadastrarInsert{
+        .botaoEntrarSelect{
             p{
                 padding: 20px;
                 font-size: 15px;
@@ -154,7 +152,7 @@
             height: 230px;
         }
 
-        .inputEntrar{
+        .inputCadastrar{
             label{
                 font-size: 18px;
             }
@@ -165,5 +163,4 @@
             }
         }
     }
->>>>>>> 00088981646511d55d151e0575b060ffc4d3cb2c
 }
