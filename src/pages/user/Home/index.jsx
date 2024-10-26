@@ -76,7 +76,7 @@ export default function Home() {
             Explore nosso catálogo recheado <br />
             de acessórios que darão brilho <br />
             ao seu bebê!</p>
-          <Link to={'/'}>CATÁLOGO</Link>
+          <Link to={'/CatalogoLacosDecorados'}>CATÁLOGO</Link>
         </div>
         <img src="/assets/images/laçoVetorzado.png" alt="Laço" />
       </div>

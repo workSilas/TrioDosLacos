@@ -25,7 +25,7 @@ export default function Nav(props) {
         <div className="divisaoComponentesNavLinks">
           <Link to={'/'}>INÍCIO</Link>
           <Link to={'/Encomendas'}>ENCOMENDAS</Link>
-          <Link to={'/'}>CATÁLOGO</Link>
+          <Link to={'/CatalogoLacosDecorados'}>CATÁLOGO</Link>
         </div>
       </div>
       </div>
@@ -39,8 +39,8 @@ export default function Nav(props) {
             <button onClick={click}><img src="/assets/images/fechar.png" alt="fechar" /></button>
             <ul>
               <li><Link to={'/'}>INÍCIO</Link></li>
-              <li><Link to={'/'}>ENCOMENDAS</Link></li>
-              <li><Link to={'/'}>CATÁLOGO</Link></li>
+              <li><Link to={'/Eencomendas'}>ENCOMENDAS</Link></li>
+              <li><Link to={'/CatalogoLacosDecorados'}>CATÁLOGO</Link></li>
             </ul>
           </div>
         }

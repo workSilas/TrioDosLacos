@@ -1,0 +1,169 @@
+.CatalogoLacosDecorados {
+
+    .sessaoInicialCatalogo {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5vh;
+        padding: 5vh 5vw;
+        height: 50vh;
+        background-image: url('../../../../public/assets/images/imagemSessaoInicialCatalogo.png');
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        h2 {
+            color: #fff;
+            font-size: 2rem;
+        }
+
+        a {
+            font-family: Krona One;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #fff;
+            padding: 2vh 3vw;
+            background-color: #F0C1B3;
+
+        }
+
+        a:hover {
+            box-shadow: 0px 0px 50px 0px #FFB099;
+            transition: 0.3s;
+        }
+    }
+
+    .sessaoCardsPaginas {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10vw;
+        padding: 10vh 0vw;
+
+        .cardsPaginas {
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            justify-content: center;
+            align-items: center;
+            gap: 5vh;
+            height: 30vh;
+            width: 20vw;
+            border-radius: 12px;
+
+            h4 {
+                color: #fff;
+                font-size: 2em;
+            }
+
+            a {
+                font-family: Krona One;
+                font-size: 1rem;
+                font-weight: 500;
+                color: #fff;
+                padding: 1vh 2vw;
+                background-color: #F0C1B3;
+
+            }
+
+            a:hover {
+                box-shadow: 0px 0px 50px 0px #FFB099;
+                transition: 0.3s;
+            }
+        }
+
+        #Faixas {
+            background-image: url('../../../../public/assets/images/cardFaixasDeBebe.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #Estampados {
+            background-image: url('../../../../public/assets/images/cardLacosEstampados.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        #Kits {
+            background-image: url('../../../../public/assets/images/kitsDeLacos.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    }
+
+    h1 {
+        margin-left: 10vh;
+    }
+
+    .sessaoVitrine {
+        display: flex;
+        flex-direction: row;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 10vh 5vw;
+        gap: 5vh 5vw;
+        justify-content: center;
+        
+        .cardsExpositivos {
+            display: flex;
+            gap: 5vw;
+            height: 35vh;
+            margin-bottom: 5vh;
+
+            .cardProduto {
+                display: flex;
+                flex-direction: column;
+                height: 40vh;
+                border-radius: 12px;
+                border: solid 2px #D9D9D9;
+
+                .imagem {
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    height: 50%;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                }
+
+                .informacoes {
+                    height: 50%;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                    background-color: #fff;
+                    text-align: center;
+                    gap: 1vh;
+                    padding: 1vh 1vw;
+
+                    p {
+                        align-self: flex-start;
+                        color: #CACACA;
+                    }
+
+                    h2 {
+                        width: 13vw;
+                        font-size: 1rem;
+                    }
+
+                    button {
+                        border: none;
+                        font-family: Krona One;
+                        font-size: 1rem;
+                        font-weight: 600;
+                        color: #fff;
+                        padding: 1vh 2vw;
+                        background-color: #F0C1B3;
+
+                    }
+
+                    button:hover {
+                        box-shadow: 0px 0px 50px 0px #FFB099;
+                        transition: 0.3s;
+                    }
+                }
+            }
+        }
+    }
+}
