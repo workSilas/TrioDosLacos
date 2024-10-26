@@ -12,7 +12,8 @@ export default function Nav(props) {
 
   return (
     <div className="Nav">
-<<<<<<< HEAD
+      
+
       <div className="separacao">
       <div className="divisaoComponentesNav">
         <img src="/assets/images/LogoOficial.png" alt="Logo" />
@@ -46,9 +47,4 @@ export default function Nav(props) {
     </div >
   )
 }
-=======
-      
-    </div>
-  );
-}
->>>>>>> 00088981646511d55d151e0575b060ffc4d3cb2c
+
