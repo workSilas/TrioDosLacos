@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
+import Home from "./pages/user/Home";
 import Entrar from "./pages/Entrar";
 
 export default function Rotas() {

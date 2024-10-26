@@ -13,7 +13,7 @@
         margin-bottom: 20px;
     }
 
-    .inputEntrar{
+    .inputEntrar {
         display: flex;
         flex-direction: column;
         padding: 15px;
@@ -55,8 +55,6 @@
             cursor: pointer;
         }
     }
-<<<<<<< HEAD
-=======
 
     .botaoCadastrarInsert {
         display: flex;
@@ -67,103 +65,15 @@
             font-family: "Poppins", sans-serif;
             font-weight: 400;
         }
-        
-        .link{
+
+        .link {
             color: #1400FF;
             text-decoration: none;
             padding-left: 3px;
         }
 
-        .link:hover{
+        .link:hover {
             text-decoration: underline;
         }
     }
-
-
-    /*Responsividade*/
-    @media (min-width: 1024px) {
-        img {
-            height: 350px;
-        }
-
-        .inputEntrar{
-            label{
-                font-size: 20px;
-            }
-
-            input{
-                height: 45px;
-                width: 600px;
-            }
-        }
-
-        .botaoEntrarSelect{
-            padding: 35px;
-
-            p{
-                font-size: 21px;
-                padding: 20px 50px;
-            }
-        }
-
-        .botaoCadastrarInsert{
-            p{
-                padding: 20px;
-                font-size: 22px;
-            }
-        }
-    }
-
-
-    @media (min-width: 768px) {
-        img{
-            height: 330px;
-        }
-
-        .inputEntrar{
-            label{
-                font-size: 23px;
-            }
-            
-            input{
-                height: 40px;
-                width: 550px;
-            }
-        }
-
-        .botaoEntrarSelect{
-            padding: 30px;
-
-            p{
-                font-size: 21px;
-                padding: 15px 50px;
-            }
-        }
-
-        .botaoCadastrarInsert{
-            p{
-                padding: 20px;
-                font-size: 15px;
-            }
-        }
-    }
-
-
-    @media (min-width: 320px) {
-        img{
-            height: 230px;
-        }
-
-        .inputEntrar{
-            label{
-                font-size: 18px;
-            }
-
-            input{
-                height: 30px;
-                width: 300px;
-            }
-        }
-    }
->>>>>>> 00088981646511d55d151e0575b060ffc4d3cb2c
 }

@@ -45,15 +45,6 @@ export default function Entrar() {
             <div className='botaoEntrarSelect'>
                 <p onClick={inserirUsuario}>ENTRAR</p>
             </div>
-<<<<<<< HEAD
-=======
-
-            <div className='botaoCadastrarInsert'>
-                <p>Já possui uma conta?
-                <Link to="/cadastrar" className='link'>Conectar-se</Link>
-                </p>
-            </div>
->>>>>>> 00088981646511d55d151e0575b060ffc4d3cb2c
         </div>
     )
 }
