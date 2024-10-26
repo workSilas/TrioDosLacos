@@ -1,10 +1,9 @@
 import './index.scss';
 import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
-import { useState } from 'react';
+
 
 export default function Encomendas() {
-
 
   return (
     <div className="Encomendas">
