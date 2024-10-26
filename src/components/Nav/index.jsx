@@ -24,7 +24,7 @@ export default function Nav(props) {
       <div className="divisaoComponentesNav">
         <div className="divisaoComponentesNavLinks">
           <Link to={'/'}>INÍCIO</Link>
-          <Link to={'/'}>ENCOMENDAS</Link>
+          <Link to={'/Encomendas'}>ENCOMENDAS</Link>
           <Link to={'/'}>CATÁLOGO</Link>
         </div>
       </div>

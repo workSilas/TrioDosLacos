@@ -67,7 +67,7 @@ export default function Home() {
         <p>Não encontrou nada que te agrade? <br />
           Faça sua <b style={{ color: "#FFB099" }}>própria configuração! Use da <br />
             sua imaginação para vestir seu bebê.</b></p>
-        <Link to={'/'}>ENCOMENDAR</Link>
+        <Link to={'/Encomendas'}>ENCOMENDAR</Link>
       </div>
 
       <div className="sessoDeVoltaAoCatalogo">
