@@ -39,7 +39,7 @@ export default function Nav(props) {
             <button onClick={click}><img src="/assets/images/fechar.png" alt="fechar" /></button>
             <ul>
               <li><Link to={'/'}>INÍCIO</Link></li>
-              <li><Link to={'/Eencomendas'}>ENCOMENDAS</Link></li>
+              <li><Link to={'/Encomendas'}>ENCOMENDAS</Link></li>
               <li><Link to={'/CatalogoLacosDecorados'}>CATÁLOGO</Link></li>
             </ul>
           </div>

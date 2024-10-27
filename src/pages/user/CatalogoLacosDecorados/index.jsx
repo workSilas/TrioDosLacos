@@ -32,21 +32,23 @@ export default function CatalogoLacosDecorados() {
         </div>
       </div>
 
-      <h1>Laços Decorados</h1>
-    <div className="sessaoVitrine">
+      <div className="tituloDaPagina"><h1>Laços Decorados</h1></div>
 
-      <div className="cardsExpositivos">
-        <div className="cardProduto">
-          <div className="imagem" style={{backgroundImage: `url(/assets/images/kitsDeLacos.png)`}} />
-          <div className="informacoes">
-            <p>#1</p>
-            <h2>Laço de Fita Azul Feminino</h2>
-            <h2>R$ 25,00</h2> 
-            <button>VER</button>
+      <div className="sessaoVitrine">
+
+        <div className="cardsExpositivos">
+          <div className="cardProduto">
+            <div className="imagem" style={{ backgroundImage: `url(/assets/images/kitsDeLacos.png)` }} />
+            <div className="informacoes">
+              <p>#1</p>
+              <h2>Laço de Fita Azul Feminino</h2>
+              <h2>R$ 25,00</h2>
+              <button>VER</button>
+            </div>
           </div>
         </div>
+
       </div>
-    </div>
 
       <Rodape />
     </div>

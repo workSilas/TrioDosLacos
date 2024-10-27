@@ -4,10 +4,10 @@
         flex-direction: column;
         align-items: flex-start;
         text-align: start;
-        justify-content: space-between;
+        gap: 4vh;
         padding: 5vh 5vw;
-        height: 100vh;
-        gap: 2vh;
+
+
 
         a {
             font-family: Krona One;
@@ -21,7 +21,7 @@
         a:hover {
             box-shadow: 0px 0px 50px 0px #FFB099;
             transition: 0.3s;
-        }        
+        }
 
         .alinharInfo {
             display: flex;
@@ -39,8 +39,8 @@
             .infoDeCompra {
                 display: flex;
                 flex-direction: column;
-                height: 100%;
-                justify-content: space-between;
+                height: 75%;
+                gap: 7vh;
 
                 h1 {
                     font-size: 3rem;
@@ -52,10 +52,131 @@
                     text-decoration: underline;
                     color: #000;
                 }
-                
+
                 a {
                     padding: 2vh 3vw;
                 }
+            }
+        }
+    }
+}
+
+@media (max-width:1024px) {
+    .Produto {
+        .informacoesDoproduto {
+
+
+            .alinharInfo {
+
+                .infoDeCompra {
+                    h1 {
+                        font-size: 2rem;
+                    }
+
+                    h2 {
+                        font-size: 2.4rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:912px) {
+    .Produto {
+    
+        .informacoesDoproduto {     
+            height: 70vh;
+
+
+            a {
+                font-size: 1.2rem;
+            }
+
+            .alinharInfo {
+
+                img {
+                    height: 35vh;
+                    width: 35vh;
+                }
+
+                .infoDeCompra {
+                    h1 {
+                        font-size: 1.2rem;
+                    }
+
+                    h2 {
+                        font-size: 2rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:540px) {
+    .Produto {
+        
+        .informacoesDoproduto {
+            gap: 2vh;
+            
+            .alinharInfo {
+                img {
+                    height: 25vh;
+                    width: 25vh;
+                }
+
+                .infoDeCompra {
+                    gap: 4vh;
+
+                    h1 {
+                        font-size: 0.9rem;
+                    }
+
+                    h2 {
+                        font-size: 1.5rem;
+                    }
+
+                    a {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            p {
+                font-size: 0.7rem;
+            }
+        }
+    }
+}
+
+@media (max-width:375px) {
+    .Produto {
+        
+        .informacoesDoproduto {
+            
+            .alinharInfo {
+
+
+                .infoDeCompra {
+                    gap: 5vh;
+
+                    h1 {
+                        font-size: 0.7rem;
+                    }
+
+                    h2 {
+                        font-size: 1.2rem;
+                    }
+
+                    a {
+                        font-size: 0.6rem;
+                    }
+                }
+            }
+
+            p {
+                font-size: 0.7rem;
             }
         }
     }
