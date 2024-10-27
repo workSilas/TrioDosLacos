@@ -1,15 +1,238 @@
 import './index.scss';
-import Nav from '../../../components/Nav';
+import NavAdm from '../../../components/NavAdm';
 import Rodape from '../../../components/Rodape';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 export default function Ferramentas() {
+
+  // VENDAS
+
+  const [vendasTotais, setVendasTotais] = useState([])
+  const [vendasTotaisValor, setVendasTotaisValor] = useState([])
+
+  async function buscarVendas() {
+    const url = "http://localhost:3030/tdl/vendas/consulta/"
+    let vendas = await axios.get(url)
+    setVendasTotais(vendas.data)
+  }
+
+  async function buscarVendasValor() {
+    const url = "http://localhost:3030/tdl/vendas/consultaTotal/"
+    let vendasTotal = await axios.get(url)
+    setVendasTotaisValor(vendasTotal.data)
+  }
+
+  // SESSÃO
+
+  const [vendasSessao, setVendasSessao] = useState([])
+  const [vendasTotaisSessao, setVendasTotaisSessao] = useState([])
+
+  async function buscarVendasSessao() {
+
+    let sessaoParaConsulta = {
+      "sessao": "Categoria 2"
+    }
+    
+
+    const url = "http://localhost:3030/tdl/vendas/consultaSessao/"
+    let vendaSessao = await axios.post(url, sessaoParaConsulta)
+    setVendasSessao(vendaSessao.data)
+  }
+
+  async function buscarVendasSessaoTotal() {
+
+    let sessaoVenda = {
+      "sessao": "Categoria 2"
+    }
+
+    const url = "http://localhost:3030/tdl/vendas/consultaSessaoTotal/"
+    let vendasTotalSessao = await axios.post(url, sessaoVenda)
+    setVendasTotaisSessao(vendasTotalSessao.data)
+  }
+
+  // ESTOQUE
+
+  const [estoque, setEstoque] = useState([])
+  const [semEstoque, setSemEstoque] = useState([])
+
+  async function buscarEstoque() {
+    const url = "http://localhost:3030/tdl/produtos/estoque/"
+    let estoqueTotal = await axios.get(url)
+    setEstoque(estoqueTotal.data)
+  }
+
+  async function buscarSemEstoque() {
+    const url = "http://localhost:3030/tdl/produtos/semEstoque/"
+    let semEstoqueTotal = await axios.get(url)
+    setSemEstoque(semEstoqueTotal.data)
+  }
+
+  useEffect(() => {
+    buscarSemEstoque()
+    buscarEstoque()
+    buscarVendasSessao()
+    buscarVendasSessaoTotal()
+    buscarVendas()
+    buscarVendasValor()
+  }, [])
+
+
   return (
     <div className="Ferramentas">
-      <Nav
+      <NavAdm
         titulo="Ferramentas"
       />
 
+      <div className="sessaoNavegacaoRapida">
+
+        <h1>Estatísticas de Vendas</h1>
+
+        <div className="alinharNavegacao">
+          <a href="#vendas">VENDAS</a>
+          <a href="#sessao">SESSÃO</a>
+          <a href="#estoque">ESTOQUE</a>
+
+        </div>
+      </div>
+
+      <div id='vendas' className="sessaoTabela">
+        <h2>Confira todas as vendas</h2>
+
+        <div className="tabelaScroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Vendedor</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                <th>Data</th>
+                <th>Endereco</th>
+                <th>Enviado</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {vendasTotais.map(item =>
+                <tr>
+                  <td>{item.usuario_nome.length > 9 ? item.usuario_nome.substr(0, 9) + "." : item.usuario_nome}</td>
+                  <td>{item.produto_nome}</td>
+                  <td>{item.quantidade}</td>
+                  <td>{item.total}</td>
+                  <td>{new Date(item.data).toLocaleDateString()}</td>
+                  <td>{item.endereco.length > 20 ? item.endereco.substr(0, 9) + "." : item.endereco}</td>
+                  <td>{item.enviado ? 'Sim' : 'Não'}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+        <div className="informacao">
+          {vendasTotaisValor.map(item =>
+            <h2>Total vendido: R${item.Total}</h2>
+          )}
+        </div>
+      </div>
+
+      <div id='sessao' className="sessaoTabela">
+        <h2>Vendas por sessão</h2>
+
+        <div className="inputsCheck">
+
+        </div>
+
+        <div className="tabelaScroll">
+          <table>
+            <thead>
+              <tr>
+                <th>Vendedor</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+                <th>Total</th>
+                <th>Data</th>
+                <th>Endereco</th>
+                <th>Enviado</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {vendasSessao.map(item =>
+                <tr>
+                  <td>{item.usuario_nome.length > 9 ? item.usuario_nome.substr(0, 9) + "." : item.usuario_nome}</td>
+                  <td>{item.produto_nome}</td>
+                  <td>{item.quantidade}</td>
+                  <td>{item.total}</td>
+                  <td>{new Date(item.data).toLocaleDateString()}</td>
+                  <td>{item.endereco.length > 20 ? item.endereco.substr(0, 9) + "." : item.endereco}</td>
+                  <td>{item.enviado ? 'Sim' : 'Não'}</td>
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+        <div className="informacao">
+          {vendasTotaisSessao.map(item =>
+            <h2>Total vendido por Sessão: R${item.Total}</h2>
+          )}
+        </div>
+      </div>
+
+      <div id='estoque' className="sessaoTabela">
+        <h2>Estoque dos produtos</h2>
+
+        <div className="tabelaScroll">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {estoque.map(item =>
+                <tr>
+                  <td>{item.id}</td>
+                  <td>{item.nome}</td>
+                  <td>{item.quantidade}</td>
+
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+
+      <div id='semEstoque' className="sessaoTabela">
+        <h2>Produtos sem estoque</h2>
+
+        <div className="tabelaScroll">
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Produto</th>
+                <th>Quantidade</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {semEstoque.map(item =>
+                <tr>
+                  <td>{item.id}</td>
+                  <td>{item.nome}</td>
+                  <td>{item.quantidade}</td>
+
+                </tr>
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
 
       <Rodape />
     </div>
