@@ -1,7 +1,6 @@
 import './index.scss';
 import NavAdm from '../../../components/NavAdm';
 import Rodape from '../../../components/Rodape';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
@@ -29,28 +28,24 @@ export default function Ferramentas() {
   const [vendasSessao, setVendasSessao] = useState([])
   const [vendasTotaisSessao, setVendasTotaisSessao] = useState([])
 
+  const [sessaoSelecionada, setSessaoSelecionada] = useState()
+
   async function buscarVendasSessao() {
-
-    let sessaoParaConsulta = {
-      "sessao": "Categoria 2"
-    }
-    
-
-    const url = "http://localhost:3030/tdl/vendas/consultaSessao/"
-    let vendaSessao = await axios.post(url, sessaoParaConsulta)
+    const url = `http://localhost:3030/tdl/vendas/consultaSessao/${sessaoSelecionada}`
+    let vendaSessao = await axios.post(url)
     setVendasSessao(vendaSessao.data)
   }
 
   async function buscarVendasSessaoTotal() {
-
-    let sessaoVenda = {
-      "sessao": "Categoria 2"
-    }
-
-    const url = "http://localhost:3030/tdl/vendas/consultaSessaoTotal/"
-    let vendasTotalSessao = await axios.post(url, sessaoVenda)
+    const url = `http://localhost:3030/tdl/vendas/consultaSessaoTotal/${sessaoSelecionada}`
+    let vendasTotalSessao = await axios.post(url)
     setVendasTotaisSessao(vendasTotalSessao.data)
   }
+  async function botaoSessao() {
+    await buscarVendasSessao()
+    await buscarVendasSessaoTotal()
+  }
+
 
   // ESTOQUE
 
@@ -140,7 +135,13 @@ export default function Ferramentas() {
         <h2>Vendas por sessão</h2>
 
         <div className="inputsCheck">
-
+          <select name="sessoes" id="sessoes" onChange={e => setSessaoSelecionada(e.target.value)}>
+            <option value="Faixas de bebe">Faixas de bebe</option>
+            <option value="Laços estampados">Laços estampados</option>
+            <option value="Kits de laços">Kits de laços</option>
+            <option value="Laços decorados">Laços decorados</option>
+          </select>
+          <button onClick={botaoSessao}>BUSCAR</button>
         </div>
 
         <div className="tabelaScroll">

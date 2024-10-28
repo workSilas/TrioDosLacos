@@ -1,52 +1,50 @@
 import './index.scss';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function NavAdm(props) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const [nav, setNav] = useState(false)
-
-  function click() {
-    setNav(!nav)
-  }
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <div className="Nav">
+    <header className='Nav'>
+      <div className='itens'>
+        <img src="/assets/images/LogoOficial.png" alt="logo" className='logo' />
 
-
-      <div className="separacao">
-        <div className="divisaoComponentesNav">
-          <img src="/assets/images/LogoOficial.png" alt="Logo" />
-        </div>
         <div className="divisaoComponentesNav">
           <h1>{props.titulo}</h1>
         </div>
-        <div className="divisaoComponentesNav">
-          <div className="divisaoComponentesNavLinks">
-            <Link to={'/'}>INÍCIO</Link>
-            <Link to={'/Ferramentas'}>FERRAMENTAS</Link>
-            <Link to={'/GerenciarProdutos'}>GERENCIAR PRODUTOS</Link>
-            <Link to={'/CadastrarVendas'}>CADASTRAR VENDAS</Link>
+
+        <nav className={`menu ${window.innerWidth > 768 ? 'visible' : 'hidden'}`}>
+          <div className='links'>
+            <Link to="/">Inicio</Link>
+            <Link to="/Ferramentas">Ferramentas</Link>
+            <Link to="/CadastrarVendas">Cadastrar Vendas</Link>
+            <Link to="/GerenciarProdutos">Gerenciar Produtos</Link>
           </div>
+        </nav>
+
+        <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
         </div>
       </div>
 
-      {nav === false &&
-        <button onClick={click}><img src="/assets/images/mais.png" alt="menu" /></button>
-      }
+      {isMenuOpen && window.innerWidth <= 768 && (
+        <nav className="menu-mobile">
+          <div className='links-mobile'>
+            <Link to="/">Inicio</Link>
+            <Link to="/Ferramentas">Ferramentas</Link>
+            <Link to="/CadastrarVendas">Cadastrar Vendas</Link>
+            <Link to="/GerenciarProdutos">Gerenciar Produtos</Link>
+          </div>
 
-      {nav === true &&
-        <div className='sessaoNavMob'>
-          <button onClick={click}><img src="/assets/images/fechar.png" alt="fechar" /></button>
-          <ul>
-            <li><Link to={'/'}>INÍCIO</Link></li>
-            <li><Link to={'/Ferramentas'}>Ferramentas</Link></li>
-            <li><Link to={'/GerenciarProdutos'}>GERENCIAR PRODUTOS</Link></li>
-            <li><Link to={'/CadastrarVendas'}>CADASTRAR VENDAS</Link></li>
-          </ul>
-        </div>
-      }
-    </div >
-  )
+        </nav>
+      )}
+    </header>
+  );
 }
-
