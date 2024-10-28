@@ -1,50 +1,48 @@
 import './index.scss';
-import { Link } from 'react-router-dom';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Nav(props) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const [nav, setNav] = useState(false)
-
-  function click() {
-    setNav(!nav)
-  }
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
 
   return (
-    <div className="Nav">
-      
+    <header className='Nav'>
+      <div className='itens'>
+        <img src="/assets/images/LogoOficial.png" alt="logo" className='logo' />
 
-      <div className="separacao">
-      <div className="divisaoComponentesNav">
-        <img src="/assets/images/LogoOficial.png" alt="Logo" />
-      </div>
-      <div className="divisaoComponentesNav">
-        <h1>{props.titulo}</h1>
-      </div>
-      <div className="divisaoComponentesNav">
-        <div className="divisaoComponentesNavLinks">
-          <Link to={'/'}>INÍCIO</Link>
-          <Link to={'/Encomendas'}>ENCOMENDAS</Link>
-          <Link to={'/CatalogoLacosDecorados'}>CATÁLOGO</Link>
+        <div className="divisaoComponentesNav">
+          <h1>{props.titulo}</h1>
+        </div>
+
+        <nav className={`menu ${window.innerWidth > 768 ? 'visible' : 'hidden'}`}>
+          <div className='links'>
+            <Link to="/">Inicio</Link>
+            <Link to="/Encomendas">Encomendas</Link>
+            <Link to="/CatalogoLacosDecorados">Catalogo</Link>
+          </div>
+        </nav>
+
+        <div className={`hamburger ${isMenuOpen ? 'open' : ''}`} onClick={toggleMenu}>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
+          <div className={`bar ${isMenuOpen ? 'open' : ''}`}></div>
         </div>
       </div>
-      </div>
 
-        {nav === false &&
-          <button onClick={click}><img src="/assets/images/mais.png" alt="menu" /></button>
-        }
-
-        {nav === true &&
-          <div className='sessaoNavMob'>
-            <button onClick={click}><img src="/assets/images/fechar.png" alt="fechar" /></button>
-            <ul>
-              <li><Link to={'/'}>INÍCIO</Link></li>
-              <li><Link to={'/Encomendas'}>ENCOMENDAS</Link></li>
-              <li><Link to={'/CatalogoLacosDecorados'}>CATÁLOGO</Link></li>
-            </ul>
+      {isMenuOpen && window.innerWidth <= 768 && (
+        <nav className="menu-mobile">
+          <div className='links-mobile'>
+            <Link to="/">Inicio</Link>
+            <Link to="/Encomendas">Encomendas</Link>
+            <Link to="/CatalogoLacosDecorados">Catalogo</Link>
           </div>
-        }
-    </div >
-  )
-}
 
+        </nav>
+      )}
+    </header>
+  );
+}
