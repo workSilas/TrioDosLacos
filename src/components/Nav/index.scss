@@ -1,183 +1,199 @@
+@import url('https://fonts.googleapis.com/css2?family=ADLaM+Display&display=swap');
+
 .Nav {
-    .separacao {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background-color: #FFDBD0;
+    padding: 30px 50px;
+    position: relative;
+
+    .divisaoComponentesNav {
+        flex: 1; 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    
+        h1 {
+            font-size: 1.5rem; 
+    
+            @media (max-width: 768px) {
+                font-size: 15px;
+                text-align: center;
+            }
+        }
+    }
+    
+
+    .links {
+        display: flex;
+        margin-top: 0px;
+        gap: 35px;
+
+        a {
+            color: #5A5A5A;
+            font-family: "ADLaM Display", system-ui;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        a {
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline; 
+            }
+        }
+    }
+
+    .links-mobile {
+        display: flex;
+        flex-direction: column;
+
+        a {
+            padding: 10px 15px; 
+            color: #333;
+            text-decoration: none;
+            text-align: center; 
+            white-space: nowrap; 
+
+            &:hover {
+                background-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+    }
+
+    .botao-entrar {
+        background-color: #e9c3b8;
+        border-radius: 10px;
+        cursor: pointer;
+        padding: 5px 15px;
+
+        a {
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(126, 126, 126, 0.527);
+        } 
+    }
+
+    .botao-entrar-mobile {
+        background-color: #e9c3b8;
+        border-radius: 10px;
+        padding: 10px;
+
+        a {
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+            margin-left: 10px;
+        }
+
+        &:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 15px rgba(126, 126, 126, 0.527);
+        } 
+    }
+
+    .itens {
+        display: flex;
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center; 
+
+        @media (max-width: 768px) {
+            flex-direction: row; 
+            justify-content: space-between; 
+        }
+    }
+
+    .logo {
+        width: 100px; 
+        margin-top: -20px;
+        margin-bottom: -20px;
+
+        @media (max-width: 768px) {
+            width: 80px;
+        }
+    }
+
+    .hamburger {
+        display: none; 
+        flex-direction: column;
+        cursor: pointer;
+        transition: box-shadow 0.3s;
+        padding: 6px; 
+        background-color: rgba(255, 219, 208, 0.9); 
+        border-radius: 8px; 
+
+        @media (max-width: 768px) {
+            display: flex; 
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+        }
+
+        .bar {
+            height: 3px;
+            width: 25px;
+            background-color: #333;
+            margin: 3px 0;
+            transition: transform 0.3s, opacity 0.3s;
+
+            &.open {
+                &:nth-child(1) {
+                    transform: rotate(44deg) translate(6px, 6px);
+                }
+                &:nth-child(2) {
+                    opacity: 0; 
+                }
+                &:nth-child(3) {
+                    transform: rotate(-43deg) translate(6px, -6px);
+                }
+            }
+        }
+    }
+
+    .menu {
         display: flex;
         flex-direction: row;
-        text-align: center;
-        align-items: center;
-        justify-content: space-between;
-        padding: 3vh 5vw;
-        background-color: #FFDBD0;
-        width: 100%;
-        color: #3D3D3D;
+        gap: 20px;
 
-        .divisaoComponentesNav {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            text-align: center;
-
-            img {
-                height: 15vh;
-            }
-
-            h1 {
-                font-size: 1.5em;
-            }
-
-            .divisaoComponentesNavLinks {
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                text-align: center;
-                gap: 2vw;
-            }
-        }
-    }
-
-    button {
-        all: unset;
-        position: absolute;
-        top: 6vh;
-        right: 5vh;
-
-        img {
+        @media (max-width: 768px) {
             display: none;
-            height: 4vh;
         }
     }
 
-    .sessaoNavMob {
-        position: fixed;
-        top: 0;
+    .menu-mobile {
+        background-color: #FFDBD0;
+        position: absolute;
+        top: 70px; 
         right: 0;
-        display: none;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 10;
+        display: flex;
         flex-direction: column;
-        height: 100vh;
-        width: 50vw;
-        background-color: #FDE2DA;
-        align-items: center;
-        justify-content: center;
-
-        ul {
-            display: flex;
-            flex-direction: column;
-            gap: 5vh;
-            list-style: none;
-            text-align: start;
-        }
     }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 480px) {
     .Nav {
-        .separacao {
-            .divisaoComponentesNav {
+        padding: 20px 30px;
 
-                h1 {
-                    font-size: 1.3em;
-                }
-                
-            }
-
-            .divisaoComponentesNavLinks {
-
-                a {
-                    font-size: 0.9rem;
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 912px) {
-    .Nav {
-        .separacao {
-            .divisaoComponentesNav {
-
-                img {
-                    height: 10vh;
-                }
-
-                .divisaoComponentesNavLinks {
-                    display: none;
-                }
-            }
+        .itens {
+            gap: 5px; 
         }
 
-        // nav se transforma
-
-        button {
-
-            img {
-                display: flex;
-            }
+        .logo {
+            width: 70px; 
         }
 
-        .sessaoNavMob {
-            display: flex;
-
-            ul {
-
-                li {
-                    
-                    a {
-                        font-size: 2rem;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 540px) {
-    .Nav {
-        .sessaoNavMob {
-            ul {
-                li {
-
-                    a {
-                        font-size: 1.5rem;
-                    }
-                }
-            }
-        }
-    }
-}
-
-@media (max-width: 430px) {
-    .Nav {
-        .separacao {
-            .divisaoComponentesNav {
-
-                h1 {
-                    font-size: 1em;
-                }
-
-                img {
-                    height: 7vh;
-                }
-            }
-        }
-
-        button {
-            top: 5vh;
-
-            img {
-                height: 2.9vh;
-            }
-        }
-
-        .sessaoNavMob {
-            width: 60vw;
-
-            ul {
-                li {
-
-                    a {
-                        font-size: 1.2rem;
-                    }
-                }
-            }
+        .menu-mobile {
+            width: auto; 
         }
     }
 }
