@@ -26,7 +26,7 @@ export default function NavAdm(props) {
             <Link to={'/'}>INÍCIO</Link>
             <Link to={'/Ferramentas'}>FERRAMENTAS</Link>
             <Link to={'/GerenciarProdutos'}>GERENCIAR PRODUTOS</Link>
-            <Link to={'/CadastrarProdutos'}>CADASTRAR PRODUTOS</Link>
+            <Link to={'/CadastrarVendas'}>CADASTRAR VENDAS</Link>
           </div>
         </div>
       </div>
@@ -42,7 +42,7 @@ export default function NavAdm(props) {
             <li><Link to={'/'}>INÍCIO</Link></li>
             <li><Link to={'/Ferramentas'}>Ferramentas</Link></li>
             <li><Link to={'/GerenciarProdutos'}>GERENCIAR PRODUTOS</Link></li>
-            <li><Link to={'/CadastrarProdutos'}>CADASTRAR PRODUTOS</Link></li>
+            <li><Link to={'/CadastrarVendas'}>CADASTRAR VENDAS</Link></li>
           </ul>
         </div>
       }

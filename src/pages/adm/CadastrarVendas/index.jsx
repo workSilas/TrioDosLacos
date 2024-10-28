@@ -1,5 +1,5 @@
 import './index.scss';
-import Nav from '../../../components/Nav';
+import NavAdm from '../../../components/NavAdm';
 import Rodape from '../../../components/Rodape';
 import GraficoVendas from '../../../components/GraficoTeste/vendas.js';
 
@@ -8,7 +8,7 @@ export default function CadastrarVendas() {
   return (
     <div className="CadastrarVendas">
 
-      <Nav
+      <NavAdm
         titulo="Cadastrar Vendas"
       />
 

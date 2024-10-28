@@ -11,8 +11,8 @@ export default function GraficoVendas() {
 
   const options = {
     title: "Vendas de Laços por Mês",
-    hAxis: { title: "Mês" },
-    vAxis: { title: "Vendas" },
+    hAxis: { title: "Vendas" },
+    vAxis: { title: "Mês" },
     colors: ["#FFC0CB"],
   };
 
