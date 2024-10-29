@@ -10,21 +10,22 @@ export default function Entrar() {
 
     const navigate = useNavigate()
 
-    async function inserirUsuario() {
+    async function validarUsuario() {
         const paramCorpo = {
             nome: nome,
             senha: senha
         }
         
-        const url = 'http://localhost:3030/tdl/usuarios/inserir/'
+        const url = 'http://localhost:3030/tdl/usuarios/entrar'
         let resp = await axios.post(url, paramCorpo)
 
-        if (resp.data.erro !== undefined) {
+        if (resp.data.erro !== undefined && resp.data.erro !== null) {
             alert(resp.data.erro)
-        } else {
+        } 
+        else {
             localStorage.setItem('USUARIO', resp.data.token)
             alert(`Login finalizado! Token do Usuário: ${resp.data.token}`)
-            navigate('/cadastro')
+            navigate('/Ferramentas')
         }
     }
 
@@ -43,7 +44,7 @@ export default function Entrar() {
             </div>
 
             <div className='botaoEntrarSelect'>
-                <p onClick={inserirUsuario}>ENTRAR</p>
+                <p onClick={validarUsuario}>ENTRAR</p>
             </div>
         </div>
     )

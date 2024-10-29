@@ -31,7 +31,7 @@ export default function CardProduto(props) {
             <p>#{item.id}</p>
             <h5>{item.nome.length > 25 ? item.nome.substr(0, 9) + "." : item.nome}</h5>
             <h5>R${item.valor.toFixed(2)}</h5>
-            <button>VER</button>
+            <button >VER</button>
           </div>
         </div>
       )}

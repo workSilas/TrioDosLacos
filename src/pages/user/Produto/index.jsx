@@ -2,8 +2,18 @@ import './index.scss';
 import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function Produto() {
+
+  const [produtoEncontrado, setProdutoEncontrado] = useState([])
+
+  async function buscar() {
+    let url = `http://localhost:3030/tdl/produtos/consultaId/2`
+    let produtos = await axios.post(url)
+    setProdutoEncontrado(produtos.data)
+  }
 
   return (
     <div className="Produto">
@@ -11,22 +21,23 @@ export default function Produto() {
         titulo="Produto"
       />
 
-      <div className="informacoesDoproduto">
-      <Link to={'/'}>VOLTAR</Link>
-        <div className="alinharInfo">
-        <img src="/assets/images/cardLacosDecorados.png" alt="produto" />
-        <div className="infoDeCompra">
-          <h1>Laço de Fita Vermelho 
-          Feminino</h1>
-          <h2>R$25,00</h2>
-          <div><Link to={`https://wa.me/5511977798407?text=Olá! Quero fazer um pedido.  Produto: Nome (id) Valor: Valor`}>SOLICITAR</Link></div>
+      {produtoEncontrado.map(item =>
+        <div className="informacoesDoproduto">
+          <Link to={'/'}>VOLTAR</Link>
+          <div className="alinharInfo">
+            <img src={item.imagem} alt="produto" />
+            <div className="infoDeCompra">
+              <h1>{item.nome}</h1>
+              <h2>R${item.valor.toFixed(2)}</h2>
+              <div><Link to={`https://wa.me/5511977798407?text=Olá! Quero fazer um pedido.  Produto: Nome ${item.id} Valor: R$${item.valor.toFixed(2)}`}>SOLICITAR</Link></div>
+            </div>
+          </div>
+          <p>Quantidade disponível({item.quantidade})</p>
+          <h1>Descrição</h1>
+          <p>{item.descricao}</p>
         </div>
-        </div>
-        <p>Quantidade disponível(0)</p>
-        <h1>Descrição</h1>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fuga earum mollitia, vitae modi, hic soluta molestiae a consectetur dicta enim vel minima nihil. Fugit fuga veritatis quam laudantium, perferendis earum.</p>
-      </div>
-      
+      )}
+
       <Rodape />
     </div>
   );
