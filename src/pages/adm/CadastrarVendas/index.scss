@@ -57,6 +57,10 @@
                             background-color: #FFEEE9;
                             color: #333333;
                         }
+
+                        .labels{
+                            padding-top: 10px;
+                        }
                     }
                 }
 
@@ -186,6 +190,11 @@
 
             .botao:hover {
                 cursor: pointer;
+            }
+
+            .finalizada{
+                display: flex;
+                flex-direction: column;
             }
         }
     }

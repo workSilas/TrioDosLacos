@@ -17,7 +17,7 @@ export default function CadastrarVendas() {
 
   useEffect(() => {
     descobrirTotal()
-  }, [total])
+  }, [total, idProduto, quantidade])
 
   async function descobrirTotal() {
     const url = `http://localhost:3030/tdl/produtos/consulta/${idProduto}`
@@ -27,10 +27,11 @@ export default function CadastrarVendas() {
       alert(resp.data.erro)
     }
     else {
-      setTotal(resp.data.valor)
+      let valorTotal = resp.data.valor * quantidade
+      setTotal(valorTotal.toFixed(2))
     }
   }
-  
+
   async function cadastrarVenda() {
     const url = `http://localhost:3030/tdl/vendas/inserir/`
     const paramCorpo = {
@@ -49,6 +50,13 @@ export default function CadastrarVendas() {
     }
     else {
       alert(`Venda adicionada! Id: ${resp.data.novoId}`)
+
+      setIdProduto(0)
+      setIdUsuario(0)
+      setQuantidade(0)
+      setTotal(0)
+      setData('')
+      setEndereco('')
     }
   }
 
@@ -75,6 +83,7 @@ export default function CadastrarVendas() {
 
   //Finalizar Venda (Marcar como Enviada)
   const [idVenda, setIdVenda] = useState(0)
+  const [finalizada, setFinalizada] = useState(false)
 
   async function finalizarVenda() {
     const url = `http://localhost:3030/tdl/vendas/alterar/${idVenda}`
@@ -84,8 +93,12 @@ export default function CadastrarVendas() {
       alert(resp.data.erro)
     }
     else {
-      alert('Venda FINALIZADA !!!')
+      vendaFinalizada()
     }
+  }
+
+  function vendaFinalizada() {
+    setFinalizada(!finalizada)
   }
 
 
@@ -119,18 +132,16 @@ export default function CadastrarVendas() {
               <div>
                 <label>Id do atendente</label>
                 <input type="number" placeholder='Ex.: 1' value={idUsuario} onChange={a => setIdUsuario(a.target.value)} />
+                <label className='labels'>Nome: </label>
               </div>
 
               <div>
                 <label>Quantidade</label>
                 <input type="number" placeholder='Ex.: 1' value={quantidade} onChange={a => setQuantidade(a.target.value)} />
+                <label className='labels'>Total: R$ {total} </label>
               </div>
             </div>
 
-            <div className='labels'>
-              <label>Nome: </label>
-              <label>Total: {total} </label>
-            </div>
 
             <p onClick={cadastrarVenda}>CADASTRAR</p>
           </div>
@@ -161,6 +172,7 @@ export default function CadastrarVendas() {
               <th>Comprador</th>
               <th>Produto</th>
               <th>Quantidade</th>
+              <th>Total</th>
               <th>Data</th>
               <th>Endereço</th>
               <th>Enviado</th>
@@ -174,6 +186,7 @@ export default function CadastrarVendas() {
                 <td>{item.usuario_nome}</td>
                 <td>{item.produto_nome}</td>
                 <td>{item.quantidade}</td>
+                <td>{item.total}</td>
                 <td>{item.data}</td>
                 <td>{item.endereco}</td>
                 <td>{item.enviado ? 'Sim' : 'Não'}</td>
@@ -191,6 +204,10 @@ export default function CadastrarVendas() {
           <div className='botao' onClick={finalizarVenda}>
             Finalizar
           </div>
+
+          {finalizada &&
+            <p className='finalizada'>Venda Finalizada</p>
+          }
         </div>
 
       </section>
