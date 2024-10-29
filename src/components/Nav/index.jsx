@@ -20,9 +20,9 @@ export default function Nav(props) {
 
         <nav className={`menu ${window.innerWidth > 768 ? 'visible' : 'hidden'}`}>
           <div className='links'>
-            <Link to="/">Inicio</Link>
+            <Link to="/">Início</Link>
             <Link to="/Encomendas">Encomendas</Link>
-            <Link to="/CatalogoLacosDecorados">Catalogo</Link>
+            <Link to="/CatalogoLacosDecorados">Catálogo</Link>
           </div>
         </nav>
 
@@ -36,9 +36,9 @@ export default function Nav(props) {
       {isMenuOpen && window.innerWidth <= 768 && (
         <nav className="menu-mobile">
           <div className='links-mobile'>
-            <Link to="/">Inicio</Link>
+            <Link to="/">Início</Link>
             <Link to="/Encomendas">Encomendas</Link>
-            <Link to="/CatalogoLacosDecorados">Catalogo</Link>
+            <Link to="/CatalogoLacosDecorados">Catálogo</Link>
           </div>
 
         </nav>
