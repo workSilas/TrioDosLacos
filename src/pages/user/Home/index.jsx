@@ -25,7 +25,7 @@ export default function Home() {
           <div className="alinharPropiedades">
             <p> Coleção de laços <br />
               decorados com enfeites diversos </p>
-            <Link to={'/'}>VER</Link>
+            <Link to={'/CatalogoLacosDecorados'}>VER</Link>
           </div>
         </div>
         <div id='trocaDePopriedades' className="colecoesDisplay">
@@ -36,7 +36,7 @@ export default function Home() {
           <div className="alinharPropiedades">
             <p> Faixas estilizadas e <br />
               adoráveis  </p>
-            <Link to={'/'}>VER</Link>
+            <Link to={'/CatalogoFaixasDeBebe'}>VER</Link>
           </div>
         </div>
         <div className="colecoesDisplay">
@@ -47,7 +47,7 @@ export default function Home() {
           <div className="alinharPropiedades">
             <p> Laços  com inumeas estampas, <br />
               coloridas e leves </p>
-            <Link to={'/'}>VER</Link>
+            <Link to={'/CatalogoLacosEstampados'}>VER</Link>
           </div>
         </div>
         <div id='trocaDePopriedades' className="colecoesDisplay">
@@ -58,7 +58,7 @@ export default function Home() {
           <div className="alinharPropiedades">
             <p> Kits com os mais variados <br />
               conjuntos de laços s </p>
-            <Link to={'/'}>VER</Link>
+            <Link to={'/CatalogoKitsDeLacos'}>VER</Link>
           </div>
         </div>
       </div>

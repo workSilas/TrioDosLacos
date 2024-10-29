@@ -4,12 +4,12 @@ import Rodape from '../../../components/Rodape';
 import { Link } from 'react-router-dom';
 import CardProduto from '../../../components/CardProduto';
 
-export default function CatalogoLacosDecorados() {
+export default function CatalogoFaixasDeBebe() {
 
   return (
-    <div className="CatalogoLacosDecorados">
+    <div className="CatalogoFaixasDeBebe">
       <Nav
-        titulo="Laços Decorados"
+        titulo="Faixas de Bebê"
       />
 
       <div className="sessaoInicialCatalogo">
@@ -20,8 +20,8 @@ export default function CatalogoLacosDecorados() {
 
       <div className="sessaoCardsPaginas">
         <div id='um' className="cardsPaginas">
-          <h4>Faixas de <br /> Bebê </h4>
-          <Link to={'/CatalogoFaixasDeBebe'}>VER</Link>
+          <h4>Laços <br /> Decorados </h4>
+          <Link to={'/CatalogoLacosDecorados'}>VER</Link>
         </div>
         <div id='dois' className="cardsPaginas">
           <h4>Laços <br /> Estampados</h4>
@@ -33,12 +33,12 @@ export default function CatalogoLacosDecorados() {
         </div>
       </div>
 
-      <div className="tituloDaPagina"><h1>Laços Decorados</h1></div>
+      <div className="tituloDaPagina"><h1>Faixas de Bebê</h1></div>
 
       <div className="sessaoVitrine">
 
         <CardProduto
-          sessao="Laços decorados"
+          sessao="Faixas de Bebê"
         />
 
       </div>

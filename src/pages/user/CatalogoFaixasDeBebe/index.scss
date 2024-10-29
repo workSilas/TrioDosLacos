@@ -1,4 +1,4 @@
-.CatalogoLacosDecorados {
+.CatalogoFaixasDeBebe {
 
     .sessaoInicialCatalogo {
         display: flex;
@@ -73,7 +73,7 @@
         }
 
         #um {
-            background-image: url('../../../../public/assets/images/cardFaixasDeBebe.png');
+            background-image: url('../../../../public/assets/images/cardLacosDecorados.png');
             background-size: cover;
             background-repeat: no-repeat;
         }
@@ -97,7 +97,7 @@
 }
 
 @media (max-width:1024px) {
-    .CatalogoLacosDecorados {
+    .CatalogoFaixasDeBebe {
 
         .sessaoCardsPaginas {
 
@@ -112,7 +112,7 @@
 }
 
 @media (max-width:912px) {
-    .CatalogoLacosDecorados {
+    .CatalogoFaixasDeBebe {
 
         .sessaoCardsPaginas {
 
@@ -125,7 +125,7 @@
 }
 
 @media (max-width:540px) {
-    .CatalogoLacosDecorados {
+    .CatalogoFaixasDeBebe {
 
         .sessaoInicialCatalogo {
             h2 {
@@ -165,7 +165,7 @@
 }
 
 @media (max-width:430px) {
-    .CatalogoLacosDecorados {
+    .CatalogoFaixasDeBebe {
         
         .sessaoInicialCatalogo {
             height: 30vh;

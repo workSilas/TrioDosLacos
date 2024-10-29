@@ -8,7 +8,7 @@ export default function CardProduto(props) {
   const [produtos, setProdutos] = useState([])
 
   async function buscarProdutos() {
-    let url = 'http://localhost:3030/tdl/produtos/consulta/Categoria 1'
+    let url = `http://localhost:3030/tdl/produtos/consulta/${props.sessao}`
     let produtosEncontrados = await axios.post(url)
     setProdutos(produtosEncontrados.data)
   }
@@ -29,7 +29,7 @@ export default function CardProduto(props) {
 
           <div className="separacaoInfo">
             <p>#{item.id}</p>
-            <h5>{item.nome}</h5>
+            <h5>{item.nome.length > 25 ? item.nome.substr(0, 9) + "." : item.nome}</h5>
             <h5>R${item.valor.toFixed(2)}</h5>
             <button>VER</button>
           </div>
@@ -39,18 +39,3 @@ export default function CardProduto(props) {
     </div>
   );
 }
-
-
-/*
-{props.background}
-{props.id}
-{props.nome}
-{props.valor}
-{props.link}
-
-  background:
-  id:
-  nome:
-  valor:
-  link:
-*/
