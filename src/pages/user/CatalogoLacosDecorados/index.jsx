@@ -2,6 +2,7 @@ import './index.scss';
 import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
 import { Link } from 'react-router-dom';
+import CardProduto from '../../../components/CardProduto';
 
 export default function CatalogoLacosDecorados() {
 
@@ -36,20 +37,9 @@ export default function CatalogoLacosDecorados() {
 
       <div className="sessaoVitrine">
 
-        <div className="cardsExpositivos">
-          <div className="cardProduto">
-            <div className="imagem" style={{ backgroundImage: `url(/assets/images/kitsDeLacos.png)` }} />
-            <div className="informacoes">
-              <p>#1</p>
-              <h2>Laço de Fita Azul Feminino</h2>
-              <h2>R$ 25,00</h2>
-              <button>VER</button>
-            </div>
-          </div>
-        </div>
+        <CardProduto />
 
       </div>
-
       <Rodape />
     </div>
   );
