@@ -1,9 +1,24 @@
 import './index.scss';
 import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
+import { useState } from 'react';
+import axios from 'axios';
 
 
 export default function Encomendas() {
+
+  const [encomenda, setEncomenda] = useState("Descrição")
+
+  async function enviarEncomenda() {
+
+    let valores = {
+      "descricao": encomenda,
+      "imagem" : null
+    }
+
+    let url = `http://localhost:3030/tdl/encomendas/inserir/`
+    let resp = await axios.post(url, valores)
+  }
 
   return (
     <div className="Encomendas">
@@ -45,14 +60,10 @@ export default function Encomendas() {
         <div className="alinhamento">
           <div className="alinharInputs">
             <p>Descreva brevemente o que deseja:</p>
-            <input type="text" placeholder='Ex: Laço com listras rosas.'/>
-          </div>
-          <div className="alinharInputs">
-            <p>Imagens de  referência(Opicional)</p>
-            <input type="file" accept='image/*' value="" />
+            <textarea type="text" value={encomenda} onChange={e => setEncomenda(e.target.value)}/>
           </div>
         </div>
-        <button>Enviar</button>
+        <button onClick={enviarEncomenda}>Enviar</button>
       </div>
 
       <Rodape />

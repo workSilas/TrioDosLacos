@@ -76,7 +76,7 @@
                     color: #3D3D3D;
                 }
 
-                input {
+                textarea {
                     outline: none;
                     border: solid 1px #000;
                     padding: 2vh 1vw;
@@ -183,7 +183,7 @@
                         font-size: 0.9rem;
                     }
 
-                    input {
+                    textarea {
                         font-size: 0.9rem;
                         padding: 1vh 3vw;
                     }
@@ -230,7 +230,7 @@
                 }
             }
 
-            button {
+            textarea {
                 padding: 1vh 8vw;
                 font-size: 0.9rem;
             }
@@ -278,7 +278,7 @@
                         font-weight: 700;
                     }
 
-                    input {
+                    textarea {
                         font-size: 0.5rem;
                         width: 70vw;
                     }
