@@ -34,7 +34,7 @@
                 font-size: 0.7rem;
             }
 
-            button {
+            a {
                 all: unset;
                 background-color: #FFB099;
                 padding: 0.8vh 2vw;
@@ -45,7 +45,7 @@
                 font-size: 0.7rem;
             }
 
-            button:hover {
+            a:hover {
                 box-shadow: 0px 0px 50px 0px #FFB099;
                 transition: 0.3s;
                 text-decoration: underline;
@@ -65,7 +65,7 @@
 
             .separacaoInfo {
 
-                button {
+                a {
                     font-size: 1rem;
                 }
             }
@@ -84,7 +84,7 @@
             .separacaoInfo {
                 gap: 0.5vh;
 
-                button {
+                a {
                     padding: 0.6vh 3vw;
                 }
             }
@@ -122,7 +122,7 @@
                     font-size: 0.7rem;
                 }
 
-                button {
+                a {
                     font-size: 0.7rem;
                 }
             }
