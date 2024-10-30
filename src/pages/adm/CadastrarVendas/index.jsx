@@ -42,8 +42,8 @@ export default function CadastrarVendas() {
   async function descobrirTotal() {
 
     if (idProduto !== 0 && idProduto > 0) {
-      const url = `http://localhost:3030/tdl/produtos/consulta/${idProduto}`
-      let resp = await axios.get(url)
+      const url = `http://localhost:3030/tdl/produtos/consultaId/${idProduto}`
+      let resp = await axios.post(url)
 
       if (resp.data.erro !== undefined) {
         alert(resp.data.erro)
