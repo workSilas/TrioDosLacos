@@ -11,25 +11,48 @@ export default function CadastrarVendas() {
   const [idUsuario, setIdUsuario] = useState(0)
   const [idProduto, setIdProduto] = useState(0)
   const [quantidade, setQuantidade] = useState(0)
-  const [total, setTotal] = useState(0)
   const [data, setData] = useState('')
   const [endereco, setEndereco] = useState('')
+  const [total, setTotal] = useState(0)
+  const [nomeUsuario, setNomeUsuario] = useState('')
+  const [vendaId, setVendaId] = useState(0)
+  const [cadastroFinalizado, setCadastroFinalizado] = useState(false)
 
   useEffect(() => {
-    descobrirTotal()
-  }, [total, idProduto, quantidade])
+    descobrirNome()
+  }, [nomeUsuario])
 
-  async function descobrirTotal() {
-    const url = `http://localhost:3030/tdl/produtos/consulta/${idProduto}`
+  async function descobrirNome() {
+    const url = `http://localhost:3030/tdl/vendas/consultaTodas/`
     let resp = await axios.get(url)
 
     if (resp.data.erro !== undefined) {
       alert(resp.data.erro)
     }
     else {
-      let valorTotal = resp.data.valor * quantidade
-      setTotal(valorTotal.toFixed(2))
+      setNomeUsuario(resp.data.usuario_nome)
+    } 
+  }
+
+  useEffect(() => {
+    descobrirTotal()
+  }, [total, idProduto, quantidade])
+
+  async function descobrirTotal() {
+
+    if (idProduto !== 0 && idProduto > 0) {
+      const url = `http://localhost:3030/tdl/produtos/consulta/${idProduto}`
+      let resp = await axios.get(url)
+
+      if (resp.data.erro !== undefined) {
+        alert(resp.data.erro)
+      }
+      else {
+        let valorTotal = resp.data.valor * quantidade
+        setTotal(valorTotal.toFixed(2))
+      }
     }
+
   }
 
   async function cadastrarVenda() {
@@ -49,7 +72,8 @@ export default function CadastrarVendas() {
       alert(resp.data.erro)
     }
     else {
-      alert(`Venda adicionada! Id: ${resp.data.novoId}`)
+      setVendaId(resp.data.novoId)
+      cadastroRealizado()
 
       setIdProduto(0)
       setIdUsuario(0)
@@ -60,9 +84,17 @@ export default function CadastrarVendas() {
     }
   }
 
+  const cadastroRealizado = () => {
+    setCadastroFinalizado(!cadastroFinalizado)
+  }
+
 
   //Exibir Tabela com TODAS as Vendas
   const [venda, setVenda] = useState([])
+
+  useEffect(() => {
+    conferirTodasAsVendas()
+  }, [venda])
 
   async function conferirTodasAsVendas() {
     const url = `http://localhost:3030/tdl/vendas/consultaTodas/`
@@ -75,10 +107,6 @@ export default function CadastrarVendas() {
       setVenda(resp.data)
     }
   }
-
-  useEffect(() => {
-    conferirTodasAsVendas()
-  }, [venda])
 
 
   //Finalizar Venda (Marcar como Enviada)
@@ -97,7 +125,7 @@ export default function CadastrarVendas() {
     }
   }
 
-  function vendaFinalizada() {
+  const vendaFinalizada = () => {
     setFinalizada(!finalizada)
   }
 
@@ -132,7 +160,7 @@ export default function CadastrarVendas() {
               <div>
                 <label>Id do atendente</label>
                 <input type="number" placeholder='Ex.: 1' value={idUsuario} onChange={a => setIdUsuario(a.target.value)} />
-                <label className='labels'>Nome: </label>
+                <label className='labels'>Nome: {nomeUsuario} (usuário)</label>
               </div>
 
               <div>
@@ -142,9 +170,15 @@ export default function CadastrarVendas() {
               </div>
             </div>
 
-
             <p onClick={cadastrarVenda}>CADASTRAR</p>
           </div>
+
+          {cadastroFinalizado && (
+            <div className='pop-up'>
+              <p className='mensagem'>Venda adicionada! ID: {vendaId}</p>
+              <p className='botao' onClick={cadastroRealizado}>FECHAR</p>
+            </div>
+          )}
 
           <div className='produto'>
             <div className='inputs'>
@@ -204,11 +238,14 @@ export default function CadastrarVendas() {
           <div className='botao' onClick={finalizarVenda}>
             Finalizar
           </div>
-
-          {finalizada &&
-            <p className='finalizada'>Venda Finalizada</p>
-          }
         </div>
+
+        {finalizada && (
+          <div className='pop-up'>
+            <p className='mensagem'>Venda finalizada com sucesso!</p>
+            <p className='botao' onClick={vendaFinalizada}>FECHAR</p>
+          </div>
+        )}
 
       </section>
 
