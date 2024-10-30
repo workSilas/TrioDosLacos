@@ -6,7 +6,7 @@ import CatalogoLacosDecorados from "./pages/user/CatalogoLacosDecorados";
 import CatalogoFaixasDeBebe from "./pages/user/CatalogoFaixasDeBebe";
 import CatalogoLacosEstampados from "./pages/user/CatalogoLacosEstampados";
 import CatalogoKitsDeLacos from "./pages/user/CatalogoKitsDeLacos";
-import Produto from "./pages/user/Produto";
+import PaginaProduto from "./pages/user/PaginaProduto";
 import Ferramentas from "./pages/adm/Ferramentas";
 import CadastrarVendas from "./pages/adm/CadastrarVendas";
 import GerenciarProdutos from "./pages/adm/GerenciarProdutos";
@@ -22,7 +22,7 @@ export default function Rotas() {
                 <Route path="/CatalogoFaixasDeBebe" element={<CatalogoFaixasDeBebe/>} /> 
                 <Route path="/CatalogoLacosEstampados" element={<CatalogoLacosEstampados/>} /> 
                 <Route path="/CatalogoKitsDeLacos" element={<CatalogoKitsDeLacos/>} /> 
-                <Route path="/Produto" element={<Produto/>} /> 
+                <Route path="/PaginaProduto" element={<PaginaProduto/>} /> 
                 <Route path="/Ferramentas" element={<Ferramentas/>} /> 
                 <Route path="/CadastrarVendas" element={<CadastrarVendas/>} /> 
                 <Route path="/GerenciarProdutos" element={<GerenciarProdutos/>} /> 

@@ -5,18 +5,24 @@ import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function Produto() {
+export default function PaginaProduto() {
 
   const [produtoEncontrado, setProdutoEncontrado] = useState([])
 
   async function buscar() {
-    let url = `http://localhost:3030/tdl/produtos/consultaId/2`
+    let url = `http://localhost:3030/tdl/produtos/consultaId/22`
     let produtos = await axios.post(url)
+    console.log(produtos);
+    
     setProdutoEncontrado(produtos.data)
   }
 
+  useEffect(() => {
+   buscar()
+  }, [])
+
   return (
-    <div className="Produto">
+    <div className="PaginaProduto">
       <Nav
         titulo="Produto"
       />
@@ -29,7 +35,7 @@ export default function Produto() {
             <div className="infoDeCompra">
               <h1>{item.nome}</h1>
               <h2>R${item.valor.toFixed(2)}</h2>
-              <div><Link to={`https://wa.me/5511977798407?text=Olá! Quero fazer um pedido.  Produto: Nome ${item.id} Valor: R$${item.valor.toFixed(2)}`}>SOLICITAR</Link></div>
+              <div><Link to={`https://wa.me/5511977798407?text=Quero saber mais sobre o produto: ID ${item.id} Nome ${item.nome} Valor: R$${item.valor.toFixed(2)}`}>SOLICITAR</Link></div>
             </div>
           </div>
           <p>Quantidade disponível({item.quantidade})</p>
@@ -37,7 +43,7 @@ export default function Produto() {
           <p>{item.descricao}</p>
         </div>
       )}
-
+  
       <Rodape />
     </div>
   );

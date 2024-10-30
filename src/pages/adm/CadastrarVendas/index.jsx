@@ -3,13 +3,14 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import NavAdm from '../../../components/NavAdm';
 import Rodape from '../../../components/Rodape';
+import CardProdutoId from '../../../components/CardProdutoId';
 
 
 export default function CadastrarVendas() {
 
   //Cadastrar uma Venda
   const [idUsuario, setIdUsuario] = useState(0)
-  const [idProduto, setIdProduto] = useState(0)
+  const [idProduto, setIdProduto] = useState(0)  
   const [quantidade, setQuantidade] = useState(0)
   const [data, setData] = useState('')
   const [endereco, setEndereco] = useState('')
@@ -52,7 +53,6 @@ export default function CadastrarVendas() {
         setTotal(valorTotal.toFixed(2))
       }
     }
-
   }
 
   async function cadastrarVenda() {
@@ -187,7 +187,9 @@ export default function CadastrarVendas() {
             </div>
 
             <div className='componente-laco'>
-            //trocar pelo Componente do Laço
+            <CardProdutoId 
+              id={idProduto}
+            />
             </div>
           </div>
         </div>
@@ -200,7 +202,7 @@ export default function CadastrarVendas() {
         <h2>Vendas Feitas</h2>
 
         <table>
-          <thead>
+          <thead> 
             <tr>
               <th>Id</th>
               <th>Comprador</th>
@@ -232,7 +234,7 @@ export default function CadastrarVendas() {
         <div className='finalizar-venda'>
           <div className='id-venda'>
             <label>Id da venda finalizada</label>
-            <input type="number" placeholder='Ex.: 1' value={idVenda} onChange={a => setIdVenda(a.target.value)} />
+            <input type="number" placeholder='Ex: 1' value={idVenda} onChange={a => setIdVenda(a.target.value)} />
           </div>
 
           <div className='botao' onClick={finalizarVenda}>
@@ -249,10 +251,7 @@ export default function CadastrarVendas() {
 
       </section>
 
-
       <Rodape />
-
     </div>
   );
-
 }

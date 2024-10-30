@@ -1,4 +1,4 @@
-.Produto {
+.PaginaProduto {
     .informacoesDoproduto {
         display: flex;
         flex-direction: column;
@@ -6,8 +6,6 @@
         text-align: start;
         gap: 4vh;
         padding: 5vh 5vw;
-
-
 
         a {
             font-family: Krona One;
@@ -62,7 +60,7 @@
 }
 
 @media (max-width:1024px) {
-    .Produto {
+    .PaginaProduto {
         .informacoesDoproduto {
 
 
@@ -83,7 +81,7 @@
 }
 
 @media (max-width:912px) {
-    .Produto {
+    .PaginaProduto {
     
         .informacoesDoproduto {     
             height: 70vh;
@@ -115,7 +113,7 @@
 }
 
 @media (max-width:540px) {
-    .Produto {
+    .PaginaProduto {
         
         .informacoesDoproduto {
             gap: 2vh;
@@ -151,7 +149,7 @@
 }
 
 @media (max-width:375px) {
-    .Produto {
+    .PaginaProduto {
         
         .informacoesDoproduto {
             

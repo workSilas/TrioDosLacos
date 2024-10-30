@@ -3,25 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function CardProduto(props) {
+export default function CardProdutoId(props) {
 
-  const [produtos, setProdutos] = useState([])
+  const [produtoEncontrado, setProdutoEncontrado] = useState([])
 
-  async function buscarProdutos() {
-    let url = `http://localhost:3030/tdl/produtos/consulta/${props.sessao}`
-    let produtosEncontrados = await axios.post(url)
-    setProdutos(produtosEncontrados.data)
+  async function buscar() {
+
+    if(props.id <= 0){
+      return  
+    }
+    let url = `http://localhost:3030/tdl/produtos/consultaId/${props.id}`
+    let produtos = await axios.post(url)
+    setProdutoEncontrado(produtos.data)
   }
 
-  useEffect(() => {
-    buscarProdutos()
-  },[])
-
-  const navigate = useNavigate()
 
   return (
-    <div className="CardProduto">
-      {produtos.map(item =>
+    <div className="CardProdutoId">
+      {produtoEncontrado.map(item =>
         <div className="card">
           <div id='imagem' className="separacaoInfo" >
             <img src={item.imagem} alt="produto" />
@@ -31,13 +30,9 @@ export default function CardProduto(props) {
             <p>#{item.id}</p>
             <h5>{item.nome.length > 25 ? item.nome.substr(0, 9) + "." : item.nome}</h5>
             <h5>R${item.valor.toFixed(2)}</h5>
-            <button onClick={navigate("/Produto", {
-              id: item.id
-            })}>VER</button>
           </div>
         </div>
       )}
-
     </div>
   );
 }

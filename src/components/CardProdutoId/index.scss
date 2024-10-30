@@ -1,10 +1,10 @@
-.CardProduto {
+.CardProdutoId {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
     gap: 5vw;
-    padding: 5vh 5vw;
+    z-index: 3;
 
     .card {
         height: 250px;
@@ -59,7 +59,7 @@
 }
 
 @media (max-width:1280px) {
-    .CardProduto {
+    .CardProdutoId {
 
         .card {
 
@@ -75,7 +75,7 @@
 
 
 @media (max-width:912px) {
-    .CardProduto {
+    .CardProdutoId {
 
         .card {
             height: 275px;
@@ -94,7 +94,7 @@
 
 
 @media (max-width:540px) {
-    .CardProduto {
+    .CardProdutoId {
 
         .card {
             height: 225px;
@@ -110,7 +110,7 @@
 
 
 @media (max-width:430px) {
-    .CardProduto {
+    .CardProdutoId {
 
         .card {
             height: 200px;
