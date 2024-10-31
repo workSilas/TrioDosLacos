@@ -28,7 +28,7 @@ export default function Entrar() {
                 toast.success("Login feito com sucesso!")
                 navigate('/Ferramentas')
             }
-        } 
+        }
         catch (error) {
             toast.error("ERRO")
             return

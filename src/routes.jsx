@@ -15,17 +15,17 @@ export default function Rotas() {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<Home/>} /> 
-                <Route path="/Entrar" element={<Entrar/>} /> 
-                <Route path="/Encomendas" element={<Encomendas/>} /> 
-                <Route path="/CatalogoLacosDecorados" element={<CatalogoLacosDecorados/>} /> 
-                <Route path="/CatalogoFaixasDeBebe" element={<CatalogoFaixasDeBebe/>} /> 
-                <Route path="/CatalogoLacosEstampados" element={<CatalogoLacosEstampados/>} /> 
-                <Route path="/CatalogoKitsDeLacos" element={<CatalogoKitsDeLacos/>} /> 
-                <Route path="/PaginaProduto" element={<PaginaProduto/>} /> 
-                <Route path="/Ferramentas" element={<Ferramentas/>} /> 
-                <Route path="/CadastrarVendas" element={<CadastrarVendas/>} /> 
-                <Route path="/GerenciarProdutos" element={<GerenciarProdutos/>} /> 
+                <Route path="/" element={<Home />} />
+                <Route path="/Entrar" element={<Entrar />} />
+                <Route path="/Encomendas" element={<Encomendas />} />
+                <Route path="/CatalogoLacosDecorados" element={<CatalogoLacosDecorados />} />
+                <Route path="/CatalogoFaixasDeBebe" element={<CatalogoFaixasDeBebe />} />
+                <Route path="/CatalogoLacosEstampados" element={<CatalogoLacosEstampados />} />
+                <Route path="/CatalogoKitsDeLacos" element={<CatalogoKitsDeLacos />} />
+                <Route path="/PaginaProduto" element={<PaginaProduto />} />
+                <Route path="/Ferramentas" element={<Ferramentas />} />
+                <Route path="/CadastrarVendas" element={<CadastrarVendas />} />
+                <Route path="/GerenciarProdutos" element={<GerenciarProdutos />} />
             </Routes>
         </BrowserRouter>
     )

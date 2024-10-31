@@ -180,7 +180,7 @@ export default function GerenciarProdutos() {
       let resp = await axios.delete(url)
       setIdProduto(0)
       toast.success("Produto Deletado com sucesso!")
-    } 
+    }
     catch (error) {
       toast.error("Produto não encotnrado.")
     }

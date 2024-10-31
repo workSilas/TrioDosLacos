@@ -25,6 +25,7 @@
             background-color: #F0C1B3;
             border-radius: 12px;
         }
+
         a:hover {
             transition: 0.2s;
             transform: scale(1.05);
@@ -169,7 +170,7 @@
 
 @media (max-width:430px) {
     .CatalogoKitsDeLacos {
-        
+
         .sessaoInicialCatalogo {
             height: 30vh;
 
@@ -181,8 +182,9 @@
                 font-size: 1rem;
             }
 
-            
+
         }
+
         .sessaoCardsPaginas {
             padding: 6vh 0vw;
             gap: 5vw;

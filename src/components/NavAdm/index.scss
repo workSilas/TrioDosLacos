@@ -9,21 +9,21 @@
     position: relative;
 
     .divisaoComponentesNav {
-        flex: 1; 
+        flex: 1;
         display: flex;
         justify-content: center;
         align-items: center;
-    
+
         h1 {
-            font-size: 1.5rem; 
-    
+            font-size: 1.5rem;
+
             @media (max-width: 912px) {
                 font-size: 15px;
                 text-align: center;
             }
         }
     }
-    
+
 
     .links {
         display: flex;
@@ -41,7 +41,7 @@
             text-decoration: none;
 
             &:hover {
-                text-decoration: underline; 
+                text-decoration: underline;
             }
         }
     }
@@ -51,11 +51,11 @@
         flex-direction: column;
 
         a {
-            padding: 10px 15px; 
+            padding: 10px 15px;
             color: #333;
             text-decoration: none;
-            text-align: center; 
-            white-space: nowrap; 
+            text-align: center;
+            white-space: nowrap;
 
             &:hover {
                 background-color: rgba(255, 255, 255, 0.1);
@@ -78,7 +78,7 @@
         &:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 15px rgba(126, 126, 126, 0.527);
-        } 
+        }
     }
 
     .botao-entrar-mobile {
@@ -96,7 +96,7 @@
         &:hover {
             transform: scale(1.05);
             box-shadow: 0 6px 15px rgba(126, 126, 126, 0.527);
-        } 
+        }
     }
 
     .itens {
@@ -104,16 +104,16 @@
         width: 100%;
         flex-direction: row;
         justify-content: space-between;
-        align-items: center; 
+        align-items: center;
 
         @media (max-width: 912px) {
-            flex-direction: row; 
-            justify-content: space-between; 
+            flex-direction: row;
+            justify-content: space-between;
         }
     }
 
     .logo {
-        width: 100px; 
+        width: 100px;
         margin-top: -20px;
         margin-bottom: -20px;
 
@@ -123,17 +123,17 @@
     }
 
     .hamburger {
-        display: none; 
+        display: none;
         flex-direction: column;
         cursor: pointer;
         transition: box-shadow 0.3s;
-        padding: 6px; 
-        background-color: rgba(255, 219, 208, 0.9); 
-        border-radius: 8px; 
+        padding: 6px;
+        background-color: rgba(255, 219, 208, 0.9);
+        border-radius: 8px;
 
         @media (max-width: 912px) {
-            display: flex; 
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
+            display: flex;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
         }
 
         .bar {
@@ -147,9 +147,11 @@
                 &:nth-child(1) {
                     transform: rotate(44deg) translate(6px, 6px);
                 }
+
                 &:nth-child(2) {
-                    opacity: 0; 
+                    opacity: 0;
                 }
+
                 &:nth-child(3) {
                     transform: rotate(-43deg) translate(6px, -6px);
                 }
@@ -170,7 +172,7 @@
     .menu-mobile {
         background-color: #FFDBD0;
         position: absolute;
-        top: 70px; 
+        top: 70px;
         right: 0;
         border-radius: 5px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
@@ -185,15 +187,15 @@
         padding: 20px 30px;
 
         .itens {
-            gap: 5px; 
+            gap: 5px;
         }
 
         .logo {
-            width: 70px; 
+            width: 70px;
         }
 
         .menu-mobile {
-            width: auto; 
+            width: auto;
         }
     }
 }

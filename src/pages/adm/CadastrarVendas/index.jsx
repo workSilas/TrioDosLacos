@@ -13,14 +13,14 @@ export default function CadastrarVendas() {
 
   // Validação ADM
 
-  const [ token, setToken] = useState(null)
+  const [token, setToken] = useState(null)
   const navigate = useNavigate()
-  
+
   useEffect(() => {
     let token = localStorage.getItem('USUARIO')
     setToken(token)
 
-    if ( token == null) {
+    if (token == null) {
       navigate("/")
     }
   }, [])

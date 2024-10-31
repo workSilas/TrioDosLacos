@@ -13,7 +13,7 @@ export default function PaginaProduto() {
   const [produtoEncontrado, setProdutoEncontrado] = useState([]);
 
   async function buscar() {
-    let url = `http://localhost:3030/tdl/produtos/consultaId/${data.id}`; 
+    let url = `http://localhost:3030/tdl/produtos/consultaId/${data.id}`;
     let produtos = await axios.post(url);
     setProdutoEncontrado(produtos.data);
   }
@@ -29,7 +29,7 @@ export default function PaginaProduto() {
       <Nav titulo="Produto" />
 
       {produtoEncontrado.map(item => (
-        <div className="informacoesDoproduto" key={item.id}> 
+        <div className="informacoesDoproduto" key={item.id}>
           <Link to={'/CatalogoLacosDecorados'}>VOLTAR</Link>
           <div className="alinharInfo">
             <img src={item.imagem} alt="produto" />

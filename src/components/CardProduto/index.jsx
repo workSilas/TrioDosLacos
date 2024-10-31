@@ -12,7 +12,7 @@ export default function CardProduto(props) {
       let produtosEncontrados = await axios.post(url);
       const produtosComImagens = produtosEncontrados.data.map(produto => {
         if (produto.imagem) {
-          produto.imagem = `data:image/png;base64,${produto.imagem}`; 
+          produto.imagem = `data:image/png;base64,${produto.imagem}`;
         }
         return produto;
       });

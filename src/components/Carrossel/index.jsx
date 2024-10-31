@@ -14,7 +14,7 @@ export default function Carrossel() {
         }, 10000);
 
         return () => clearInterval(intervalId);
-    }, [images.length]); 
+    }, [images.length]);
 
 
     const handlePrevClick = () => {

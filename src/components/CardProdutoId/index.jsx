@@ -7,20 +7,20 @@ export default function CardProdutoId(props) {
 
   async function buscar() {
     if (props.id <= 0) {
-      return;  
+      return;
     }
     let url = `http://localhost:3030/tdl/produtos/consultaId/${props.id}`;
     try {
       let produtos = await axios.post(url);
       setProdutoEncontrado(produtos.data);
-    } 
+    }
     catch (error) {
       alert("Erro ao buscar produto:", error);
     }
   }
 
   useEffect(() => {
-    buscar(); 
+    buscar();
   }, [props.id]);
 
   return (

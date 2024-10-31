@@ -12,7 +12,7 @@ export default function Home() {
         titulo="Bem-Vindo(a)!"
       />
       <BotaoAdm />
-      
+
       <Carrossel />
 
       <div className="sessaoDescubra">
