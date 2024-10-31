@@ -10,7 +10,7 @@ export default function CadastrarVendas() {
 
   //Cadastrar uma Venda
   const [idUsuario, setIdUsuario] = useState(0)
-  const [idProduto, setIdProduto] = useState(0)  
+  const [idProduto, setIdProduto] = useState(0)
   const [quantidade, setQuantidade] = useState(0)
   const [data, setData] = useState('')
   const [endereco, setEndereco] = useState('')
@@ -32,7 +32,7 @@ export default function CadastrarVendas() {
     }
     else {
       setNomeUsuario(resp.data.usuario_nome)
-    } 
+    }
   }
 
   useEffect(() => {
@@ -187,9 +187,9 @@ export default function CadastrarVendas() {
             </div>
 
             <div className='componente-laco'>
-            <CardProdutoId 
-              id={idProduto}
-            />
+              <CardProdutoId
+                id={idProduto}
+              />
             </div>
           </div>
         </div>
@@ -202,7 +202,7 @@ export default function CadastrarVendas() {
         <h2>Vendas Feitas</h2>
 
         <table>
-          <thead> 
+          <thead>
             <tr>
               <th>Id</th>
               <th>Comprador</th>

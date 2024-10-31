@@ -7,17 +7,29 @@ import axios from 'axios';
 
 export default function Encomendas() {
 
-  const [encomenda, setEncomenda] = useState("Descrição")
+  const [encomenda, setEncomenda] = useState("")
 
   async function enviarEncomenda() {
-
-    let valores = {
+    const url = `http://localhost:3030/tdl/encomendas/inserir/`
+    const valores = {
       "descricao": encomenda,
-      "imagem" : null
+      "imagem": null
     }
 
-    let url = `http://localhost:3030/tdl/encomendas/inserir/`
-    let resp = await axios.post(url, valores)
+    if (encomenda.length > 250) {
+      alert("Texto grande demais.")
+      return
+    }
+
+    try {
+      let resp = await axios.post(url, valores)
+      alert(`Novo id: ${resp.data.novoId}`)
+
+    } 
+    catch (error) {
+      alert("a")
+    }
+    setEncomenda("")
   }
 
   return (
@@ -60,7 +72,7 @@ export default function Encomendas() {
         <div className="alinhamento">
           <div className="alinharInputs">
             <p>Descreva brevemente o que deseja:</p>
-            <textarea type="text" value={encomenda} onChange={e => setEncomenda(e.target.value)}/>
+            <textarea type="text" placeholder='Descrição' value={encomenda} onChange={e => setEncomenda(e.target.value)} />
           </div>
         </div>
         <button onClick={enviarEncomenda}>Enviar</button>
