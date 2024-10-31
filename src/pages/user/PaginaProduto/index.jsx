@@ -37,7 +37,7 @@ export default function PaginaProduto() {
               <h1>{item.nome}</h1>
               <h2>R${item.valor.toFixed(2)}</h2>
               <div>
-                <Link to={`https://wa.me/5511977798407?text=Quero saber mais sobre o produto: ID ${item.id} Nome ${item.nome} Valor: R$${item.valor.toFixed(2)}`}>SOLICITAR</Link>
+                <Link target='_blank' to={`https://wa.me/5511977798407?text=Quero saber mais sobre o produto: ID ${item.id} Nome ${item.nome} Valor: R$${item.valor.toFixed(2)}`}>SOLICITAR</Link>
               </div>
             </div>
           </div>

@@ -12,8 +12,7 @@ export default function Rodape() {
 
       <div className="separacaoComponentesRodape">
         <h1>SUPORTE</h1>
-        <Link to={"https://wa.me/5511977798407?text=Olá! Gostaria de saber mais sobre seus serviços."}>Contato</Link>
-        //trocar o número
+        <Link target='_blank' to={"https://wa.me/5511977798407?text=Olá! Gostaria de saber mais sobre seus serviços."}>Contato</Link>
       </div>
 
       <div className="separacaoComponentesRodape">

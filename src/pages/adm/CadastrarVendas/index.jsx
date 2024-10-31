@@ -5,6 +5,8 @@ import NavAdm from '../../../components/NavAdm';
 import Rodape from '../../../components/Rodape';
 import CardProdutoId from '../../../components/CardProdutoId';
 
+import { withMask } from 'use-mask-input';
+
 
 export default function CadastrarVendas() {
 
@@ -62,8 +64,18 @@ export default function CadastrarVendas() {
       "idUsuario": idUsuario,
       "quantidade": quantidade,
       "total": total,
-      "data": data,
+      "data": data.replace(/\//g, "-"),
       "endereco": endereco
+    }
+
+
+    if (idUsuario === null || idUsuario === undefined) {
+      alert("Atendente não encontrado")
+      return
+    }
+    if (endereco.length > 40) {
+      alert("Endereço contém caractéres demais.")
+      return
     }
 
     let resp = await axios.post(url, paramCorpo)
@@ -114,14 +126,15 @@ export default function CadastrarVendas() {
   const [finalizada, setFinalizada] = useState(false)
 
   async function finalizarVenda() {
-    const url = `http://localhost:3030/tdl/vendas/alterar/${idVenda}`
-    let resp = await axios.put(url)
 
-    if (resp.data.erro !== undefined) {
-      alert(resp.data.erro)
-    }
-    else {
+    try {
+      const url = `http://localhost:3030/tdl/vendas/alterar/${idVenda}`
+      let resp = await axios.put(url)
       vendaFinalizada()
+    }
+    catch (error) {
+      alert("ID inexistente.")
+      return
     }
   }
 
@@ -129,6 +142,19 @@ export default function CadastrarVendas() {
     setFinalizada(!finalizada)
   }
 
+  // Encomendas
+
+  const [encomenda, setEncomenda] = useState([])
+
+  async function buscarEncomendas() {
+    let url = "http://localhost:3030/tdl/encomendas/consulta/"
+    let resp = await axios.get(url)
+    setEncomenda(resp.data)
+  }
+
+  useEffect(() => {
+    buscarEncomendas()
+  }, [])
 
   return (
     <div className="CadastrarVendas">
@@ -147,7 +173,7 @@ export default function CadastrarVendas() {
             <div className='inputs'>
               <div>
                 <label>Data</label>
-                <input type="text" placeholder='00/00/00' value={data} onChange={a => setData(a.target.value)} />
+                <input type="text" ref={withMask("99/99/9999")} value={data} onChange={a => setData(a.target.value)} />
               </div>
 
               <div>
@@ -159,13 +185,13 @@ export default function CadastrarVendas() {
             <div className='inputs'>
               <div>
                 <label>Id do atendente</label>
-                <input type="number" placeholder='Ex.: 1' value={idUsuario} onChange={a => setIdUsuario(a.target.value)} />
+                <input type="text" placeholder='Ex.: 1' value={idUsuario} onChange={a => setIdUsuario(a.target.value)} />
                 <label className='labels'>Nome: {nomeUsuario} (usuário)</label>
               </div>
 
               <div>
                 <label>Quantidade</label>
-                <input type="number" placeholder='Ex.: 1' value={quantidade} onChange={a => setQuantidade(a.target.value)} />
+                <input type="text" placeholder='Ex.: 1' value={quantidade} onChange={a => setQuantidade(a.target.value)} />
                 <label className='labels'>Total: R$ {total} </label>
               </div>
             </div>
@@ -183,7 +209,7 @@ export default function CadastrarVendas() {
           <div className='produto'>
             <div className='inputs'>
               <label>Id do Produto</label>
-              <input type="number" placeholder='Ex.: 1' value={idProduto} onChange={a => setIdProduto(a.target.value)} />
+              <input type="text" placeholder='Ex.: 1' value={idProduto} onChange={a => setIdProduto(a.target.value)} />
             </div>
 
             <div className='componente-laco'>
@@ -204,8 +230,8 @@ export default function CadastrarVendas() {
         <table>
           <thead>
             <tr>
-              <th>Id</th>
-              <th>Comprador</th>
+              <th>ID</th>
+              <th>Vendedor</th>
               <th>Produto</th>
               <th>Quantidade</th>
               <th>Total</th>
@@ -219,12 +245,12 @@ export default function CadastrarVendas() {
             {venda.map(item => (
               <tr>
                 <td>{item.id}</td>
-                <td>{item.usuario_nome}</td>
+                <td>{item.usuario_nome.length > 9 ? item.usuario_nome.substr(0, 9) + "." : item.usuario_nome}</td>
                 <td>{item.produto_nome}</td>
                 <td>{item.quantidade}</td>
                 <td>{item.total}</td>
-                <td>{item.data}</td>
-                <td>{item.endereco}</td>
+                <td>{new Date(item.data).toLocaleDateString()}</td>
+                <td>{item.endereco.length > 20 ? item.endereco.substr(0, 9) + "." : item.endereco}</td>
                 <td>{item.enviado ? 'Sim' : 'Não'}</td>
               </tr>
             ))}
@@ -234,7 +260,7 @@ export default function CadastrarVendas() {
         <div className='finalizar-venda'>
           <div className='id-venda'>
             <label>Id da venda finalizada</label>
-            <input type="number" placeholder='Ex: 1' value={idVenda} onChange={a => setIdVenda(a.target.value)} />
+            <input type="text" placeholder='Ex: 1' value={idVenda} onChange={a => setIdVenda(a.target.value)} />
           </div>
 
           <div className='botao' onClick={finalizarVenda}>
@@ -251,6 +277,29 @@ export default function CadastrarVendas() {
 
       </section>
 
+      <section className='VendaTabela'>
+
+        <h2>Encomendas</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Descrição</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            {encomenda.map(item => (
+              <tr>
+                <td>{item.id}</td>
+                <td>{item.descricao}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
       <Rodape />
     </div>
   );

@@ -3,6 +3,7 @@ import NavAdm from '../../../components/NavAdm';
 import Rodape from '../../../components/Rodape';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import GraficoVendas from '../../../components/GraficoTeste/vendas';
 
 export default function Ferramentas() {
 
