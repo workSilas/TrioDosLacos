@@ -2,6 +2,7 @@ import './index.scss';
 import NavAdm from '../../../components/NavAdm';
 import Rodape from '../../../components/Rodape';
 import CardProdutoTemplate from '../../../components/CardProdutoTemplate';
+import CardProdutoId from '../../../components/CardProdutoId';
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
@@ -33,7 +34,7 @@ export default function GerenciarProdutos() {
   const [quantidade, setQuantidade] = useState(0)
   const [descricao, setDescricao] = useState("")
 
-  function alterarImagem(e) {
+  function enviarImagem(e) {
     const file = e.target.files[0];
 
     if (file) {
@@ -97,6 +98,103 @@ export default function GerenciarProdutos() {
     }
   }
 
+  // Alterar
+
+  const [idProduto, setIdProduto] = useState("")
+  const [sessaoSelecionadaAlterar, setSessaoSelecionadaAlterar] = useState("")
+  const [alterarImagem, setAlterarImagem] = useState("")
+  const [alterarNome, setAlterarNome] = useState("")
+  const [alterarValor, setAlterarValor] = useState(null)
+  const [alterarQuantidade, setAlterarQuantidade] = useState(0)
+  const [alterarDescricao, setAlterarDescricao] = useState("")
+
+  function alterarImagemBase(e) {
+    const file = e.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setAlterarImagem(reader.result);
+      };
+
+      reader.readAsDataURL(file);
+    }
+  }
+
+
+  async function alterarProduto() {
+
+    if (alterarNome > 30) {
+      toast.error("Defina um nome menor ao produto.")
+      return
+    }
+    if (alterarQuantidade > 999) {
+      toast.error("O limite de estoque é de 999 produtos.")
+      return
+    }
+    if (alterarDescricao > 250) {
+      toast.error("Descrição muit longa.")
+      return
+    }
+    if (sessaoSelecionadaAlterar == undefined || sessaoSelecionadaAlterar == null) {
+      toast.error("Defina a sessão.")
+      return
+    }
+    if (alterarImagem == undefined || alterarImagem == null) {
+      toast.error("Defina uma imagem.")
+      return
+    }
+
+
+    try {
+      let valores = {
+        "nome": alterarNome,
+        "valor": alterarValor.replace(",", "."),
+        "quantidade": alterarQuantidade,
+        "descricao": alterarDescricao,
+        "sessao": sessaoSelecionadaAlterar,
+        "imagem": alterarImagem
+      }
+
+      let url = `http://localhost:3030/tdl/produtos/alterar/${idProduto}`
+      let prod = await axios.put(url, valores)
+      toast.success(`Novo produto alterar no catálogo com sucesso!`)
+
+      setSessaoSelecionadaAlterar("")
+      setImagem("")
+      setNome("")
+      setValor(null)
+      setQuantidade(0)
+      setDescricao("")
+    }
+    catch (error) {
+      toast.error("Erro ao alterar o produto! Verifique as informações.")
+    }
+  }
+
+  // Não está funcionando
+
+  async function buscar() {
+    try {
+      let url = `http://localhost:3030/tdl/produtos/consultaId/${idProduto}`;
+      let produtos = await axios.post(url);
+      setSessaoSelecionadaAlterar(produtos.data.sessao)
+      setAlterarNome(produtos.data.nome)
+      setAlterarValor(produtos.data.valor)
+      setAlterarQuantidade(produtos.data.quantidade)
+      setAlterarDescricao(produtos.data.descricao)
+      setAlterarImagem(produtos.data.imagem)
+    }
+    catch (error) {
+      return
+    }
+  }
+
+  useEffect(() => {
+    buscar();
+  }, [idProduto]);
+
+
   return (
     <div className="GerenciarProdutos">
       <NavAdm
@@ -117,13 +215,13 @@ export default function GerenciarProdutos() {
                 <option value="Laços decorados">Laços decorados</option>
               </select>
               <p>Nome</p>
-              <input type="text" placeholder='Maria' value={nome} onChange={e => setNome(e.target.value)} />
+              <input type="text" placeholder='Nome' value={nome} onChange={e => setNome(e.target.value)} />
               <p>Valor</p>
               <input type="text" placeholder='99,99' ref={withMask("99,99")} value={valor} onChange={e => setValor(e.target.value)} />
               <p>Quantidade</p>
               <input type="text" value={quantidade} onChange={e => setQuantidade(e.target.value)} />
               <p>Imagem</p>
-              <input type="file" accept='image/*' onChange={alterarImagem} />
+              <input type="file" accept='image/*' onChange={enviarImagem} />
               <p>Descrição</p>
               <textarea type="text" placeholder='Laço Elegante...' value={descricao} onChange={e => setDescricao(e.target.value)} />
             </div>
@@ -137,6 +235,44 @@ export default function GerenciarProdutos() {
           </div>
 
           <button onClick={inserirProduto}>INSERIR</button>
+        </div>
+      </div>
+
+
+      <div id='invertido' className="sessaoCompleta">
+
+        <div className="sessaoQuadrado">
+
+          <div className="conversao">
+            <div className="alinhamento">
+              <h1>Altere um produto</h1>
+              <select name="sessoes" id="sessoes" onChange={e => setSessaoSelecionadaAlterar(e.target.value)}>
+                <option value="Faixas de bebe">Faixas de bebe</option>
+                <option value="Laços estampados">Laços estampados</option>
+                <option value="Kits de laços">Kits de laços</option>
+                <option value="Laços decorados">Laços decorados</option>
+              </select>
+              <p>Nome</p>
+              <input type="text" placeholder='Produto' value={alterarNome} onChange={e => setAlterarNome(e.target.value)} />
+              <p>Valor</p>
+              <input type="text" placeholder='99,99' ref={withMask("99,99")} value={alterarValor} onChange={e => setAlterarValor(e.target.value)} />
+              <p>Quantidade</p>
+              <input type="text" value={alterarQuantidade} onChange={e => setAlterarQuantidade(e.target.value)} />
+              <p>Imagem</p>
+              <input type="file" accept='image/*' onChange={alterarImagemBase} />
+              <p>Descrição</p>
+              <textarea type="text" placeholder='Laço Elegante...' value={alterarDescricao} onChange={e => setAlterarDescricao(e.target.value)} />
+            </div>
+            <div className="alinhamento">
+              <p>ID do produto</p>
+              <input type="text" placeholder='0' value={idProduto} onChange={e => setIdProduto(e.target.value)} />
+              <CardProdutoId
+                id={idProduto}
+              />
+            </div>
+          </div>
+
+          <button onClick={alterarProduto}>INSERIR</button>
         </div>
       </div>
 

@@ -84,7 +84,6 @@ export default function CadastrarVendas() {
       "endereco": endereco
     }
 
-
     if (idUsuario === null || idUsuario === undefined) {
       alert("Atendente não encontrado")
       return
