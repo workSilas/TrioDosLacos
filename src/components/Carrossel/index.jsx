@@ -4,16 +4,14 @@ import './index.scss';
 export default function Carrossel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const images = [
-        '/assets/images/image1.png',
-        '/assets/images/image2.png',
-        '/assets/images/image3.png',
-        '/assets/images/image4.png',
+        '/assets/images/imagemBebe1.png',
+        '/assets/images/imagemBebe2.png',
     ];
 
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-        }, 5000);
+        }, 10000);
 
         return () => clearInterval(intervalId);
     }, [images.length]); 
