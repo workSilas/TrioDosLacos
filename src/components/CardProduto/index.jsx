@@ -8,8 +8,19 @@ export default function CardProduto(props) {
 
   async function buscarProdutos() {
     let url = `http://localhost:3030/tdl/produtos/consulta/${props.sessao}`;
-    let produtosEncontrados = await axios.post(url);
-    setProdutos(produtosEncontrados.data);
+    try {
+      let produtosEncontrados = await axios.post(url);
+      // Formatar as imagens em base64, se necessário
+      const produtosComImagens = produtosEncontrados.data.map(produto => {
+        if (produto.imagem) {
+          produto.imagem = `data:image/png;base64,${produto.imagem}`; // Ajuste para PNG
+        }
+        return produto;
+      });
+      setProdutos(produtosComImagens);
+    } catch (error) {
+      console.error("Erro ao buscar produtos:", error);
+    }
   }
 
   useEffect(() => {

@@ -23,6 +23,7 @@
                 color: #fff;
                 padding: 1vh 3vw;
                 background-color: #F0C1B3;
+                border-radius: 15px;
             }
 
             a:hover {
@@ -47,7 +48,7 @@
 
         .tabelaScroll {
             height: 100vh;
-            max-width: 90vw;
+            max-width: 80vw;
             max-height: 80vh;
             overflow: hidden;
             overflow-y: scroll;
@@ -58,9 +59,9 @@
                 height: 10vh;
                 font-family: Poppins;
                 background-color: #F0C1B3;
-                font-size: 1.5rem;
+                font-size: 1rem;
                 padding: 2vh 2vw;
-                width: 90vw;
+                width: 80vw;
 
                 th {
                     text-align: left;
@@ -91,11 +92,12 @@
             align-items: center;
             justify-content: center;
             background-color: #F0C1B3;
-            width: 90vw;
-            padding: 10vh 0vw;
+            width: 80vw;
+            padding: 6vh 0vw;
             border: solid 1px #000;
-
+            
             h2 {
+                font-size: 1.5rem;
                 color: #000;
             }
         }
@@ -112,6 +114,7 @@
                 color: #fff;
                 padding: 1vh 3vw;
                 background-color: #F0C1B3;
+                border-radius: 15px;
 
                 option {
                     font-size: 1rem;
@@ -128,6 +131,7 @@
                 color: #fff;
                 padding: 1vh 3vw;
                 background-color: #F0C1B3;
+                border-radius: 15px;
             }
 
             button:hover {
