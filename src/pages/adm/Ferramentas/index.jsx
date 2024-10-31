@@ -152,10 +152,10 @@ export default function Ferramentas() {
 
         <div className="inputsCheck">
           <select name="sessoes" id="sessoes" onChange={e => setSessaoSelecionada(e.target.value)}>
-            <option value="Faixas de bebe">Faixas de bebe</option>
-            <option value="Laços estampados">Laços estampados</option>
-            <option value="Kits de laços">Kits de laços</option>
-            <option value="Laços decorados">Laços decorados</option>
+            <option value="Faixas de Bebê">Faixas de bebe</option>
+            <option value="Laços Estampados">Laços estampados</option>
+            <option value="Kits de Laços">Kits de laços</option>
+            <option value="Laços Decorados">Laços decorados</option>
           </select>
           <button onClick={botaoSessao}>BUSCAR</button>
         </div>

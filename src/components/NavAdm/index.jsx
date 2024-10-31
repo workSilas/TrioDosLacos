@@ -18,7 +18,7 @@ export default function NavAdm(props) {
           <h1>{props.titulo}</h1>
         </div>
 
-        <nav className={`menu ${window.innerWidth > 768 ? 'visible' : 'hidden'}`}>
+        <nav className={`menu ${window.innerWidth > 912 ? 'visible' : 'hidden'}`}>
           <div className='links'>
             <Link to="/">Inicio</Link>
             <Link to="/Ferramentas">Ferramentas</Link>
@@ -34,7 +34,7 @@ export default function NavAdm(props) {
         </div>
       </div>
 
-      {isMenuOpen && window.innerWidth <= 768 && (
+      {isMenuOpen && window.innerWidth <= 912 && (
         <nav className="menu-mobile">
           <div className='links-mobile'>
             <Link to="/">Inicio</Link>

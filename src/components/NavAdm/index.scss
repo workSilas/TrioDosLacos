@@ -17,7 +17,7 @@
         h1 {
             font-size: 1.5rem; 
     
-            @media (max-width: 768px) {
+            @media (max-width: 912px) {
                 font-size: 15px;
                 text-align: center;
             }
@@ -106,7 +106,7 @@
         justify-content: space-between;
         align-items: center; 
 
-        @media (max-width: 768px) {
+        @media (max-width: 912px) {
             flex-direction: row; 
             justify-content: space-between; 
         }
@@ -117,7 +117,7 @@
         margin-top: -20px;
         margin-bottom: -20px;
 
-        @media (max-width: 768px) {
+        @media (max-width: 912px) {
             width: 80px;
         }
     }
@@ -131,7 +131,7 @@
         background-color: rgba(255, 219, 208, 0.9); 
         border-radius: 8px; 
 
-        @media (max-width: 768px) {
+        @media (max-width: 912px) {
             display: flex; 
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
         }
@@ -162,7 +162,7 @@
         flex-direction: row;
         gap: 20px;
 
-        @media (max-width: 768px) {
+        @media (max-width: 912px) {
             display: none;
         }
     }

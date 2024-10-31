@@ -89,7 +89,7 @@ export default function GerenciarProdutos() {
       setSessaoSelecionada("")
       setImagem("")
       setNome("")
-      setValor(null)
+      setValor()
       setQuantidade(0)
       setDescricao("")
     }
@@ -172,27 +172,19 @@ export default function GerenciarProdutos() {
     }
   }
 
-  // Não está funcionando
+  // Deletar Produto
 
-  async function buscar() {
+  async function deletarProduto() {
     try {
-      let url = `http://localhost:3030/tdl/produtos/consultaId/${idProduto}`;
-      let produtos = await axios.post(url);
-      setSessaoSelecionadaAlterar(produtos.data.sessao)
-      setAlterarNome(produtos.data.nome)
-      setAlterarValor(produtos.data.valor)
-      setAlterarQuantidade(produtos.data.quantidade)
-      setAlterarDescricao(produtos.data.descricao)
-      setAlterarImagem(produtos.data.imagem)
-    }
+      let url = `http://localhost:3030/tdl/produtos/delete/${idProduto}`
+      let resp = await axios.delete(url)
+      setIdProduto(0)
+      toast.success("Produto Deletado com sucesso!")
+    } 
     catch (error) {
-      return
+      toast.error("Produto não encotnrado.")
     }
   }
-
-  useEffect(() => {
-    buscar();
-  }, [idProduto]);
 
 
   return (
@@ -202,17 +194,15 @@ export default function GerenciarProdutos() {
       />
 
       <div className="sessaoCompleta">
-
         <div className="sessaoQuadrado">
-
           <div className="conversao">
             <div className="alinhamento">
               <h1>Cadastre um produto</h1>
               <select name="sessoes" id="sessoes" onChange={e => setSessaoSelecionada(e.target.value)}>
-                <option value="Faixas de bebe">Faixas de bebe</option>
-                <option value="Laços estampados">Laços estampados</option>
-                <option value="Kits de laços">Kits de laços</option>
-                <option value="Laços decorados">Laços decorados</option>
+                <option value="Faixas de Bebê">Faixas de bebe</option>
+                <option value="Laços Estampados">Laços estampados</option>
+                <option value="Kits de Laços">Kits de laços</option>
+                <option value="Laços Decorados">Laços decorados</option>
               </select>
               <p>Nome</p>
               <input type="text" placeholder='Nome' value={nome} onChange={e => setNome(e.target.value)} />
@@ -272,7 +262,10 @@ export default function GerenciarProdutos() {
             </div>
           </div>
 
-          <button onClick={alterarProduto}>INSERIR</button>
+          <div className="alinharBotoes">
+            <button onClick={alterarProduto}>ALTERAR</button>
+            <button onClick={deletarProduto}>DELETAR</button>
+          </div>
         </div>
       </div>
 

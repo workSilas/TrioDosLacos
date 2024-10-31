@@ -32,7 +32,7 @@
                 box-shadow: 0px 0px 50px 0px #FFB099;
                 transition: 0.3s;
             }
-        
+
 
             .conversao {
                 display: flex;
@@ -93,6 +93,205 @@
                         background-color: #FFEEE9;
                         width: 100%;
                     }
+                }
+            }
+
+            .alinharBotoes {
+                display: flex;
+                gap: 5vw;
+            }
+        }
+    }
+}
+
+@media (max-width:1024px) {
+    .GerenciarProdutos {
+
+        .sessaoCompleta {
+
+            .sessaoQuadrado {
+                .conversao {
+
+                    .alinhamento {
+
+                        h1 {
+                            font-size: 1rem;
+                        }
+
+                        p {
+                            font-size: 0.8rem;
+                        }
+
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:912px) {
+    .GerenciarProdutos {
+
+        .sessaoCompleta {
+            height: 85vh;
+
+            .sessaoQuadrado {
+                height: 75vh;
+
+                .conversao {
+
+                    .alinhamento {
+
+                        h1 {
+                            font-size: 1rem;
+                        }
+
+                        p {
+                            font-size: 0.8rem;
+                        }
+
+                    }
+                }
+
+                button {
+                    font-size: 1rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:540px) {
+    .GerenciarProdutos {
+
+        .sessaoCompleta {
+
+            .sessaoQuadrado {
+
+                .conversao {
+                    gap: 3vw;
+
+                    .alinhamento {
+
+                        h1 {
+                            font-size: 0.8rem;
+                        }
+
+                        p {
+                            font-size: 0.7rem;
+                        }
+
+                        select {
+                            font-size: 0.5rem;
+                        }
+
+                        input {
+                            font-size: 0.4rem;
+                        }
+
+                        textarea {
+                            font-size: 0.4rem;
+                        }
+
+                    }
+                }
+
+                button {
+                    font-size: 0.7rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:475px) {
+    .GerenciarProdutos {
+
+        .sessaoCompleta {
+            height: 65vh;
+
+            .sessaoQuadrado {
+                height: 55vh;
+
+                .conversao {
+                    gap: 3vw;
+
+
+                    .alinhamento {
+                        gap: 0.7vh;
+
+                        h1 {
+                            font-size: 0.6rem;
+                        }
+
+                        p {
+                            font-size: 0.7rem;
+                        }
+
+                        select {
+                            font-size: 0.5rem;
+                        }
+
+                        input {
+                            font-size: 0.4rem;
+                        }
+
+                        textarea {
+                            font-size: 0.4rem;
+                        }
+
+                    }
+                }
+
+                button {
+                    font-size: 0.7rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:390px) {
+    .GerenciarProdutos {
+
+        .sessaoCompleta {
+            height: 65vh;
+
+            .sessaoQuadrado {
+                height: 55vh;
+
+                .conversao {
+                    gap: 3vw;
+
+
+                    .alinhamento {
+                        gap: 0.5vh;
+
+                        h1 {
+                            font-size: 0.6rem;
+                        }
+
+                        p {
+                            font-size: 0.7rem;
+                        }
+
+                        select {
+                            font-size: 0.4rem;
+                        }
+
+                        input {
+                            font-size: 0.4rem;
+                        }
+
+                        textarea {
+                            font-size: 0.4rem;
+                        }
+
+                    }
+                }
+
+                button {
+                    font-size: 0.7rem;
                 }
             }
         }

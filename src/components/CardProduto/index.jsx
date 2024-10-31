@@ -10,10 +10,9 @@ export default function CardProduto(props) {
     let url = `http://localhost:3030/tdl/produtos/consulta/${props.sessao}`;
     try {
       let produtosEncontrados = await axios.post(url);
-      // Formatar as imagens em base64, se necessário
       const produtosComImagens = produtosEncontrados.data.map(produto => {
         if (produto.imagem) {
-          produto.imagem = `data:image/png;base64,${produto.imagem}`; // Ajuste para PNG
+          produto.imagem = `data:image/png;base64,${produto.imagem}`; 
         }
         return produto;
       });
