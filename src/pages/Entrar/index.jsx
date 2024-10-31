@@ -2,6 +2,7 @@ import './index.scss'
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 
 export default function Entrar() {
@@ -15,18 +16,25 @@ export default function Entrar() {
             nome: nome,
             senha: senha
         }
-        
-        const url = 'http://localhost:3030/tdl/usuarios/entrar'
-        let resp = await axios.post(url, paramCorpo)
 
-        if (resp.data.erro !== undefined && resp.data.erro !== null) {
-            alert(resp.data.erro)
+        try {
+            const url = 'http://localhost:3030/tdl/usuarios/entrar'
+            let resp = await axios.post(url, paramCorpo)
+            if (resp.data.erro !== undefined && resp.data.erro !== null) {
+                toast.error(resp.data.erro)
+            }
+            else {
+                localStorage.setItem('USUARIO', resp.data.token)
+                toast.success("Login feito com sucesso!")
+                navigate('/Ferramentas')
+            }
         } 
-        else {
-            localStorage.setItem('USUARIO', resp.data.token)
-            alert(`Login finalizado! Token do Usuário: ${resp.data.token}`)
-            navigate('/Ferramentas')
+        catch (error) {
+            toast.error("ERRO")
+            return
         }
+
+
     }
 
     return (
@@ -35,12 +43,12 @@ export default function Entrar() {
 
             <div className='inputEntrar'>
                 <label>NOME DE USUÁRIO</label>
-                <input type="text" value={nome} onChange={a => setNome(a.target.value)}/>
+                <input type="text" value={nome} onChange={a => setNome(a.target.value)} />
             </div>
 
             <div className='inputEntrar'>
                 <label>SENHA</label>
-                <input type="password" value={senha} onChange={a => setSenha(a.target.value)}/>
+                <input type="password" value={senha} onChange={a => setSenha(a.target.value)} />
             </div>
 
             <div className='botaoEntrarSelect'>

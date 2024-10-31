@@ -3,9 +3,24 @@ import NavAdm from '../../../components/NavAdm';
 import Rodape from '../../../components/Rodape';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
-import GraficoVendas from '../../../components/GraficoTeste/vendas';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 
 export default function Ferramentas() {
+
+  // Validação ADM
+
+  const [token, setToken] = useState(null)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    let token = localStorage.getItem('USUARIO')
+    setToken(token)
+
+    if (token == null) {
+      navigate("/")
+    }
+  }, [])
 
   // VENDAS
 
@@ -43,10 +58,10 @@ export default function Ferramentas() {
     setVendasTotaisSessao(vendasTotalSessao.data)
   }
   async function botaoSessao() {
+    toast.success(`Dados da ${sessaoSelecionada} encontrados!`)
     await buscarVendasSessao()
     await buscarVendasSessaoTotal()
   }
-
 
   // ESTOQUE
 
@@ -116,7 +131,7 @@ export default function Ferramentas() {
                   <td>{item.usuario_nome.length > 9 ? item.usuario_nome.substr(0, 9) + "." : item.usuario_nome}</td>
                   <td>{item.produto_nome}</td>
                   <td>{item.quantidade}</td>
-                  <td>{item.total}</td>
+                  <td>{item.total.toFixed(2).replace(".", ",")}</td>
                   <td>{new Date(item.data).toLocaleDateString()}</td>
                   <td>{item.endereco.length > 20 ? item.endereco.substr(0, 9) + "." : item.endereco}</td>
                   <td>{item.enviado ? 'Sim' : 'Não'}</td>
@@ -127,7 +142,7 @@ export default function Ferramentas() {
         </div>
         <div className="informacao">
           {vendasTotaisValor.map(item =>
-            <h2>Total vendido: R${item.Total}</h2>
+            <h2>Total vendido: R${String(item.Total.toFixed(2)).replace(".", ",")}</h2>
           )}
         </div>
       </div>
@@ -165,7 +180,7 @@ export default function Ferramentas() {
                   <td>{item.usuario_nome.length > 9 ? item.usuario_nome.substr(0, 9) + "." : item.usuario_nome}</td>
                   <td>{item.produto_nome}</td>
                   <td>{item.quantidade}</td>
-                  <td>{item.total}</td>
+                  <td>{item.total.toFixed(2).replace(".", ",")}</td>
                   <td>{new Date(item.data).toLocaleDateString()}</td>
                   <td>{item.endereco.length > 20 ? item.endereco.substr(0, 9) + "." : item.endereco}</td>
                   <td>{item.enviado ? 'Sim' : 'Não'}</td>
@@ -176,7 +191,7 @@ export default function Ferramentas() {
         </div>
         <div className="informacao">
           {vendasTotaisSessao.map(item =>
-            <h2>Total vendido por Sessão: R${item.Total}</h2>
+            <h2>Total vendido por Sessão: R${String(item.Total.toFixed(2)).replace(".", ",")}</h2>
           )}
         </div>
       </div>

@@ -7,7 +7,7 @@ export default function Rodape() {
     <div className='Rodape'>
 
       <div className="separacaoComponentesRodape">
-        <img src="/assets/images/LogoOficial.png" alt="logo" />
+        <Link to={"/Entrar"}><img src="/assets/images/LogoOficial.png" alt="logo" /></Link>
       </div>
 
       <div className="separacaoComponentesRodape">
@@ -18,8 +18,6 @@ export default function Rodape() {
       <div className="separacaoComponentesRodape">
         <h1>POLÍTICAS</h1>
         <Link to={"/"}>Termos de Uso</Link>
-        <Link to={"/"}>Políticas de Privacidade</Link>
-        <Link to={"/"}>Políticas de Devolução</Link>
       </div>
 
       <div className="separacaoComponentesRodape">

@@ -3,7 +3,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
     width: 100vw;
     height: 100vh;
 
@@ -29,10 +28,10 @@
             border: none;
             outline: none;
             box-shadow: none;
-
             background-color: #FFDBD0;
-            height: 30px;
-            width: 400px;
+            height: 4vh;
+            width: 30vw;
+            font-size: 1rem;
         }
     }
 
@@ -74,6 +73,52 @@
 
         .link:hover {
             text-decoration: underline;
+        }
+    }
+}
+
+
+@media (max-width:1024px) {
+    .entrar {
+
+        .inputEntrar {
+            input {
+                width: 50vw;
+            }
+        }
+    }
+}
+
+@media (max-width:930px) {
+    .entrar {
+
+        .inputEntrar {
+            input {
+                height: 4vh;
+                width: 50vw;
+                font-size: 1.5rem;
+            }
+        }
+    }
+}
+
+
+@media (max-width:430px) {
+    .entrar {
+        img {
+            height: 20vh;
+        }
+
+        .inputEntrar {
+
+            label {
+                font-size: 0.7rem;
+            }
+
+            input {
+                width: 70vw;
+                font-size: 1rem;
+            }
         }
     }
 }

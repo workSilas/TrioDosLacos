@@ -6,9 +6,25 @@ import Rodape from '../../../components/Rodape';
 import CardProdutoId from '../../../components/CardProdutoId';
 
 import { withMask } from 'use-mask-input';
+import { useNavigate } from 'react-router-dom';
 
 
 export default function CadastrarVendas() {
+
+  // Validação ADM
+
+  const [ token, setToken] = useState(null)
+  const navigate = useNavigate()
+  
+  useEffect(() => {
+    let token = localStorage.getItem('USUARIO')
+    setToken(token)
+
+    if ( token == null) {
+      navigate("/")
+    }
+  }, [])
+
 
   //Cadastrar uma Venda
   const [idUsuario, setIdUsuario] = useState(0)

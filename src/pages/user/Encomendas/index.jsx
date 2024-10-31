@@ -3,6 +3,7 @@ import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
 import { useState } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 
 export default function Encomendas() {
@@ -17,17 +18,18 @@ export default function Encomendas() {
     }
 
     if (encomenda.length > 250) {
-      alert("Texto grande demais.")
+      toast.error("Texto contém caractéres demais(máx:250).")
       return
     }
 
     try {
       let resp = await axios.post(url, valores)
-      alert(`Novo id: ${resp.data.novoId}`)
+      toast.success(`Encomenda feita! ID: ${resp.data.novoId}`)
 
-    } 
+    }
     catch (error) {
-      alert("a")
+      toast.error("ERRO")
+      return
     }
     setEncomenda("")
   }

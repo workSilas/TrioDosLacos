@@ -2,6 +2,7 @@ import './index.scss';
 import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
 import { Link } from 'react-router-dom';
+import BotaoAdm from '../../../components/BotaoAdm';
 
 export default function Home() {
   return (
@@ -9,6 +10,7 @@ export default function Home() {
       <Nav
         titulo="Bem-Vindo(a)!"
       />
+      <BotaoAdm />
 
       <div className="sessaoInicialCarrossel">
 
