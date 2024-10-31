@@ -30,7 +30,7 @@ export default function PaginaProduto() {
 
       {produtoEncontrado.map(item => (
         <div className="informacoesDoproduto" key={item.id}> 
-          <Link to={'/'}>VOLTAR</Link>
+          <Link to={'/CatalogoLacosDecorados'}>VOLTAR</Link>
           <div className="alinharInfo">
             <img src={item.imagem} alt="produto" />
             <div className="infoDeCompra">

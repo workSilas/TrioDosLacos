@@ -90,17 +90,19 @@
             all: unset;
             background-color: #FFB099;
             padding: 2vh 4vw;
-            border-radius: 5px;
+            border-radius: 12px;
             color: #fff;
             font-family: Krona One;
             font-weight: 600;
             font-size: 1.5rem;
+            border-radius: 12px;
         }
 
         button:hover {
-            box-shadow: 0px 0px 50px 0px #FFB099;
-            transition: 0.3s;
-            text-decoration: underline;
+            transition: 0.2s;
+            transform: scale(1.05);
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(126, 126, 126, 0.527);
         }
     }
 }

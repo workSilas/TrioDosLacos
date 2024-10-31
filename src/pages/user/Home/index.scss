@@ -58,6 +58,7 @@
                 }
 
                 a:hover {
+                    transition: 0.2s;
                     transform: scale(1.05);
                     cursor: pointer;
                     box-shadow: 0 6px 15px rgba(126, 126, 126, 0.527);
@@ -100,6 +101,7 @@
         }
 
         a:hover {
+            transition: 0.2s;
             transform: scale(1.05);
             cursor: pointer;
             box-shadow: 0 6px 15px rgba(126, 126, 126, 0.527);
@@ -137,6 +139,7 @@
             }
 
             a:hover {
+                transition: 0.2s;
                 transform: scale(1.05);
                 cursor: pointer;
                 box-shadow: 0 6px 15px rgba(126, 126, 126, 0.527);
