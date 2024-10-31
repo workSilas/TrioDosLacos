@@ -22,6 +22,7 @@ export default function CardProduto(props) {
     }
   }
 
+
   useEffect(() => {
     buscarProdutos();
   }, [props.sessao]);

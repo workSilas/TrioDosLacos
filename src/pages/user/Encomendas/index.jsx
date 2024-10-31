@@ -18,17 +18,47 @@ export default function Encomendas() {
     }
 
     if (encomenda.length > 250) {
-      toast.error("Texto contém caractéres demais(máx:250).")
+      toast.error("Texto contém caractéres demais(máx:250).", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
 
     try {
       let resp = await axios.post(url, valores)
-      toast.success(`Encomenda feita! ID: ${resp.data.novoId}`)
+      toast.success(`Encomenda feita! ID: ${resp.data.novoId}`, {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
 
     }
     catch (error) {
-      toast.error("ERRO")
+      toast.error("ERRO", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
     setEncomenda("")

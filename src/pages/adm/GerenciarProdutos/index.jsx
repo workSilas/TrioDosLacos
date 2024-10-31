@@ -51,23 +51,73 @@ export default function GerenciarProdutos() {
   async function inserirProduto() {
 
     if (nome.length > 30) {
-      toast.error("Defina um nome menor ao produto.")
+      toast.error("Defina um nome menor ao produto.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
     if (quantidade > 999) {
-      toast.error("O limite de estoque é de 999 produtos.")
+      toast.error("O limite de estoque é de 999 produtos.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
     if (descricao.length > 250) {
-      toast.error("Descrição muit longa.")
+      toast.error("Descrição muit longa.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
     if (sessaoSelecionada == undefined || sessaoSelecionada == null) {
-      toast.error("Defina a sessão.")
+      toast.error("Defina a sessão.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
     if (imagem == undefined || imagem == null) {
-      toast.error("Defina uma imagem.")
+      toast.error("Defina uma imagem.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
 
@@ -84,7 +134,17 @@ export default function GerenciarProdutos() {
 
       let url = "http://localhost:3030/tdl/produtos/inserir/"
       let prod = await axios.post(url, valores)
-      toast.success(`Novo produto adicionado ao catálogo com sucesso! ID${prod.data.novod}`)
+      toast.success(`Novo produto adicionado ao catálogo com sucesso! ID${prod.data.novod}`, {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
 
       setSessaoSelecionada("")
       setImagem("")
@@ -94,7 +154,17 @@ export default function GerenciarProdutos() {
       setDescricao("")
     }
     catch (error) {
-      toast.error("Erro ao adicionar o produto! Verifique as informações.")
+      toast.error("Erro ao adicionar o produto! Verifique as informações.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
     }
   }
 
@@ -125,23 +195,73 @@ export default function GerenciarProdutos() {
   async function alterarProduto() {
 
     if (alterarNome > 30) {
-      toast.error("Defina um nome menor ao produto.")
+      toast.error("Defina um nome menor ao produto.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
     if (alterarQuantidade > 999) {
-      toast.error("O limite de estoque é de 999 produtos.")
+      toast.error("O limite de estoque é de 999 produtos.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
     if (alterarDescricao > 250) {
-      toast.error("Descrição muit longa.")
+      toast.error("Descrição muit longa.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
     if (sessaoSelecionadaAlterar == undefined || sessaoSelecionadaAlterar == null) {
-      toast.error("Defina a sessão.")
+      toast.error("Defina a sessão.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
     if (alterarImagem == undefined || alterarImagem == null) {
-      toast.error("Defina uma imagem.")
+      toast.error("Defina uma imagem.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
       return
     }
 
@@ -158,7 +278,17 @@ export default function GerenciarProdutos() {
 
       let url = `http://localhost:3030/tdl/produtos/alterar/${idProduto}`
       let prod = await axios.put(url, valores)
-      toast.success(`Novo produto alterar no catálogo com sucesso!`)
+      toast.success(`Novo produto alterar no catálogo com sucesso!`, {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
 
       setSessaoSelecionadaAlterar("")
       setImagem("")
@@ -168,7 +298,17 @@ export default function GerenciarProdutos() {
       setDescricao("")
     }
     catch (error) {
-      toast.error("Erro ao alterar o produto! Verifique as informações.")
+      toast.error("Erro ao alterar o produto! Verifique as informações.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
     }
   }
 
@@ -179,10 +319,30 @@ export default function GerenciarProdutos() {
       let url = `http://localhost:3030/tdl/produtos/delete/${idProduto}`
       let resp = await axios.delete(url)
       setIdProduto(0)
-      toast.success("Produto Deletado com sucesso!")
+      toast.success("Produto Deletado com sucesso!", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
     }
     catch (error) {
-      toast.error("Produto não encotnrado.")
+      toast.error("Produto não encotnrado.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      })
     }
   }
 
