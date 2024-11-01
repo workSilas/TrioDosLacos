@@ -30,6 +30,21 @@ export default function Encomendas() {
       return;
     }
 
+    if (encomenda.length <= 20) {
+      toast.error("O mínimo de caractéres para fazer uma encomenda é de 20.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      });
+      return;
+    }
+
     try {
       let resp = await axios.post(url, valores);
       toast.success(`Encomenda feita! ID: ${resp.data.novoId}`, {
@@ -113,3 +128,4 @@ export default function Encomendas() {
     </div>
   );
 }
+

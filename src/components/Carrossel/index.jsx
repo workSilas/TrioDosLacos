@@ -4,8 +4,8 @@ import './index.scss';
 export default function Carrossel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const images = [
-        '/assets/images/bebeCarrossel.png',
-        '/assets/images/bebeCarrosselDoido.png',
+        '/assets/images/bebeCarrosselFaixaRosa.png',
+        '/assets/images/bebeCarrosselFaixaRosa2.png',
     ];
 
     useEffect(() => {

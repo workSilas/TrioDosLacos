@@ -4,6 +4,7 @@ import Rodape from '../../../components/Rodape';
 import { Link } from 'react-router-dom';
 import BotaoAdm from '../../../components/BotaoAdm';
 import Carrossel from '../../../components/Carrossel';
+import AnimatedSection from '../../../components/Animaçao'; 
 import AnimatedSection from '../../../components/Animaçao';
 
 export default function Home() {
@@ -17,7 +18,7 @@ export default function Home() {
         <div className="sessaoDescubra">
           <h1>CONHEÇA NOSSAS COLEÇÕES</h1>
 
-          <div className="colecoesDisplay">
+          <div className="colecoesDisplay" id="secaoCorAlterada">
             <div className="alinharPropiedades">
               <img src="/assets/images/LaçoDecorado.png" alt="Laço Decorado" />
               <p>Laços Decorados</p>
@@ -47,7 +48,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="colecoesDisplay">
+          <div className="colecoesDisplay" id="secaoCorAlterada">
             <div className="alinharPropiedades">
               <img src="/assets/images/LaçoEstampado.png" alt="Laço Estampado" />
               <p>Laços Estampados</p>
