@@ -1,7 +1,6 @@
 import './index.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import toast from 'react-hot-toast';
 
 export default function CardProdutoId(props) {
   const [produtoEncontrado, setProdutoEncontrado] = useState([]);
@@ -13,6 +12,8 @@ export default function CardProdutoId(props) {
     let url = `http://localhost:3030/tdl/produtos/consultaId/${props.id}`;
     try {
       let produtos = await axios.post(url);
+      console.log(produtos.data);
+
       setProdutoEncontrado(produtos.data);
     }
     catch (error) {
@@ -27,7 +28,7 @@ export default function CardProdutoId(props) {
   return (
     <div className="CardProdutoId">
       {produtoEncontrado.length > 0 ? (
-        produtoEncontrado.map(item => (
+        produtoEncontrado?.map(item => (
           <div className="card" key={item.id}>
             <div id='imagem' className="separacaoInfo">
               <img src={item.imagem} alt="produto" />

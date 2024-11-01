@@ -10,14 +10,9 @@ export default function CardProduto(props) {
     let url = `http://localhost:3030/tdl/produtos/consulta/${props.sessao}`;
     try {
       let produtosEncontrados = await axios.post(url);
-      const produtosComImagens = produtosEncontrados.data.map(produto => {
-        if (produto.imagem) {
-          produto.imagem = `data:image/png;base64,${produto.imagem}`;
-        }
-        return produto;
-      });
-      setProdutos(produtosComImagens);
-    } catch (error) {
+      setProdutos(produtosEncontrados.data);
+    }
+    catch (error) {
       console.error("Erro ao buscar produtos:", error);
     }
   }
@@ -29,7 +24,7 @@ export default function CardProduto(props) {
 
   return (
     <div className="CardProduto">
-      {produtos.map(item => (
+      {produtos?.map(item => (
         <div className="card" key={item.id}>
           <div id='imagem' className="separacaoInfo">
             <img src={item.imagem} alt="produto" />

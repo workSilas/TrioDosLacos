@@ -46,6 +46,7 @@ export default function PaginaProduto() {
           <p>{item.descricao}</p>
         </div>
       ))}
+
       <Rodape />
     </div>
   );
