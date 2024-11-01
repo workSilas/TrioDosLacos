@@ -5,17 +5,15 @@ import { useState } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
-
 export default function Encomendas() {
-
-  const [encomenda, setEncomenda] = useState("")
+  const [encomenda, setEncomenda] = useState("");
 
   async function enviarEncomenda() {
-    const url = `http://localhost:3030/tdl/encomendas/inserir/`
+    const url = `http://localhost:3030/tdl/encomendas/inserir/`;
     const valores = {
       "descricao": encomenda,
       "imagem": null
-    }
+    };
 
     if (encomenda.length > 250) {
       toast.error("Texto contém caractéres demais(máx:250).", {
@@ -28,12 +26,12 @@ export default function Encomendas() {
           primary: '#713200',
           secondary: '#FFFAEE',
         },
-      })
-      return
+      });
+      return;
     }
 
     try {
-      let resp = await axios.post(url, valores)
+      let resp = await axios.post(url, valores);
       toast.success(`Encomenda feita! ID: ${resp.data.novoId}`, {
         style: {
           border: '1px solid #713200',
@@ -44,8 +42,7 @@ export default function Encomendas() {
           primary: '#713200',
           secondary: '#FFFAEE',
         },
-      })
-
+      });
     }
     catch (error) {
       toast.error("ERRO", {
@@ -58,26 +55,24 @@ export default function Encomendas() {
           primary: '#713200',
           secondary: '#FFFAEE',
         },
-      })
-      return
+      });
+      return;
     }
-    setEncomenda("")
+    setEncomenda("");
   }
 
   return (
     <div className="Encomendas">
-      <Nav
-        titulo="Encomendas"
-      />
+      <Nav titulo="Encomendas" />
 
       <div className="sessaoInicialEncomendas">
-        <h2>Encomende aqui o seu laço, use da sua  <br />
+        <h2>Encomende aqui o seu laço, use da sua <br />
           criatividade e imaginação, para vestir seu <br />
           bebe com conforto e estilo! </h2>
       </div>
 
       <div className="sessaoExemplos">
-        <h1>Exemplos de pedididos</h1>
+        <h1>Exemplos de pedidos</h1>
 
         <div className="alinharExemplos">
           <div className="cardsExemplos">
@@ -90,7 +85,6 @@ export default function Encomendas() {
             <img src="assets/images/LaçoAzul.png" alt="Laço Azul" />
           </div>
         </div>
-
       </div>
 
       <div className="sessaoIncentivo">
@@ -104,7 +98,12 @@ export default function Encomendas() {
         <div className="alinhamento">
           <div className="alinharInputs">
             <p>Descreva brevemente o que deseja:</p>
-            <textarea type="text" placeholder='Descrição' value={encomenda} onChange={e => setEncomenda(e.target.value)} />
+            <textarea
+              type="text"
+              placeholder='Descrição'
+              value={encomenda}
+              onChange={e => setEncomenda(e.target.value)}
+            />
           </div>
         </div>
         <button onClick={enviarEncomenda}>Enviar</button>
