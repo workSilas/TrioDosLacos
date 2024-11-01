@@ -33,7 +33,7 @@
             width: 100%;
 
             img {
-                height: 50vh;
+                height: 40vh;
                 width: 50vh;
             }
 
@@ -41,7 +41,7 @@
                 display: flex;
                 flex-direction: column;
                 height: 75%;
-                gap: 7vh;
+                gap: 3vh;
 
                 h1 {
                     font-size: 3rem;
@@ -97,7 +97,7 @@
             .alinharInfo {
 
                 img {
-                    height: 35vh;
+                    height: 25vh;
                     width: 35vh;
                 }
 
@@ -123,12 +123,12 @@
 
             .alinharInfo {
                 img {
-                    height: 25vh;
+                    height: 15vh;
                     width: 25vh;
                 }
 
                 .infoDeCompra {
-                    gap: 4vh;
+                    gap: 2vh;
 
                     h1 {
                         font-size: 0.9rem;
@@ -139,7 +139,8 @@
                     }
 
                     a {
-                        font-size: 1rem;
+                        padding: 1vh 1vw;
+                        font-size: 0.8rem;
                     }
                 }
             }
