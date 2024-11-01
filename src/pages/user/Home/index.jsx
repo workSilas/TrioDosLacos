@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import BotaoAdm from '../../../components/BotaoAdm';
 import Carrossel from '../../../components/Carrossel';
 import AnimatedSection from '../../../components/Animaçao'; 
-import AnimatedSection from '../../../components/Animaçao';
+
 
 export default function Home() {
   return (
