@@ -1,6 +1,7 @@
 import './index.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 
 export default function CardProdutoId(props) {
   const [produtoEncontrado, setProdutoEncontrado] = useState([]);
@@ -17,7 +18,18 @@ export default function CardProdutoId(props) {
       setProdutoEncontrado(produtos.data);
     }
     catch (error) {
-      alert("Erro ao buscar produto:", error);
+      toast.error("ID inexistente.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      });
+      return
     }
   }
 

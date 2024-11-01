@@ -114,19 +114,21 @@
     .CardProduto {
 
         .card {
-            height: 200px;
+            height: 180px;
+              width: 125px;
 
             .separacaoInfo {
-                gap: 0.5vh;
+                gap: 0.3vh;
 
                 h5 {
-                    font-size: 0.7rem;
+                    font-size: 0.6rem;
                 }
 
                 a {
-                    font-size: 0.7rem;
+                    font-size: 0.6rem;
                 }
             }
         }
     }
 }
+

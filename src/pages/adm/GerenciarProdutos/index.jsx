@@ -223,7 +223,7 @@ export default function GerenciarProdutos() {
       return
     }
     if (alterarDescricao > 250) {
-      toast.error("Descrição muit longa.", {
+      toast.error("Descrição muito longa.", {
         style: {
           border: '1px solid #713200',
           padding: '16px',
