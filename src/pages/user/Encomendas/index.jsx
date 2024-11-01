@@ -9,7 +9,7 @@ export default function Encomendas() {
   const [encomenda, setEncomenda] = useState("");
 
   async function enviarEncomenda() {
-    const url = `http://localhost:3030/tdl/encomendas/inserir/`;
+    const url = `http://4.172.207.208:5018/tdl/encomendas/inserir/`;
     const valores = {
       "descricao": encomenda,
       "imagem": null

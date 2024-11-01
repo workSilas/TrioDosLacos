@@ -10,7 +10,7 @@ export default function CardProdutoId(props) {
     if (props.id <= 0) {
       return;
     }
-    let url = `http://localhost:3030/tdl/produtos/consultaId/${props.id}`;
+    let url = `http://4.172.207.208:5018/tdl/produtos/consultaId/${props.id}`;
     try {
       let produtos = await axios.post(url);
       console.log(produtos.data);

@@ -28,13 +28,13 @@ export default function Ferramentas() {
   const [vendasTotaisValor, setVendasTotaisValor] = useState([])
 
   async function buscarVendas() {
-    const url = "http://localhost:3030/tdl/vendas/consulta/"
+    const url = "http://4.172.207.208:5018/tdl/vendas/consulta/"
     let vendas = await axios.get(url)
     setVendasTotais(vendas.data)
   }
 
   async function buscarVendasValor() {
-    const url = "http://localhost:3030/tdl/vendas/consultaTotal/"
+    const url = "http://4.172.207.208:5018/tdl/vendas/consultaTotal/"
     let vendasTotal = await axios.get(url)
     setVendasTotaisValor(vendasTotal.data)
   }
@@ -47,13 +47,13 @@ export default function Ferramentas() {
   const [sessaoSelecionada, setSessaoSelecionada] = useState()
 
   async function buscarVendasSessao() {
-    const url = `http://localhost:3030/tdl/vendas/consultaSessao/${sessaoSelecionada}`
+    const url = `http://4.172.207.208:5018/tdl/vendas/consultaSessao/${sessaoSelecionada}`
     let vendaSessao = await axios.post(url)
     setVendasSessao(vendaSessao.data)
   }
 
   async function buscarVendasSessaoTotal() {
-    const url = `http://localhost:3030/tdl/vendas/consultaSessaoTotal/${sessaoSelecionada}`
+    const url = `http://4.172.207.208:5018/tdl/vendas/consultaSessaoTotal/${sessaoSelecionada}`
     let vendasTotalSessao = await axios.post(url)
     setVendasTotaisSessao(vendasTotalSessao.data)
   }
@@ -79,13 +79,13 @@ export default function Ferramentas() {
   const [semEstoque, setSemEstoque] = useState([])
 
   async function buscarEstoque() {
-    const url = "http://localhost:3030/tdl/produtos/estoque/"
+    const url = "http://4.172.207.208:5018/tdl/produtos/estoque/"
     let estoqueTotal = await axios.get(url)
     setEstoque(estoqueTotal.data)
   }
 
   async function buscarSemEstoque() {
-    const url = "http://localhost:3030/tdl/produtos/semEstoque/"
+    const url = "http://4.172.207.208:5018/tdl/produtos/semEstoque/"
     let semEstoqueTotal = await axios.get(url)
     setSemEstoque(semEstoqueTotal.data)
   }

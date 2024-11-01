@@ -132,7 +132,7 @@ export default function GerenciarProdutos() {
         "imagem": imagem
       }
 
-      let url = "http://localhost:3030/tdl/produtos/inserir/"
+      let url = "http://4.172.207.208:5018/tdl/produtos/inserir/"
       let prod = await axios.post(url, valores)
       toast.success(`Novo produto adicionado ao catálogo com sucesso! ID${prod.data.novod}`, {
         style: {
@@ -276,7 +276,7 @@ export default function GerenciarProdutos() {
         "imagem": alterarImagem
       }
 
-      let url = `http://localhost:3030/tdl/produtos/alterar/${idProduto}`
+      let url = `http://4.172.207.208:5018/tdl/produtos/alterar/${idProduto}`
       let prod = await axios.put(url, valores)
       toast.success(`Novo produto alterar no catálogo com sucesso!`, {
         style: {
@@ -316,7 +316,7 @@ export default function GerenciarProdutos() {
 
   async function deletarProduto() {
     try {
-      let url = `http://localhost:3030/tdl/produtos/delete/${idProduto}`
+      let url = `http://4.172.207.208:5018/tdl/produtos/delete/${idProduto}`
       let resp = await axios.delete(url)
       setIdProduto(0)
       toast.success("Produto Deletado com sucesso!", {

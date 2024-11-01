@@ -42,7 +42,7 @@ export default function CadastrarVendas() {
   }, [nomeUsuario])
 
   async function descobrirNome() {
-    const url = `http://localhost:3030/tdl/vendas/consultaTodas/`
+    const url = `http://4.172.207.208:5018/tdl/vendas/consultaTodas/`
     let resp = await axios.get(url)
 
     if (resp.data.erro !== undefined) {
@@ -60,7 +60,7 @@ export default function CadastrarVendas() {
   async function descobrirTotal() {
 
     if (idProduto !== 0 && idProduto > 0) {
-      const url = `http://localhost:3030/tdl/produtos/consultaId/${idProduto}`
+      const url = `http://4.172.207.208:5018/tdl/produtos/consultaId/${idProduto}`
       let resp = await axios.post(url)
 
       if (resp.data.erro !== undefined) {
@@ -74,7 +74,7 @@ export default function CadastrarVendas() {
   }
 
   async function cadastrarVenda() {
-    const url = `http://localhost:3030/tdl/vendas/inserir/`
+    const url = `http://4.172.207.208:5018/tdl/vendas/inserir/`
     const paramCorpo = {
       "idProduto": idProduto,
       "idUsuario": idUsuario,
@@ -124,7 +124,7 @@ export default function CadastrarVendas() {
   }, [venda])
 
   async function conferirTodasAsVendas() {
-    const url = `http://localhost:3030/tdl/vendas/consultaTodas/`
+    const url = `http://4.172.207.208:5018/tdl/vendas/consultaTodas/`
     let resp = await axios.get(url)
 
     if (resp.data.erro !== undefined) {
@@ -143,7 +143,7 @@ export default function CadastrarVendas() {
   async function finalizarVenda() {
 
     try {
-      const url = `http://localhost:3030/tdl/vendas/alterar/${idVenda}`
+      const url = `http://4.172.207.208:5018/tdl/vendas/alterar/${idVenda}`
       let resp = await axios.put(url)
       vendaFinalizada()
     }
@@ -162,7 +162,7 @@ export default function CadastrarVendas() {
   const [encomenda, setEncomenda] = useState([])
 
   async function buscarEncomendas() {
-    let url = "http://localhost:3030/tdl/encomendas/consulta/"
+    let url = "http://4.172.207.208:5018/tdl/encomendas/consulta/"
     let resp = await axios.get(url)
     setEncomenda(resp.data)
   }

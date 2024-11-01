@@ -18,7 +18,7 @@ export default function Entrar() {
         }
 
         try {
-            const url = 'http://localhost:3030/tdl/usuarios/entrar'
+            const url = 'http://4.172.207.208:5018/tdl/usuarios/entrar'
             let resp = await axios.post(url, paramCorpo)
             if (resp.data.erro !== undefined && resp.data.erro !== null) {
                 toast.error(resp.data.erro)

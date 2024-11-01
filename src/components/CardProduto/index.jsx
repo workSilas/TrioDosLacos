@@ -7,7 +7,7 @@ export default function CardProduto(props) {
   const [produtos, setProdutos] = useState([]);
 
   async function buscarProdutos() {
-    let url = `http://localhost:3030/tdl/produtos/consulta/${props.sessao}`;
+    let url = `http://4.172.207.208:5018/tdl/produtos/consulta/${props.sessao}`;
     try {
       let produtosEncontrados = await axios.post(url);
       setProdutos(produtosEncontrados.data);

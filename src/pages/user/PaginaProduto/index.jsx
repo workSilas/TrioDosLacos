@@ -12,7 +12,7 @@ export default function PaginaProduto() {
   const [produtoEncontrado, setProdutoEncontrado] = useState([]);
 
   async function buscar() {
-    let url = `http://localhost:3030/tdl/produtos/consultaId/${data.id}`;
+    let url = `http://4.172.207.208:5018/tdl/produtos/consultaId/${data.id}`;
     let produtos = await axios.post(url);
     setProdutoEncontrado(produtos.data);
   }
