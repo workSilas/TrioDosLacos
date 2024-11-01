@@ -74,6 +74,9 @@ export default function CadastrarVendas() {
   }
 
   async function cadastrarVenda() {
+
+    let dataFormatada = data.replace(/\//g, "-").split('-').reverse().join('-')
+
     const url = `http://4.172.207.208:5018/tdl/vendas/inserir/`
     const paramCorpo = {
       "idProduto": idProduto,
