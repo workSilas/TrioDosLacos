@@ -1,6 +1,7 @@
 .BotaoAdm {
     position: relative;
-
+    z-index: 5;
+    
     .botao {
         display: flex;
         position: fixed;
