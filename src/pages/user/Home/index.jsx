@@ -4,7 +4,7 @@ import Rodape from '../../../components/Rodape';
 import { Link } from 'react-router-dom';
 import BotaoAdm from '../../../components/BotaoAdm';
 import Carrossel from '../../../components/Carrossel';
-import AnimatedSection from '../../../components/Animaçao'; // Importe o componente AnimatedSection
+import AnimatedSection from '../../../components/Animaçao'; 
 
 export default function Home() {
   return (
@@ -32,7 +32,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="colecoesDisplay">
+          <div className="colecoesDisplay2">
             <div className="alinharPropiedades">
               <img src="/assets/images/FaixaBebe.png" alt="Faixas de Bebê" />
               <p>Faixas de Bebê</p>
@@ -62,7 +62,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="colecoesDisplay">
+          <div className="colecoesDisplay2">
             <div className="alinharPropiedades">
               <img src="/assets/images/Kits.png" alt="Kits de Laços" />
               <p>Kits de Laços</p>
