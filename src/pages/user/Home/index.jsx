@@ -17,7 +17,7 @@ export default function Home() {
         <div className="sessaoDescubra">
           <h1>CONHEÇA NOSSAS COLEÇÕES</h1>
 
-          <div className="colecoesDisplay">
+          <div className="colecoesDisplay" id="secaoCorAlterada">
             <div className="alinharPropiedades">
               <img src="/assets/images/LaçoDecorado.png" alt="Laço Decorado" />
               <p>Laços Decorados</p>
@@ -32,7 +32,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="colecoesDisplay2">
+          <div className="colecoesDisplay">
             <div className="alinharPropiedades">
               <img src="/assets/images/FaixaBebe.png" alt="Faixas de Bebê" />
               <p>Faixas de Bebê</p>
@@ -47,7 +47,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="colecoesDisplay">
+          <div className="colecoesDisplay" id="secaoCorAlterada">
             <div className="alinharPropiedades">
               <img src="/assets/images/LaçoEstampado.png" alt="Laço Estampado" />
               <p>Laços Estampados</p>
@@ -62,7 +62,7 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="colecoesDisplay2">
+          <div className="colecoesDisplay">
             <div className="alinharPropiedades">
               <img src="/assets/images/Kits.png" alt="Kits de Laços" />
               <p>Kits de Laços</p>

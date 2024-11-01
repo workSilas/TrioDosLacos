@@ -10,7 +10,6 @@ export default function AnimatedSection({ children }) {
             const { top, bottom } = ref.current.getBoundingClientRect();
             const isInViewport = bottom >= 0 && top <= window.innerHeight;
 
-            // Aplica a animação apenas se a seção entrar na viewport ao rolar para baixo
             if (isInViewport && !isVisible) {
                 setIsVisible(true);
             }
@@ -19,13 +18,11 @@ export default function AnimatedSection({ children }) {
 
     useEffect(() => {
         window.addEventListener('scroll', handleScroll);
-        // Chama a função de scroll inicialmente para verificar a posição da seção
         handleScroll();
-
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [isVisible]); // Adiciona isVisible como dependência para evitar múltiplas atualizações
+    }, [isVisible]); 
 
     return (
         <div
