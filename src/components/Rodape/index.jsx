@@ -23,8 +23,8 @@ export default function Rodape() {
       <div className="separacaoComponentesRodape">
         <h1>SIGA-NOS</h1>
         <div className="alinhamentoImagens">
-          <Link to={"https://www.instagram.com/trio_dos_lacos/"}><img src="/assets/images/Instagram.png" alt="instagam" /></Link>
-          <Link to={"https://www.facebook.com/profile.php?id=100087909888766"}><img src="/assets/images/Facebook.png" alt="facebook" /></Link>
+          <Link target='_blank' to={"https://www.instagram.com/trio_dos_lacos/"}><img src="/assets/images/Instagram.png" alt="instagam" /></Link>
+          <Link target='_blank' to={"https://www.facebook.com/profile.php?id=100087909888766"}><img src="/assets/images/Facebook.png" alt="facebook" /></Link>
         </div>
       </div>
     </div>
