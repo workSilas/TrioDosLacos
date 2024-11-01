@@ -37,9 +37,9 @@ export default function CadastrarVendas() {
   const [vendaId, setVendaId] = useState(0)
   const [cadastroFinalizado, setCadastroFinalizado] = useState(false)
 
-  useEffect(() => {
-    descobrirNome()
-  }, [nomeUsuario])
+  // useEffect(() => {
+  //   descobrirNome()
+  // }, [nomeUsuario])
 
   async function descobrirNome() {
     const url = `http://localhost:3030/tdl/vendas/consultaTodas/`
@@ -53,9 +53,9 @@ export default function CadastrarVendas() {
     }
   }
 
-  useEffect(() => {
-    descobrirTotal()
-  }, [total, idProduto, quantidade])
+  // useEffect(() => {
+  //   descobrirTotal()
+  // }, [total, idProduto, quantidade])
 
   async function descobrirTotal() {
 
@@ -74,15 +74,21 @@ export default function CadastrarVendas() {
   }
 
   async function cadastrarVenda() {
+
+    let dataFormatada = data.replace(/\//g, "-").split('-').reverse().join('-');
+    
+
     const url = `http://localhost:3030/tdl/vendas/inserir/`
     const paramCorpo = {
       "idProduto": idProduto,
       "idUsuario": idUsuario,
       "quantidade": quantidade,
       "total": total,
-      "data": data.replace(/\//g, "-"),
+      "data": dataFormatada,
       "endereco": endereco
     }
+
+
 
     if (idUsuario === null || idUsuario === undefined) {
       alert("Atendente não encontrado")
@@ -121,7 +127,7 @@ export default function CadastrarVendas() {
 
   useEffect(() => {
     conferirTodasAsVendas()
-  }, [venda])
+  }, [])
 
   async function conferirTodasAsVendas() {
     const url = `http://localhost:3030/tdl/vendas/consultaTodas/`
