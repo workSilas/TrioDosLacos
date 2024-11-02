@@ -47,7 +47,7 @@ export default function CardProdutoId(props) {
             </div>
             <div className="separacaoInfo">
               <p>#{item.id}</p>
-              <h5>{item.nome.length > 25 ? item.nome.substr(0, 9) + "." : item.nome}</h5>
+              <h5>{item.nome.length > 25 ? item.nome.substr(0, 25) + "..." : item.nome}</h5>
               <h5>R${item.valor.toFixed(2)}</h5>
             </div>
           </div>
