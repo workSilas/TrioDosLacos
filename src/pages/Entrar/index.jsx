@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { Link } from 'react-router-dom'
 
 
 export default function Entrar() {
@@ -39,6 +40,9 @@ export default function Entrar() {
 
     return (
         <div className="entrar">
+
+            <Link className='absolute' to={"/"}>VOLTAR</Link>
+
             <img src="/assets/images/LogoOficial.png" alt="Logo Trio dos Laços" />
 
             <div className='inputEntrar'>

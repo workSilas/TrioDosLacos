@@ -4,7 +4,7 @@ import Rodape from '../../../components/Rodape';
 import { Link } from 'react-router-dom';
 import BotaoAdm from '../../../components/BotaoAdm';
 import Carrossel from '../../../components/Carrossel';
-import AnimatedSection from '../../../components/Animaçao'; 
+import AnimatedSection from '../../../components/Animaçao';
 
 
 export default function Home() {
@@ -85,7 +85,7 @@ export default function Home() {
         <div className="sessaoEncomendas">
           <p>Não encontrou nada que te agrade? <br />
             Faça sua <b style={{ color: "#FFB099" }}>própria configuração! Use da <br />
-            sua imaginação para vestir seu bebê.</b></p>
+              sua imaginação para vestir seu bebê.</b></p>
           <Link to={'/Encomendas'} className='botao'>ENCOMENDAR</Link>
         </div>
       </AnimatedSection>
