@@ -31,7 +31,7 @@ export default function CardProduto(props) {
           </div>
           <div className="separacaoInfo">
             <p>#{item.id}</p>
-            <h5>{item.nome.length > 25 ? item.nome.substr(0, 25) + "..." : item.nome}</h5>
+            <h5>{item.nome.length > 15 ? item.nome.substr(0, 15) + "..." : item.nome}</h5>
             <h5>R${item.valor.toFixed(2)}</h5>
             <Link to="/PaginaProduto" state={{ id: item.id, name: item.nome }}>VER</Link>
           </div>

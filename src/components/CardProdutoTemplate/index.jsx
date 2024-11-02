@@ -10,7 +10,7 @@ export default function CardProdutoTemplate(props) {
         </div>
         <div className="separacaoInfo">
           <p>#x</p>
-          <h5>{props.nome.length > 25 ? props.nome.substr(0, 25) + "..." : props.nome}</h5>
+          <h5>{props.nome.length > 15 ? props.nome.substr(0, 15) + "..." : props.nome}</h5>
           <h5>R${props.valor}</h5>
         </div>
       </div>
