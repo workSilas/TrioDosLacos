@@ -68,12 +68,8 @@
 
         #secaoCorAlterada {
             background-color: #FFEEE9;
-            
-        }
-
-        #trocaDePopriedades {
-            background-color: #FFEEE9;
             flex-direction: row-reverse;
+            
         }
     }
 
@@ -342,6 +338,52 @@
 
                 a {
                     font-size: 0.8rem;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 390px) {
+    .Home {
+
+        .sessaoDescubra {
+
+
+            .colecoesDisplay {
+
+                .alinharPropiedades {
+
+                    p {
+                        font-size: 0.5rem;
+                    }
+                }
+            }
+        }
+
+        .sessaoEncomendas {
+
+            p {
+                font-size: 0.7rem;
+            }
+        }
+
+        .sessoDeVoltaAoCatalogo {
+            height: 30vh;
+
+            img {
+                height: 15vh;
+            }
+
+            .alinharComponentes {
+
+                p {
+                    font-size: 0.6rem;
+                }
+
+                a {
+                    padding: 1.2vh ;
+                    font-size: 0.6rem;
                 }
             }
         }
