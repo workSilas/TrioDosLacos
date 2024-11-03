@@ -13,8 +13,6 @@ export default function CardProdutoId(props) {
     let url = `http://4.172.207.208:5018/tdl/produtos/consultaId/${props.id}`;
     try {
       let produtos = await axios.post(url);
-      console.log(produtos.data);
-
       setProdutoEncontrado(produtos.data);
     }
     catch (error) {

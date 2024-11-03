@@ -1,251 +1,514 @@
 .CadastrarVendas {
 
-    .VendaCadastro {
+    .sessaoCompleta {
         background-color: #FFEEE9;
-        height: 500px;
-        display: grid;
-        place-items: center;
+        padding: 5vh 5vw;
+        height: 100vh;
 
-        .container {
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
+        .sessaoQuadrado {
+            height: 100%;
+            width: 100%;
+            border-radius: 12px;
             background-color: #fff;
-            border-radius: 15px;
-            padding: 25px 150px;
-            gap: 150px;
-        }
-
-        .info {
+            padding: 2vh 2vw;
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
+            gap: 5vh;
 
-            h2 {
-                font-family: 'Inter';
-                font-style: italic;
+            button {
+                border: none;
+                font-family: Krona One;
+                font-size: 1.5rem;
                 font-weight: 500;
-                padding: 15px;
+                color: #fff;
+                padding: 1vh 3vw;
+                background-color: #F0C1B3;
+                border-radius: 15px;
             }
 
-            .inputs {
-                display: flex;
+            button:hover {
+                transition: 0.2s;
+                transform: scale(1.05);
+                cursor: pointer;
+                box-shadow: 0 6px 15px rgba(126, 126, 126, 0.527);
+            }
 
-                div {
+
+            .conversao {
+                display: flex;
+                flex-direction: row;
+                gap: 5vh;
+
+                .alinhamento {
                     display: flex;
                     flex-direction: column;
-                    padding: 10px;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 1vh;
 
-                    label {
-                        padding-bottom: 5px;
-                        font-family: 'Inter';
+
+                    select {
+                        font-family: Krona One;
+                        font-size: 1rem;
                         font-weight: 500;
+                        color: #fff;
+                        padding: 1vh 1vw;
+                        background-color: #F0C1B3;
+                        border-radius: 15px;
+
+                        option {
+                            font-size: 1rem;
+                            padding: 1vh 1vw;
+                            background-color: #F0C1B3;
+                        }
+                    }
+
+                    p {
+                        align-self: self-start;
+                        font-weight: 600;
                     }
 
                     input {
-                        border: none;
                         outline: none;
-                        border: 1px solid #A4A4A4;
-                        border-radius: 10px;
-                        padding: 7px 5px;
-                        font-family: 'Inter';
+                        border: solid 1px #575757;
+                        border-radius: 15px;
+                        font-family: Krona One;
+                        font-size: 0.8rem;
                         font-weight: 500;
+                        color: #000000;
+                        padding: 1vh 1vw;
                         background-color: #FFEEE9;
-                        color: #333333;
-                    }
-
-                    .labels {
-                        padding-top: 10px;
+                        width: 100%;
                     }
                 }
-            }
-
-            p {
-                color: #fff;
-                background-color: #F0C1B3;
-                font-family: 'Inter';
-                font-weight: 600;
-                padding: 15px 40px;
-                margin: 30px;
-                border-radius: 20px;
-            }
-
-            p:hover {
-                cursor: pointer;
-            }
-        }
-
-        .produto .inputs {
-            display: flex;
-            flex-direction: column;
-            padding: 10px;
-
-            label {
-                padding-bottom: 5px;
-                font-family: 'Inter';
-                font-weight: 500;
-            }
-
-            input {
-                border: none;
-                outline: none;
-                border: 1px solid #A4A4A4;
-                border-radius: 10px;
-                padding: 7px 5px;
-                font-family: 'Inter';
-                font-weight: 500;
-                background-color: #FFEEE9;
-                color: #333333;
             }
         }
     }
 
-    .VendaTabela {
+    #invertido {
+        background-color: #FFEEE9;
+    }
+
+    .sessaoTabela {
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding-top: 50px;
+        justify-content: center;
+        gap: 5vh;
+        height: 120vh;
+        padding: 4vh 0vw;
 
-        table {
+        h2 {
+            font-size: 3rem;
+        }
+
+        .tabelaScroll {
+            height: 100vh;
+            max-width: 80vw;
+            max-height: 80vh;
+            overflow: hidden;
+            overflow-y: scroll;
+            border: solid 1px #000;
             background-color: #F0C1B3;
-            margin-top: 30px;
-            padding: 25px 40px;
 
-            thead tr th {
-                font-weight: 800;
-                font-family: 'Inter';
-                border: 1px solid black;
-                padding: 10px;
-                text-align: left;
-            }
+            table {
+                height: 10vh;
+                font-family: Poppins;
+                background-color: #F0C1B3;
+                font-size: 1rem;
+                padding: 2vh 2vw;
+                width: 80vw;
 
-            tbody tr td {
-                font-family: 'Inter';
-                border: 1px solid black;
-                padding: 8px;
-                text-align: left;
+                th {
+                    text-align: left;
+                    padding: 5px;
+                    border: 1px solid #000;
+                }
+
+                td {
+                    padding: 5px;
+                    border: 1px solid #000;
+                }
             }
         }
 
-        .finalizar-venda {
+        .tabelaScroll::-webkit-scrollbar {
+            width: 10px;
+            background-color: #cbcbcb;
+        }
+
+        .tabelaScroll::-webkit-scrollbar-thumb {
+            border: solid 1px #000;
+            border-right-style: none;
+            background-color: #F0C1B3;
+        }
+
+        button {
+            border: none;
+            font-family: Krona One;
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #fff;
+            padding: 1vh 3vw;
+            background-color: #F0C1B3;
+            border-radius: 15px;
+        }
+
+        button:hover {
+            transition: 0.2s;
+            transform: scale(1.05);
+            cursor: pointer;
+            box-shadow: 0 6px 15px rgba(126, 126, 126, 0.527);
+        }
+
+        .alinharBotoes {
             display: flex;
             flex-direction: row;
-            padding: 30px;
-            gap: 250px;
-
-            .id-venda {
-                display: flex;
-                flex-direction: column;
-                padding: 10px;
-
-                label {
-                    padding-bottom: 5px;
-                    font-family: 'Inter';
-                    font-weight: 500;
-                }
-
-                input {
-                    border: none;
-                    outline: none;
-                    border: 1px solid #A4A4A4;
-                    border-radius: 10px;
-                    padding: 7px 5px;
-                    font-family: 'Inter';
-                    font-weight: 500;
-                    background-color: #FFEEE9;
-                    color: #333333;
-                }
-            }
-
-            .botao {
-                color: #fff;
-                background-color: #F0C1B3;
-                font-family: 'Inter';
-                font-weight: 600;
-                font-size: 20px;
-                padding: 15px 40px;
-                margin: 30px;
-                border-radius: 20px;
-            }
-
-            .botao:hover {
-                cursor: pointer;
-            }
-        }
-    }
-
-    .pop-up {
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        align-items: center;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.5);
-        border-radius: 20px;
-
-        .mensagem {
-            background-color: white;
-            padding: 20px;
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-        }
-
-        .botao {
-            background-color: #F0C1B3;
-            padding: 20px;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            max-width: 400px;
-            width: 100%;
-            text-align: center;
-            position: relative;
-            font-weight: 500;
-        }
-
-        .botao:hover {
-            cursor: pointer;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .VendaCadastro .container {
-            flex-direction: column;
-            padding: 25px 20px;
-            gap: 20px;
-        }
-
-        .VendaCadastro .info .inputs,
-        .VendaCadastro .produto .inputs {
-            flex-direction: column;
-            width: 100%;
-        }
-
-        .VendaTabela .finalizar-venda {
-            flex-direction: column;
             align-items: center;
-            gap: 20px;
+            justify-content: center;
+            gap: 5vw;
+
+            .textoInput {
+
+                p {
+                    font-weight: 500;
+                }
+                
+                input {
+                    outline: none;
+                    border: solid 1px #575757;
+                    border-radius: 15px;
+                    font-family: Krona One;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    color: #000000;
+                    padding: 1vh 1vw;
+                    background-color: #FFEEE9;
+                    width: 100%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:1024px) {
+    .CadastrarVendas {
+
+        .sessaoCompleta {
+
+            .sessaoQuadrado {
+                .conversao {
+
+                    .alinhamento {
+
+                        h1 {
+                            font-size: 1rem;
+                        }
+
+                        p {
+                            font-size: 0.8rem;
+                        }
+
+                    }
+                }
+            }
         }
 
-        .VendaTabela table {
-            width: 100%;
+        .sessaoTabela {
+            h2 {
+                font-size: 2rem;
+            }
+
+            .tabelaScroll {
+
+                table {
+
+                    th {
+                        font-size: 1rem;
+                    }
+
+                    td {
+                        font-size: 1rem;
+                    }
+                }
+            }
+
+            .inputsCheck {
+
+                select {
+                    font-size: 1rem;
+                }
+
+                option {
+                    font-size: 0.8rem;
+                }
+
+                button {
+                    font-size: 1rem;
+                }
+
+            }
+
+        }
+    }
+}
+
+@media (max-width:912px) {
+    .CadastrarVendas {
+
+        .sessaoCompleta {
+            height: 85vh;
+
+            .sessaoQuadrado {
+                height: 75vh;
+
+                .conversao {
+
+                    .alinhamento {
+
+                        h1 {
+                            font-size: 1rem;
+                        }
+
+                        p {
+                            font-size: 0.8rem;
+                        }
+
+                    }
+                }
+
+                button {
+                    font-size: 1rem;
+                }
+            }
         }
 
-        .VendaTabela .botao {
-            width: 100%;
-            max-width: 300px;
+        .sessaoTabela {
+            height: 80vh;
+
+
+            .tabelaScroll {
+                height: 70vh;
+                overflow-x: scroll;
+            }
+
+            .informacao {
+                height: 1vh;
+                padding: 5vh;
+            }
+        }
+    }
+}
+
+@media (max-width:540px) {
+    .CadastrarVendas {
+
+        .sessaoCompleta {
+
+            .sessaoQuadrado {
+
+                .conversao {
+                    gap: 3vw;
+
+                    .alinhamento {
+
+                        h1 {
+                            font-size: 0.8rem;
+                        }
+
+                        p {
+                            font-size: 0.7rem;
+                        }
+
+                        select {
+                            font-size: 0.5rem;
+                        }
+
+                        input {
+                            font-size: 0.4rem;
+                        }
+                    }
+                }
+
+                button {
+                    font-size: 0.7rem;
+                }
+            }
         }
 
-        .pop-up .mensagem,
-        .pop-up .botao {
-            width: 90%;
+        .sessaoTabela {
+
+            .informacao {
+
+                h2 {
+                    font-size: 1.2rem;
+                }
+            }
+
+            .alinharBotoes {
+
+                button {
+                    font-size: 1rem;
+                }
+
+                .textoInput {
+            
+                    p {
+                        font-size: 0.8rem;
+                    }
+                    
+                    input {
+                        font-size: 0.6rem;
+                    }
+                    
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:475px) {
+    .CadastrarVendas {
+
+        .sessaoCompleta {
+            height: 65vh;
+
+            .sessaoQuadrado {
+                height: 55vh;
+
+                .conversao {
+                    gap: 3vw;
+
+
+                    .alinhamento {
+                        gap: 0.7vh;
+
+                        h1 {
+                            font-size: 0.6rem;
+                        }
+
+                        p {
+                            font-size: 0.7rem;
+                        }
+
+                        select {
+                            font-size: 0.5rem;
+                        }
+
+                        input {
+                            font-size: 0.4rem;
+                        }
+                    }
+                }
+
+                button {
+                    font-size: 0.7rem;
+                }
+            }
+        }
+
+        .sessaoTabela {
+
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            .inputsCheck {
+
+                select {
+                    font-size: 0.6rem;
+                }
+
+                option {
+                    font-size: 0.6rem;
+                }
+
+                button {
+                    font-size: 0.6rem;
+                }
+
+            }
+        }
+    }
+}
+
+@media (max-width:390px) {
+    .CadastrarVendas {
+
+        .sessaoCompleta {
+            height: 65vh;
+
+            .sessaoQuadrado {
+                height: 55vh;
+
+                .conversao {
+                    gap: 3vw;
+
+
+                    .alinhamento {
+                        gap: 0.5vh;
+
+                        h1 {
+                            font-size: 0.6rem;
+                        }
+
+                        p {
+                            font-size: 0.7rem;
+                        }
+
+                        select {
+                            font-size: 0.4rem;
+                        }
+
+                        input {
+                            font-size: 0.4rem;
+                        }
+
+                    }
+                }
+
+                button {
+                    font-size: 0.7rem;
+                }
+            }
+        }
+
+        .sessaoTabela {
+
+            .tabelaScroll {
+
+                table {
+
+                    th {
+                        font-size: 0.8rem;
+                    }
+
+                    td {
+                        font-size: 0.8rem;
+                    }
+                }
+            }
+
+            .alinharBotoes {
+
+                button {
+                    font-size: 0.6rem;
+                }
+
+                .textoInput {
+            
+                    p {
+                        font-size: 0.6rem;
+                    }
+                    
+                    input {
+                        font-size: 0.5rem;
+                    }
+                    
+                }
+            }
         }
     }
 }

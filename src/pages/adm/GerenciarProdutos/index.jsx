@@ -390,7 +390,6 @@ export default function GerenciarProdutos() {
 
 
       <div id='invertido' className="sessaoCompleta">
-
         <div className="sessaoQuadrado">
 
           <div className="conversao">
