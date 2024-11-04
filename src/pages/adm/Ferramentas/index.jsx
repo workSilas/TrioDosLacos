@@ -65,7 +65,7 @@ export default function Ferramentas() {
         color: '#713200',
       },
       iconTheme: {
-        primary: '#713200',
+        primary: '#1EFF00',
         secondary: '#FFFAEE',
       },
     })

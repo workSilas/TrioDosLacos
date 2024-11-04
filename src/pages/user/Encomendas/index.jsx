@@ -38,7 +38,7 @@ export default function Encomendas() {
           color: '#713200',
         },
         iconTheme: {
-          primary: '#713200',
+          primary: '#FF0000',
           secondary: '#FFFAEE',
         },
       });
@@ -54,7 +54,7 @@ export default function Encomendas() {
           color: '#713200',
         },
         iconTheme: {
-          primary: '#713200',
+          primary: '#1EFF00',
           secondary: '#FFFAEE',
         },
       });
@@ -67,7 +67,7 @@ export default function Encomendas() {
           color: '#713200',
         },
         iconTheme: {
-          primary: '#713200',
+          primary: '#FF0000',
           secondary: '#FFFAEE',
         },
       });
