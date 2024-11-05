@@ -42,7 +42,13 @@ export default function PaginaProduto() {
               <div>
                 <Link
                   target='_blank'
-                  to={`https://wa.me/5511977798407?text=Quero saber mais sobre o produto: ID ${item.id} Nome ${item.nome} Valor: R$${item.valor.toFixed(2)}`}
+                  to={`https://wa.me/5511977798407?text=
+                    *Olá. Gostaria de fazer um pedido!*
+                    %0A%0A 
+                    Quero saber mais sobre o produto:%0A%0A  
+                    *ID*: ${item.id}%0A 
+                    *Nome*: ${item.nome}%0A  
+                    *Valor*: R$${item.valor.toFixed(2)}`}
                 >
                   SOLICITAR
                 </Link>
