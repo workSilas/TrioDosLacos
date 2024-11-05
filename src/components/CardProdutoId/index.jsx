@@ -23,7 +23,7 @@ export default function CardProdutoId(props) {
           color: '#713200',
         },
         iconTheme: {
-          primary: '#713200',
+          primary: '#FF0000',
           secondary: '#FFFAEE',
         },
       });
