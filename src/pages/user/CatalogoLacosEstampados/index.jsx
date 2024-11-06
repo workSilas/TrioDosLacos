@@ -3,8 +3,15 @@ import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
 import { Link } from 'react-router-dom';
 import CardProduto from '../../../components/CardProduto';
+import { useEffect } from 'react';
+
 
 export default function CatalogoLacosEstampados() {
+
+  useEffect(() => {
+    document.title = 'Trio Dos Laços | Laços Estampados';
+  }, []);
+
   const handleClick = () => {
     window.scrollTo(0, 0);
   };

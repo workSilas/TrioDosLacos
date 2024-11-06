@@ -5,7 +5,9 @@ export default function Carrossel() {
     const [currentIndex, setCurrentIndex] = useState(0);
     const images = [
         '/assets/images/bebeQuatroK.png',
-        '/assets/images/bebeCarrosselFaixaRosa.png',
+        '/assets/images/bebeBranco.png',
+        '/assets/images/bebeUrso.png',
+        '/assets/images/bebeVerde.png',
     ];
 
     useEffect(() => {

@@ -4,9 +4,15 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 
 export default function Entrar() {
+
+    useEffect(() => {
+        document.title = 'Trio Dos Laços | Login Administrativo';
+      }, []);
+
     const [nome, setNome] = useState('')
     const [senha, setSenha] = useState('')
 

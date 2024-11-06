@@ -11,6 +11,9 @@ import { useNavigate } from 'react-router-dom';
 
 export default function CadastrarVendas() {
 
+  useEffect(() => {
+    document.title = 'Trio Dos Laços | Cadastrar Vendas';
+  }, []);
 
   // Validação ADM
 

@@ -1,11 +1,16 @@
 import './index.scss';
 import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 
 export default function Encomendas() {
+
+  useEffect(() => {
+    document.title = 'Trio Dos Laços | Encomendas';
+  }, []);
+
   const [encomenda, setEncomenda] = useState("");
 
   async function enviarEncomenda() {

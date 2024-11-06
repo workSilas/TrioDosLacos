@@ -8,6 +8,10 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Ferramentas() {
 
+  useEffect(() => {
+    document.title = 'Trio Dos Laços | Ferramentas';
+  }, []);
+
   // Validação ADM
 
   const [token, setToken] = useState(null)

@@ -12,6 +12,10 @@ import { withMask } from 'use-mask-input';
 
 export default function GerenciarProdutos() {
 
+  useEffect(() => {
+    document.title = 'Trio Dos Laços | Gerenciar Produtos';
+  }, []);
+
   // Validação ADM
 
   const [token, setToken] = useState(null)

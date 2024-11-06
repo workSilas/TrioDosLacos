@@ -3,8 +3,14 @@ import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
 import { Link } from 'react-router-dom';
 import CardProduto from '../../../components/CardProduto';
+import { useEffect } from 'react';
 
 export default function CatalogoFaixasDeBebe() {
+
+  useEffect(() => {
+    document.title = 'Trio Dos Laços | Faixas de Bebê';
+  }, []);
+  
   const handleClick = () => {
     window.scrollTo(0, 0);
   };
