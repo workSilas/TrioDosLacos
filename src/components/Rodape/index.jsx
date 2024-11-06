@@ -1,13 +1,43 @@
 import './index.scss'
 import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import toast from 'react-hot-toast';
 
 export default function Rodape() {
+
+  
+  const [counter, setCounter] = useState(0)
+  const navigate = useNavigate()
+
+  function abrirAdm() {
+  
+    if (counter < 2) {
+      setCounter(counter + 1)
+    } 
+    else {
+      navigate("/Entrar")
+      toast.success("Você acessou o login administrativo.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#1EFF00',
+          secondary: '#FFFAEE',
+        },
+      })
+      setCounter(0)
+    }
+  }
+
 
   return (
     <div className='Rodape'>
 
       <div className="separacaoComponentesRodape">
-        <Link to={"/Entrar"}><img src="/assets/images/LogoOficial.png" alt="logo" /></Link>
+        <div onClick={abrirAdm}><img src="/assets/images/LogoOficial.png" alt="logo" /></div>
       </div>
 
       <div className="alinhamentoTopo">
