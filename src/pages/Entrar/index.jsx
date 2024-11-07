@@ -72,12 +72,12 @@ export default function Entrar() {
 
             <div className='inputEntrar'>
                 <label>NOME DE USUÁRIO <p>{nomeObrigatorio}</p></label>
-                <input type="text" value={nome} onChange={a => setNome(a.target.value)} />
+                <input placeholder='usuário' type="text" value={nome} onChange={a => setNome(a.target.value)} />
             </div>
 
             <div className='inputEntrar'>
                 <label>SENHA <p>{senhaObrigatorio}</p></label>
-                <input type="password" value={senha} onChange={a => setSenha(a.target.value)} />
+                <input placeholder='senha' type="password" value={senha} onChange={a => setSenha(a.target.value)} />
             </div>
 
             <div className='botaoEntrarSelect'>

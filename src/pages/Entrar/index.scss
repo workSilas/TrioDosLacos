@@ -58,9 +58,16 @@
             outline: none;
             box-shadow: none;
             background-color: #FFDBD0;
-            height: 4vh;
-            width: 30vw;
             font-size: 1rem;
+            padding: 0.5vh 1vw;
+            border: solid 1px #fff;
+            border-radius: 15px;
+            padding: 1rem 2vw;
+        }
+
+        input:focus {
+            transition: all 0.5s;
+            border: solid 1px #949494;
         }
     }
 
@@ -113,7 +120,7 @@
 
         .inputEntrar {
             input {
-                width: 50vw;
+                padding: 1.5rem 2vw;
             }
         }
     }
