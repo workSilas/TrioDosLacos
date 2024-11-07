@@ -12,6 +12,7 @@ export default function Encomendas() {
   }, []);
 
   const [encomenda, setEncomenda] = useState("");
+  const [obrigatorio, setObrigatorio] = useState("")
 
   async function enviarEncomenda() {
     const url = `http://4.172.207.208:5018/tdl/encomendas/inserir/`;
@@ -32,6 +33,24 @@ export default function Encomendas() {
           secondary: '#FFFAEE',
         },
       });
+      setObrigatorio("")
+      return;
+    }
+
+    if (encomenda.length <= 0) {
+      toast.error("Insira a descrição", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#FF0000',
+          secondary: '#FFFAEE',
+        },
+      });
+
+      setObrigatorio("*Obrigatório")
       return;
     }
 
@@ -47,8 +66,10 @@ export default function Encomendas() {
           secondary: '#FFFAEE',
         },
       });
+      setObrigatorio("")
       return;
     }
+
 
     try {
       let resp = await axios.post(url, valores);
@@ -63,6 +84,7 @@ export default function Encomendas() {
           secondary: '#FFFAEE',
         },
       });
+      setObrigatorio("")
     }
     catch (error) {
       toast.error("ERRO", {
@@ -120,10 +142,11 @@ export default function Encomendas() {
             <p>Descreva brevemente o que deseja:</p>
             <textarea
               type="text"
-              placeholder='Descrição'
+              placeholder='Descrição' 
               value={encomenda}
               onChange={e => setEncomenda(e.target.value)}
             />
+            <p className='obrigatorio' >{obrigatorio}</p>
           </div>
         </div>
         <button onClick={enviarEncomenda}>Enviar</button>
@@ -133,4 +156,3 @@ export default function Encomendas() {
     </div>
   );
 }
-

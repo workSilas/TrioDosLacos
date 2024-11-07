@@ -50,6 +50,7 @@
             color: #3D3D3D;
             text-align: start;
         }
+
     }
 
     .sessaoInpuntsEncomenda {
@@ -71,9 +72,14 @@
                 display: flex;
                 flex-direction: column;
                 align-items: center;
-
+                
                 p {
                     color: #3D3D3D;
+                }
+
+                .obrigatorio {
+                    color: #ff0000;
+                    font-size: 0.7rem;
                 }
 
                 textarea {
@@ -289,3 +295,5 @@
         }
     }
 }
+
+
