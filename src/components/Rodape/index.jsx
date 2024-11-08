@@ -48,7 +48,7 @@ export default function Rodape() {
         </div>
 
         <div className="separacaoComponentesRodape">
-          <h1>Parceiros</h1>
+          <h1>PARCEIROS</h1>
           <Link target='_blank' to={"http://4.172.207.208:3042"}>Vikings</Link>
         </div>
 
