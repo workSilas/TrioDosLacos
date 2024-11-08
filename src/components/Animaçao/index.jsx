@@ -22,7 +22,7 @@ export default function AnimatedSection({ children }) {
         return () => {
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [isVisible]); 
+    }, [isVisible]);
 
     return (
         <div

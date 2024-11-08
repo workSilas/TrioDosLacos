@@ -10,7 +10,7 @@ export default function CatalogoFaixasDeBebe() {
   useEffect(() => {
     document.title = 'Trio Dos Laços | Faixas de Bebê';
   }, []);
-  
+
   const handleClick = () => {
     window.scrollTo(0, 0);
   };

@@ -6,9 +6,9 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 export default function PaginaProduto() {
-  
-    const location = useLocation();
-    const data = location.state;
+
+  const location = useLocation();
+  const data = location.state;
 
   useEffect(() => {
     document.title = `Trio Dos Laços | ${data.name}`;

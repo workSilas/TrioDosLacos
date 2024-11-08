@@ -14,7 +14,7 @@ export default function Entrar() {
 
     useEffect(() => {
         document.title = 'Trio Dos Laços | Login Administrativo';
-      }, []);
+    }, []);
 
     const [nome, setNome] = useState('')
     const [senha, setSenha] = useState('')
@@ -27,20 +27,20 @@ export default function Entrar() {
             senha: senha
         }
 
-        
+
         try {
             if (nome == "") {
                 setNomeObrigatorio("*Campo Obrigatório")
             }
-            
+
             if (senha == "") {
                 setSenhaObrigatorio("*Campo Obrigatório")
             }
-    
+
             if (nome != "") {
                 setNomeObrigatorio("")
             }
-            
+
             if (senha != "") {
                 setSenhaObrigatorio("")
             }

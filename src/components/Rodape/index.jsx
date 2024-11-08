@@ -6,15 +6,15 @@ import toast from 'react-hot-toast';
 
 export default function Rodape() {
 
-  
+
   const [counter, setCounter] = useState(0)
   const navigate = useNavigate()
 
   function abrirAdm() {
-  
+
     if (counter < 2) {
       setCounter(counter + 1)
-    } 
+    }
     else {
       navigate("/Entrar")
       toast.success("Você acessou o login administrativo.", {

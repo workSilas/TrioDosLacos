@@ -142,7 +142,7 @@ export default function Encomendas() {
             <p>Descreva brevemente o que deseja:</p>
             <textarea
               type="text"
-              placeholder='Descrição' 
+              placeholder='Descrição'
               value={encomenda}
               onChange={e => setEncomenda(e.target.value)}
             />
