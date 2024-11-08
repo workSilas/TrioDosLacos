@@ -72,7 +72,7 @@
 
                     input {
                         outline: none;
-                        border: solid 1px #575757;
+                        border: solid 1px #ffffff;
                         border-radius: 15px;
                         font-family: Krona One;
                         font-size: 0.8rem;
@@ -81,6 +81,11 @@
                         padding: 1vh 1vw;
                         background-color: #FFEEE9;
                         width: 100%;
+                    }
+
+                    input:focus {
+                        transition: all 0.5s;
+                        border: solid 1px #949494;
                     }
                 }
             }
@@ -175,7 +180,7 @@
                 p {
                     font-weight: 500;
                 }
-
+                
                 input {
                     outline: none;
                     border: solid 1px #575757;
@@ -354,15 +359,15 @@
                 }
 
                 .textoInput {
-
+            
                     p {
                         font-size: 0.8rem;
                     }
-
+                    
                     input {
                         font-size: 0.6rem;
                     }
-
+                    
                 }
             }
         }
@@ -498,15 +503,15 @@
                 }
 
                 .textoInput {
-
+            
                     p {
                         font-size: 0.6rem;
                     }
-
+                    
                     input {
                         font-size: 0.5rem;
                     }
-
+                    
                 }
             }
         }

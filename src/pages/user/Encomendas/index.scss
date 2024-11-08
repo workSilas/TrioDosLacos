@@ -84,10 +84,20 @@
 
                 textarea {
                     outline: none;
-                    border: solid 1px #000;
-                    padding: 2vh 1vw;
-                    border-radius: 5px;
+                    border: solid 1px #ffffff;
+                    border-radius: 15px;
+                    font-family: Krona One;
+                    font-size: 0.8rem;
+                    font-weight: 500;
+                    color: #000000;
+                    padding: 0.7vh 1vw;
+                    background-color: #FFEEE9;
                     width: 100%;
+                }
+
+                textarea:focus {
+                    transition: all 0.5s;
+                    border: solid 1px #949494;
                 }
             }
         }
