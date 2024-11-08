@@ -305,3 +305,13 @@
         }
     }
 }
+
+@media (max-width:390px) {
+    .Encomendas {
+        .sessaoInicialEncomendas {
+            h2 {
+                font-size: 0.8rem;
+            }
+        }
+    }
+}
