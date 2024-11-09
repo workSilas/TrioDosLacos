@@ -1,8 +1,12 @@
 import './index.scss'
 import { Link } from 'react-router-dom'
-
+import { useEffect } from 'react';
 
 export default function Erro() {
+
+    useEffect(() => {
+        document.title = 'Trio Dos Laços | Página Não Encontrada';
+    }, []);
 
     return (
         <div className="Erro">
