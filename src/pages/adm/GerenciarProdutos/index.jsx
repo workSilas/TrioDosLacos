@@ -54,7 +54,7 @@ export default function GerenciarProdutos() {
 
   async function inserirProduto() {
 
-    if (sessaoSelecionada == ""){
+    if (sessaoSelecionada == "" || sessaoSelecionada == "SELECIONAR" ){
       toast.error("Selecione uma sessão.", {
         style: {
           border: '1px solid #713200',
@@ -213,7 +213,7 @@ export default function GerenciarProdutos() {
 
   async function alterarProduto() {
 
-    if (sessaoSelecionadaAlterar == ""){
+    if (sessaoSelecionadaAlterar == "" || sessaoSelecionadaAlterar == "SELECIONAR"){
       toast.error("Selecione uma sessão.", {
         style: {
           border: '1px solid #713200',

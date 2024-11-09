@@ -63,7 +63,7 @@ export default function Ferramentas() {
   }
   async function botaoSessao() {
 
-    if (sessaoSelecionada == ""){
+    if (sessaoSelecionada == "" || sessaoSelecionada == "SELECIONAR"){
       toast.error("Selecione uma sessão.", {
         style: {
           border: '1px solid #713200',
