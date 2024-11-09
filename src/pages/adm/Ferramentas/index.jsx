@@ -48,7 +48,7 @@ export default function Ferramentas() {
   const [vendasSessao, setVendasSessao] = useState([])
   const [vendasTotaisSessao, setVendasTotaisSessao] = useState([])
 
-  const [sessaoSelecionada, setSessaoSelecionada] = useState()
+  const [sessaoSelecionada, setSessaoSelecionada] = useState("")
 
   async function buscarVendasSessao() {
     const url = `http://4.172.207.208:5018/tdl/vendas/consultaSessao/${sessaoSelecionada}`
@@ -62,6 +62,22 @@ export default function Ferramentas() {
     setVendasTotaisSessao(vendasTotalSessao.data)
   }
   async function botaoSessao() {
+
+    if (sessaoSelecionada == ""){
+      toast.error("Selecione uma sessão.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#FF0000',
+          secondary: '#FFFAEE',
+        },
+      })
+      return
+    }
+
     toast.success(`Dados da ${sessaoSelecionada} encontrados!`, {
       style: {
         border: '1px solid #713200',
@@ -166,6 +182,7 @@ export default function Ferramentas() {
 
         <div className="inputsCheck">
           <select name="sessoes" id="sessoes" onChange={e => setSessaoSelecionada(e.target.value)}>
+            <option >SELECIONAR</option>
             <option value="Faixas de Bebê">Faixas de bebe</option>
             <option value="Laços Estampados">Laços estampados</option>
             <option value="Kits de Laços">Kits de laços</option>

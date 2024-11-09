@@ -54,6 +54,21 @@ export default function GerenciarProdutos() {
 
   async function inserirProduto() {
 
+    if (sessaoSelecionada == ""){
+      toast.error("Selecione uma sessão.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#FF0000',
+          secondary: '#FFFAEE',
+        },
+      })
+      return
+    }
+
     if (nome.length > 30) {
       toast.error("Defina um nome menor ao produto.", {
         style: {
@@ -197,6 +212,21 @@ export default function GerenciarProdutos() {
 
 
   async function alterarProduto() {
+
+    if (sessaoSelecionadaAlterar == ""){
+      toast.error("Selecione uma sessão.", {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+        },
+        iconTheme: {
+          primary: '#FF0000',
+          secondary: '#FFFAEE',
+        },
+      })
+      return
+    }
 
     if (alterarNome > 30) {
       toast.error("Defina um nome menor ao produto.", {
@@ -364,6 +394,7 @@ export default function GerenciarProdutos() {
             <div className="alinhamento">
               <h1>Cadastre um produto</h1>
               <select name="sessoes" id="sessoes" onChange={e => setSessaoSelecionada(e.target.value)}>
+                <option>SELECIONAR</option>
                 <option value="Faixas de Bebê">Faixas de bebe</option>
                 <option value="Laços Estampados">Laços estampados</option>
                 <option value="Kits de Laços">Kits de laços</option>
@@ -393,7 +424,6 @@ export default function GerenciarProdutos() {
         </div>
       </div>
 
-
       <div id='invertido' className="sessaoCompleta">
         <div className="sessaoQuadrado">
 
@@ -401,6 +431,7 @@ export default function GerenciarProdutos() {
             <div className="alinhamento">
               <h1>Altere um produto</h1>
               <select name="sessoes" id="sessoes" onChange={e => setSessaoSelecionadaAlterar(e.target.value)}>
+                <option>SELECIONAR</option>
                 <option value="Faixas de bebe">Faixas de bebe</option>
                 <option value="Laços estampados">Laços estampados</option>
                 <option value="Kits de laços">Kits de laços</option>
