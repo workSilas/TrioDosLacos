@@ -6,7 +6,10 @@ export default function CardProdutoTemplate(props) {
     <div className="CardProdutoTemplate">
       <div className="card">
         <div id='imagem' className="separacaoInfo">
-          <img src={props.imagem} alt="produto" />
+          {props.imagem === "" ?
+            <img src="/assets/images/imgNaoSelecionada.png" alt="produto" />
+            :
+            <img src={props.imagem} alt="produto" />}
         </div>
         <div className="separacaoInfo">
           <p>#x</p>

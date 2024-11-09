@@ -125,6 +125,7 @@ export default function CadastrarVendas() {
       setTotal(0)
       setData('')
       setEndereco('')
+      conferirTodasAsVendas()
     }
     catch (error) {
       toast.error("Erro ao adicionar venda. Verifique as informações.", {
@@ -188,7 +189,7 @@ export default function CadastrarVendas() {
           color: '#713200',
         },
         iconTheme: {
-          primary: '#713200',
+          primary: '#1EFF00',
           secondary: '#FFFAEE',
         },
       });
@@ -201,7 +202,7 @@ export default function CadastrarVendas() {
           color: '#713200',
         },
         iconTheme: {
-          primary: '#713200',
+          primary: '#FF0000',
           secondary: '#FFFAEE',
         },
       })

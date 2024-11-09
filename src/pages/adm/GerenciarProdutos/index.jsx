@@ -138,7 +138,7 @@ export default function GerenciarProdutos() {
 
       let url = "http://4.172.207.208:5018/tdl/produtos/inserir/"
       let prod = await axios.post(url, valores)
-      toast.success(`Novo produto adicionado ao catálogo com sucesso! ID${prod.data.novod}`, {
+      toast.success(`Novo produto adicionado ao catálogo com sucesso! ID${prod.data.novoId}`, {
         style: {
           border: '1px solid #713200',
           padding: '16px',
@@ -282,7 +282,7 @@ export default function GerenciarProdutos() {
 
       let url = `http://4.172.207.208:5018/tdl/produtos/alterar/${idProduto}`
       let prod = await axios.put(url, valores)
-      toast.success(`Novo produto alterar no catálogo com sucesso!`, {
+      toast.success(`Novo produto alterado no catálogo com sucesso!`, {
         style: {
           border: '1px solid #713200',
           padding: '16px',
@@ -300,6 +300,7 @@ export default function GerenciarProdutos() {
       setValor(null)
       setQuantidade(0)
       setDescricao("")
+      setImagem("")
     }
     catch (error) {
       toast.error("Erro ao alterar o produto! Verifique as informações.", {
