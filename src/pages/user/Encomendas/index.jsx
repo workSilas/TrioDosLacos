@@ -4,6 +4,7 @@ import Rodape from '../../../components/Rodape';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 
 export default function Encomendas() {
 
@@ -149,7 +150,11 @@ export default function Encomendas() {
             <p className='obrigatorio' >{obrigatorio}</p>
           </div>
         </div>
-        <button onClick={enviarEncomenda}>Enviar</button>
+        {encomenda.length < 20 ?
+          <button onClick={enviarEncomenda} >ENVIAR</button>
+          : <Link onClick={enviarEncomenda} target='_blank'
+            to={`https://wa.me/5511977798407?text=
+${encomenda}`}>ENVIAR</Link>}
       </div>
 
       <Rodape />

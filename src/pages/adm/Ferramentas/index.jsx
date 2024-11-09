@@ -113,8 +113,6 @@ export default function Ferramentas() {
   useEffect(() => {
     buscarSemEstoque()
     buscarEstoque()
-    buscarVendasSessao()
-    buscarVendasSessaoTotal()
     buscarVendas()
     buscarVendasValor()
   }, [])
