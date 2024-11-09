@@ -10,6 +10,7 @@ import PaginaProduto from "./pages/user/PaginaProduto";
 import Ferramentas from "./pages/adm/Ferramentas";
 import CadastrarVendas from "./pages/adm/CadastrarVendas";
 import GerenciarProdutos from "./pages/adm/GerenciarProdutos";
+import Erro from "./pages/Erro";
 
 export default function Rotas() {
     return (
@@ -26,6 +27,7 @@ export default function Rotas() {
                 <Route path="/Ferramentas" element={<Ferramentas />} />
                 <Route path="/CadastrarVendas" element={<CadastrarVendas />} />
                 <Route path="/GerenciarProdutos" element={<GerenciarProdutos />} />
+                <Route path="*" element={<Erro />} />
             </Routes>
         </BrowserRouter>
     )
