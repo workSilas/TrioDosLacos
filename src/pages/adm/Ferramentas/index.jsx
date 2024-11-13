@@ -220,7 +220,7 @@ export default function Ferramentas() {
         </div>
         <div className="informacao">
           {vendasTotaisSessao.map(item =>
-            <h2>Total vendido por Sessão: R${String(item.Total.toFixed(2)).replace(".", ",")}</h2>
+            <h2>Total vendido na sessão {sessaoSelecionada}: R${String(item.Total.toFixed(2)).replace(".", ",")}</h2>
           )}
         </div>
       </div>
