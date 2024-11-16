@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { withMask } from 'use-mask-input';
+import BotaoCatalogo from '../../../components/BotaoCatalogo';
 
 
 export default function GerenciarProdutos() {
@@ -54,7 +55,7 @@ export default function GerenciarProdutos() {
 
   async function inserirProduto() {
 
-    if (sessaoSelecionada == "" || sessaoSelecionada == "SELECIONAR" ){
+    if (sessaoSelecionada == "" || sessaoSelecionada == "SELECIONAR") {
       toast.error("Selecione uma sessão.", {
         style: {
           border: '1px solid #713200',
@@ -213,7 +214,7 @@ export default function GerenciarProdutos() {
 
   async function alterarProduto() {
 
-    if (sessaoSelecionadaAlterar == "" || sessaoSelecionadaAlterar == "SELECIONAR"){
+    if (sessaoSelecionadaAlterar == "" || sessaoSelecionadaAlterar == "SELECIONAR") {
       toast.error("Selecione uma sessão.", {
         style: {
           border: '1px solid #713200',
@@ -387,6 +388,7 @@ export default function GerenciarProdutos() {
       <NavAdm
         titulo="Gerenciar Produtos"
       />
+      <BotaoCatalogo />
 
       <div className="sessaoCompleta">
         <div className="sessaoQuadrado">
