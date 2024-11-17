@@ -6,7 +6,6 @@ import toast from 'react-hot-toast';
 
 export default function Rodape() {
 
-
   const [counter, setCounter] = useState(0)
   const navigate = useNavigate()
 
@@ -48,8 +47,10 @@ export default function Rodape() {
         </div>
 
         <div className="separacaoComponentesRodape">
-          <h1>PARCEIROS</h1>
-          <Link target='_blank' to={"http://4.172.207.208:3042"}>Vikings</Link>
+          <h1>POLÍTICAS</h1>
+          <Link to='/PoliticasDevolucao'>Políticas de Devolução</Link>    
+          <Link to='/PoliticasPrivacidade'>Políticas de Privacidade</Link>    
+          <Link to='/TermosUso'>Termos de Uso</Link>    
         </div>
 
         <div className="separacaoComponentesRodape">

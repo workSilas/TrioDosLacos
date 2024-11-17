@@ -10,6 +10,9 @@ import PaginaProduto from "./pages/user/PaginaProduto";
 import Ferramentas from "./pages/adm/Ferramentas";
 import CadastrarVendas from "./pages/adm/CadastrarVendas";
 import GerenciarProdutos from "./pages/adm/GerenciarProdutos";
+import PoliticasDevolucao from "./pages/user/PoliticasDevolucao";
+import PoliticasPrivacidade from "./pages/user/PoliticasPrivacidade";
+import TermosUso from "./pages/user/TermosUso";
 import Erro from "./pages/Erro";
 
 export default function Rotas() {
@@ -27,6 +30,9 @@ export default function Rotas() {
                 <Route path="/Ferramentas" element={<Ferramentas />} />
                 <Route path="/CadastrarVendas" element={<CadastrarVendas />} />
                 <Route path="/GerenciarProdutos" element={<GerenciarProdutos />} />
+                <Route path="/PoliticasDevolucao" element={<PoliticasDevolucao />} />
+                <Route path="/PoliticasPrivacidade" element={<PoliticasPrivacidade />} />
+                <Route path="/TermosUso" element={<TermosUso />} />
                 <Route path="*" element={<Erro />} />
             </Routes>
         </BrowserRouter>
