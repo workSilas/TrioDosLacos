@@ -1,8 +1,13 @@
 import './index.scss';
+import { useEffect } from 'react';
 import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
 
 export default function PoliticasPrivacidade() {
+    useEffect(() => {
+        document.title = `Trio Dos Laços | Políticas`;
+    }, []);
+
     return (
         <div className='PoliticasPrivacidade'>
             <Nav titulo='Políticas de Privacidade' />

@@ -1,8 +1,13 @@
 import './index.scss';
+import { useEffect } from 'react';
 import Nav from '../../../components/Nav';
 import Rodape from '../../../components/Rodape';
 
 export default function TermosUso() {
+    useEffect(() => {
+        document.title = `Trio Dos Laços | Termos`;
+    }, []);
+
     return (
         <div className='TermosUso'>
             <Nav titulo='Termos de Uso' />
