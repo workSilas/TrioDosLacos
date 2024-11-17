@@ -9,6 +9,10 @@ export default function Rodape() {
   const [counter, setCounter] = useState(0)
   const navigate = useNavigate()
 
+  const handleClick = () => {
+    window.scrollTo(0, 0);
+  };
+
   function abrirAdm() {
 
     if (counter < 2) {
@@ -48,9 +52,9 @@ export default function Rodape() {
 
         <div className="separacaoComponentesRodape">
           <h1>POLÍTICAS</h1>
-          <Link to='/PoliticasDevolucao'>Políticas de Devolução</Link>    
-          <Link to='/PoliticasPrivacidade'>Políticas de Privacidade</Link>    
-          <Link to='/TermosUso'>Termos de Uso</Link>    
+          <Link to='/PoliticasDevolucao' onClick={handleClick}>Políticas de Devolução</Link>    
+          <Link to='/PoliticasPrivacidade' onClick={handleClick}>Políticas de Privacidade</Link>    
+          <Link to='/TermosUso' onClick={handleClick}>Termos de Uso</Link>    
         </div>
 
         <div className="separacaoComponentesRodape">
