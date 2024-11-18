@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
+import { urlApi } from '../../../config/urlApi';
+
 
 export default function Ferramentas() {
 
@@ -13,12 +15,11 @@ export default function Ferramentas() {
   }, []);
 
   // Validação ADM
-
   const [token, setToken] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
-    let token = localStorage.getItem('USUARIO')
+    let token = localStorage.getItem('ADM')
     setToken(token)
 
     if (token == null) {
@@ -27,37 +28,35 @@ export default function Ferramentas() {
   }, [])
 
   // VENDAS
-
   const [vendasTotais, setVendasTotais] = useState([])
   const [vendasTotaisValor, setVendasTotaisValor] = useState([])
 
   async function buscarVendas() {
-    const url = "http://4.172.207.208:5018/tdl/vendas/consulta/"
+    const url = `${urlApi}/tdl/vendas/consulta/`
     let vendas = await axios.get(url)
     setVendasTotais(vendas.data)
   }
 
   async function buscarVendasValor() {
-    const url = "http://4.172.207.208:5018/tdl/vendas/consultaTotal/"
+    const url = `${urlApi}/tdl/vendas/consultaTotal/`
     let vendasTotal = await axios.get(url)
     setVendasTotaisValor(vendasTotal.data)
   }
 
   // SESSÃO
-
   const [vendasSessao, setVendasSessao] = useState([])
   const [vendasTotaisSessao, setVendasTotaisSessao] = useState([])
 
   const [sessaoSelecionada, setSessaoSelecionada] = useState("")
 
   async function buscarVendasSessao() {
-    const url = `http://4.172.207.208:5018/tdl/vendas/consultaSessao/${sessaoSelecionada}`
+    const url = `${urlApi}/tdl/vendas/consultaSessao/${sessaoSelecionada}`
     let vendaSessao = await axios.post(url)
     setVendasSessao(vendaSessao.data)
   }
 
   async function buscarVendasSessaoTotal() {
-    const url = `http://4.172.207.208:5018/tdl/vendas/consultaSessaoTotal/${sessaoSelecionada}`
+    const url = `${urlApi}/tdl/vendas/consultaSessaoTotal/${sessaoSelecionada}`
     let vendasTotalSessao = await axios.post(url)
     setVendasTotaisSessao(vendasTotalSessao.data)
   }
@@ -94,18 +93,17 @@ export default function Ferramentas() {
   }
 
   // ESTOQUE
-
   const [estoque, setEstoque] = useState([])
   const [semEstoque, setSemEstoque] = useState([])
 
   async function buscarEstoque() {
-    const url = "http://4.172.207.208:5018/tdl/produtos/estoque/"
+    const url = `${urlApi}/tdl/produtos/estoque/`
     let estoqueTotal = await axios.get(url)
     setEstoque(estoqueTotal.data)
   }
 
   async function buscarSemEstoque() {
-    const url = "http://4.172.207.208:5018/tdl/produtos/semEstoque/"
+    const url = `${urlApi}/tdl/produtos/semEstoque/`
     let semEstoqueTotal = await axios.get(url)
     setSemEstoque(semEstoqueTotal.data)
   }

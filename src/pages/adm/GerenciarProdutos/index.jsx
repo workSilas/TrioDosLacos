@@ -9,6 +9,7 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { withMask } from 'use-mask-input';
 import BotaoCatalogo from '../../../components/BotaoCatalogo';
+import { urlApi } from '../../../config/urlApi';
 
 
 export default function GerenciarProdutos() {
@@ -18,12 +19,11 @@ export default function GerenciarProdutos() {
   }, []);
 
   // Validação ADM
-
   const [token, setToken] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
-    let token = localStorage.getItem('USUARIO')
+    let token = localStorage.getItem('ADM')
     setToken(token)
 
     if (token == null) {
@@ -51,7 +51,6 @@ export default function GerenciarProdutos() {
       reader.readAsDataURL(file);
     }
   }
-
 
   async function inserirProduto() {
 
@@ -152,7 +151,7 @@ export default function GerenciarProdutos() {
         "imagem": imagem
       }
 
-      let url = "http://4.172.207.208:5018/tdl/produtos/inserir/"
+      let url = `${urlApi}/tdl/produtos/inserir/`
       let prod = await axios.post(url, valores)
       toast.success(`Novo produto adicionado ao catálogo com sucesso! ID${prod.data.novoId}`, {
         style: {
@@ -189,7 +188,6 @@ export default function GerenciarProdutos() {
   }
 
   // Alterar
-
   const [idProduto, setIdProduto] = useState("")
   const [sessaoSelecionadaAlterar, setSessaoSelecionadaAlterar] = useState("")
   const [alterarImagem, setAlterarImagem] = useState("")
@@ -211,9 +209,7 @@ export default function GerenciarProdutos() {
     }
   }
 
-
   async function alterarProduto() {
-
     if (sessaoSelecionadaAlterar == "" || sessaoSelecionadaAlterar == "SELECIONAR") {
       toast.error("Selecione uma sessão.", {
         style: {
@@ -300,7 +296,6 @@ export default function GerenciarProdutos() {
       return
     }
 
-
     try {
       let valores = {
         "nome": alterarNome,
@@ -311,7 +306,7 @@ export default function GerenciarProdutos() {
         "imagem": alterarImagem
       }
 
-      let url = `http://4.172.207.208:5018/tdl/produtos/alterar/${idProduto}`
+      let url = `${urlApi}/tdl/produtos/alterar/${idProduto}`
       let prod = await axios.put(url, valores)
       toast.success(`Novo produto alterado no catálogo com sucesso!`, {
         style: {
@@ -349,10 +344,9 @@ export default function GerenciarProdutos() {
   }
 
   // Deletar Produto
-
   async function deletarProduto() {
     try {
-      let url = `http://4.172.207.208:5018/tdl/produtos/delete/${idProduto}`
+      let url = `${urlApi}/tdl/produtos/delete/${idProduto}`
       let resp = await axios.delete(url)
       setIdProduto(0)
       toast.success("Produto Deletado com sucesso!", {

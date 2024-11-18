@@ -7,6 +7,7 @@ import CardProdutoId from '../../../components/CardProdutoId';
 import toast from 'react-hot-toast';
 import { withMask } from 'use-mask-input';
 import { useNavigate } from 'react-router-dom';
+import { urlApi } from '../../../config/urlApi';
 
 
 export default function CadastrarVendas() {
@@ -16,19 +17,17 @@ export default function CadastrarVendas() {
   }, []);
 
   // Validação ADM
-
   const [token, setToken] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
-    let token = localStorage.getItem('USUARIO')
+    let token = localStorage.getItem('ADM')
     setToken(token)
 
     if (token == null) {
       navigate("/")
     }
   }, [])
-
 
   //Cadastrar uma Venda
   const [idUsuario, setIdUsuario] = useState(0)
@@ -45,13 +44,12 @@ export default function CadastrarVendas() {
     if (idProduto <= 0) {
       return;
     }
-    let url = `http://4.172.207.208:5018/tdl/produtos/consultaId/${idProduto}`;
+    let url = `${urlApi}/tdl/produtos/consultaId/${idProduto}`;
     try {
       let produtos = await axios.post(url);
       setTotal(produtos.data[0].valor * quantidade);
       setQtdEstoque(produtos.data[0].quantidade);
       console.log(qtdEstoque);
-
     }
     catch (error) {
       return
@@ -66,7 +64,7 @@ export default function CadastrarVendas() {
 
     let dataFormatada = data.replace(/\//g, "-").split('-').reverse().join('-')
 
-    const url = `http://4.172.207.208:5018/tdl/vendas/inserir/`
+    const url = `${urlApi}/tdl/vendas/inserir/`
     const paramCorpo = {
       "idProduto": idProduto,
       "idUsuario": idUsuario,
@@ -145,7 +143,6 @@ export default function CadastrarVendas() {
   }
 
   //Exibir Tabela com TODAS as Vendas
-
   const [venda, setVenda] = useState([])
 
   useEffect(() => {
@@ -158,7 +155,7 @@ export default function CadastrarVendas() {
   }
 
   async function conferirTodasAsVendas() {
-    const url = `http://4.172.207.208:5018/tdl/vendas/consultaTodas/`
+    const url = `${urlApi}/tdl/vendas/consultaTodas/`
     let resp = await axios.get(url)
 
     if (resp.data.erro !== undefined) {
@@ -174,13 +171,12 @@ export default function CadastrarVendas() {
   }, [])
 
   //Finalizar Venda (Marcar como Enviada)
-
   const [idVenda, setIdVenda] = useState(0)
 
   async function finalizarVenda() {
 
     try {
-      const url = `http://4.172.207.208:5018/tdl/vendas/alterar/${idVenda}`
+      const url = `${urlApi}/tdl/vendas/alterar/${idVenda}`
       let resp = await axios.put(url)
       toast.success("Venda finalizada!.", {
         style: {
@@ -210,13 +206,11 @@ export default function CadastrarVendas() {
     }
   }
 
-
   // Encomendas
-
   const [encomenda, setEncomenda] = useState([])
 
   async function buscarEncomendas() {
-    let url = "http://4.172.207.208:5018/tdl/encomendas/consulta/"
+    let url = `${urlApi}/tdl/encomendas/consulta/`
     let resp = await axios.get(url)
     setEncomenda(resp.data)
   }
@@ -224,6 +218,7 @@ export default function CadastrarVendas() {
   useEffect(() => {
     buscarEncomendas()
   }, [])
+
 
   return (
     <div className="CadastrarVendas">
