@@ -52,7 +52,7 @@ export default function Entrar() {
                 toast.error(resp.data.erro)
             }
             else {
-                localStorage.setItem('USUARIO', resp.data.token)
+                localStorage.setItem('ADM', resp.data.token)
                 toast.success("Login feito com sucesso!")
                 navigate('/Ferramentas')
             }
