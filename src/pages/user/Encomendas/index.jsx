@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { urlApi } from '../../../config/urlApi';
 
 export default function Encomendas() {
 
@@ -16,7 +17,7 @@ export default function Encomendas() {
   const [obrigatorio, setObrigatorio] = useState("")
 
   async function enviarEncomenda() {
-    const url = `http://4.172.207.208:5018/tdl/encomendas/inserir/`;
+    const url = `${urlApi}/tdl/encomendas/inserir/`;
     const valores = {
       "descricao": encomenda,
       "imagem": null
@@ -103,6 +104,7 @@ export default function Encomendas() {
     }
     setEncomenda("");
   }
+
 
   return (
     <div className="Encomendas">

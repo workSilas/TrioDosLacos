@@ -4,6 +4,7 @@ import Rodape from '../../../components/Rodape';
 import { Link, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { urlApi } from '../../../config/urlApi';
 
 export default function PaginaProduto() {
 
@@ -17,7 +18,7 @@ export default function PaginaProduto() {
   const [produtoEncontrado, setProdutoEncontrado] = useState([]);
 
   async function buscar() {
-    let url = `http://4.172.207.208:5018/tdl/produtos/consultaId/${data.id}`;
+    let url = `${urlApi}/tdl/produtos/consultaId/${data.id}`;
     let produtos = await axios.post(url);
     setProdutoEncontrado(produtos.data);
   }
@@ -32,6 +33,7 @@ export default function PaginaProduto() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  
   return (
     <div className="PaginaProduto">
       <Nav titulo="Produto" />
