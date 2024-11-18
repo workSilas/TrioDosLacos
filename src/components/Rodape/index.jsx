@@ -1,6 +1,6 @@
 import './index.scss'
 import { Link } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, state } from 'react-router-dom';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
@@ -19,7 +19,9 @@ export default function Rodape() {
       setCounter(counter + 1)
     }
     else {
-      navigate("/Entrar")
+      navigate("/Entrar", {
+        state: { validado: true }
+      })
       toast.success("Você acessou o login administrativo.", {
         style: {
           border: '1px solid #713200',
@@ -52,9 +54,9 @@ export default function Rodape() {
 
         <div className="separacaoComponentesRodape">
           <h1>POLÍTICAS</h1>
-          <Link to='/PoliticasDevolucao' onClick={handleClick}>Políticas de Devolução</Link>    
-          <Link to='/PoliticasPrivacidade' onClick={handleClick}>Políticas de Privacidade</Link>    
-          <Link to='/TermosUso' onClick={handleClick}>Termos de Uso</Link>    
+          <Link to='/PoliticasDevolucao' onClick={handleClick}>Políticas de Devolução</Link>
+          <Link to='/PoliticasPrivacidade' onClick={handleClick}>Políticas de Privacidade</Link>
+          <Link to='/TermosUso' onClick={handleClick}>Termos de Uso</Link>
         </div>
 
         <div className="separacaoComponentesRodape">

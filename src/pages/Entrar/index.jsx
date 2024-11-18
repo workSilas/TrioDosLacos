@@ -1,7 +1,7 @@
 import './index.scss'
 import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
@@ -21,6 +21,18 @@ export default function Entrar() {
     const [senha, setSenha] = useState('')
 
     const navigate = useNavigate()
+    const location = useLocation()
+    const data = location.state || false 
+
+    function navValidada() {
+        if (data == false) {
+            navigate('*')
+        } 
+    }
+
+    useEffect(() => {
+        navValidada()
+    }, [])
 
     async function validarUsuario() {
         const paramCorpo = {
