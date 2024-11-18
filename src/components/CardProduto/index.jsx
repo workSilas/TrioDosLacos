@@ -2,12 +2,13 @@ import './index.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { urlApi } from '../../config/urlApi';
 
 export default function CardProduto(props) {
   const [produtos, setProdutos] = useState([]);
 
   async function buscarProdutos() {
-    let url = `http://4.172.207.208:5018/tdl/produtos/consulta/${props.sessao}`;
+    let url = `${urlApi}/tdl/produtos/consulta/${props.sessao}`;
     try {
       let produtosEncontrados = await axios.post(url);
       setProdutos(produtosEncontrados.data);
@@ -17,11 +18,11 @@ export default function CardProduto(props) {
     }
   }
 
-
   useEffect(() => {
     buscarProdutos();
   }, [props.sessao]);
 
+  
   return (
     <div className="CardProduto">
       {produtos?.map(item => (

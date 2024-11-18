@@ -7,7 +7,7 @@ export default function BotaoAdm() {
   const [token, setToken] = useState(true)
 
   useEffect(() => {
-    let token = localStorage.getItem('USUARIO')
+    let token = localStorage.getItem('ADM')
     setToken(!!token)
 
     if (token == null) {

@@ -2,6 +2,7 @@ import './index.scss';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { urlApi } from '../../config/urlApi';
 
 export default function CardProdutoId(props) {
   const [produtoEncontrado, setProdutoEncontrado] = useState([]);
@@ -10,7 +11,7 @@ export default function CardProdutoId(props) {
     if (props.id <= 0) {
       return;
     }
-    let url = `http://4.172.207.208:5018/tdl/produtos/consultaId/${props.id}`;
+    let url = `${urlApi}/tdl/produtos/consultaId/${props.id}`;
     try {
       let produtos = await axios.post(url);
       setProdutoEncontrado(produtos.data);
@@ -34,6 +35,7 @@ export default function CardProdutoId(props) {
   useEffect(() => {
     buscar();
   }, [props.id]);
+  
 
   return (
     <div className="CardProdutoId">
