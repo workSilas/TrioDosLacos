@@ -13,6 +13,8 @@ import GerenciarProdutos from "./pages/adm/GerenciarProdutos";
 import PoliticasDevolucao from "./pages/user/PoliticasDevolucao";
 import PoliticasPrivacidade from "./pages/user/PoliticasPrivacidade";
 import TermosUso from "./pages/user/TermosUso";
+import Cadastro from "./pages/user/Cadastro";
+import Login from "./pages/user/Login";
 import Erro from "./pages/Erro";
 
 export default function Rotas() {
@@ -33,6 +35,8 @@ export default function Rotas() {
                 <Route path="/PoliticasDevolucao" element={<PoliticasDevolucao />} />
                 <Route path="/PoliticasPrivacidade" element={<PoliticasPrivacidade />} />
                 <Route path="/TermosUso" element={<TermosUso />} />
+                <Route path="/Cadastro" element={<Cadastro />} />
+                <Route path="/Login" element={<Login />} />
                 <Route path="*" element={<Erro />} />
             </Routes>
         </BrowserRouter>
