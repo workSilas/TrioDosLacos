@@ -1,6 +1,6 @@
 import './index.scss'
 import { Link } from 'react-router-dom';
-import { useNavigate, state } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import toast from 'react-hot-toast';
 
