@@ -180,6 +180,26 @@
         display: flex;
         flex-direction: column;
     }
+
+    .botao-perfil{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding-right: 10px;
+        background-color: #F0C1B3;
+        border-radius: 20px;
+        text-decoration: none !important;
+        cursor: pointer;
+        
+        img{
+            height: 35px;
+        }
+
+        p{
+            color: #333;
+            font-weight: 500;
+        }
+    }
 }
 
 @media (max-width: 480px) {
