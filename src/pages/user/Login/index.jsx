@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { urlApi } from '../../../config/urlApi'
 import { enterKeyUp } from '../../../config/enter'
+import { validarEmail } from '../../../config/email'
 import Popup from '../../../components/Popup'
 
 
@@ -33,39 +34,42 @@ export default function Login() {
         }
 
         try {
+            let verificarEmail = validarEmail(email)
+            if (verificarEmail === false) {
+                setEmailObrigatorio("*Email inválido")
+            }
+            if (senha.length < 6) {
+                setSenhaObrigatorio("*Mínimo 6 caracteres")
+            }
             if (email === "") {
                 setEmailObrigatorio("*Campo Obrigatório")
-                return
             }
             if (senha === "") {
                 setSenhaObrigatorio("*Campo Obrigatório")
-                return
             }
             if (email !== "") {
                 setEmailObrigatorio("")
-                return
             }
             if (senha !== "") {
                 setSenhaObrigatorio("")
-                return
             }
 
             const url = `${urlApi}/tdl/usuarios/entrar`
             let resp = await axios.post(url, paramCorpo)
 
-            if (resp.data.erro !== undefined || resp.data.erro !== null) {
-                localStorage.setItem('USUARIO', resp.data.token)
-                setMensagem('Login feito com sucesso!')
+            if (resp.data.erro !== undefined && resp.data.erro !== null) {
+                setMensagem('Erro: ', resp.data.erro)
                 popup()
             }
             else {
-                setMensagem('Erro: ', resp.data.erro)
-                popup()
+                localStorage.setItem('USUARIO', resp.data.token)
+                navigate('/')
             }
         }
         catch (error) {
             setMensagem('ERRO: ' + error)
             popup()
+            return
         }
     }
 
@@ -74,10 +78,6 @@ export default function Login() {
 
     const popup = () => {
         setMostrarPopup(!mostrarPopup)
-
-        if (mostrarPopup === true  && mensagem === 'Login feito com sucesso!') {
-            navigate('/')
-        }
     }
 
 

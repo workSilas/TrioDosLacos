@@ -1,0 +1,93 @@
+.MeuPerfil {
+    background-color: #fafafa;
+
+    .perfil {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        padding-top: 20px;
+        padding-bottom: 90px;
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            padding: 70px 100px;
+            background-color: #fff;
+            gap: 25px;
+
+            .titulo {
+                display: flex;
+                gap: 35px;
+
+                p {
+                    cursor: pointer;
+                }
+            }
+
+            .info {
+                .valor {
+                    font-weight: 300;
+                }
+            }
+
+            .botao {
+                text-align: center;
+                font-family: Inter;
+                font-weight: 500;
+                border-radius: 15px;
+                cursor: pointer;
+                background-color: #FFDBD0;
+                padding: 10px;
+            }
+        }
+    }
+
+
+    .edicoes {
+        display: flex;
+        justify-content: space-around;
+        padding-bottom: 100px;
+
+        .editar {
+            display: flex;
+            flex-direction: column;
+            padding: 50px 150px;
+            background-color: #fff;
+            gap: 25px;
+
+            .info {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    font-family: Inter;
+                }
+            }
+
+            .botoes {
+                display: flex;
+                justify-content: space-between;
+                gap: 5px;
+
+                .cancelar{
+                    text-align: center;
+                    font-family: Inter;
+                    font-weight: 500;
+                    border-radius: 15px;
+                    cursor: pointer;
+                }
+
+                .salvar{
+                    text-align: center;
+                    font-family: Inter;
+                    font-weight: 500;
+                    border-radius: 15px;
+                    cursor: pointer;
+                    background-color: #FFDBD0;
+                    padding: 10px 35px;
+                }
+            }
+        }
+    }
+
+}

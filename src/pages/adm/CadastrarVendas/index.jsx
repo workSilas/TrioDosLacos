@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { withMask } from 'use-mask-input';
 import { urlApi } from '../../../config/urlApi';
+import { enterKeyUp } from '../../../config/enter';
 import Popup from '../../../components/Popup';
 import NavAdm from '../../../components/NavAdm';
 import Rodape from '../../../components/Rodape';
@@ -16,6 +17,14 @@ export default function CadastrarVendas() {
   useEffect(() => {
     document.title = 'Trio Dos Laços | Cadastrar Vendas';
   }, []);
+
+  const keyUpCadastrar = (event) => {
+    enterKeyUp(event, cadastrarVenda)
+  }
+
+  const keyUpFinalizar = (event) => {
+    enterKeyUp(event, finalizarVenda)
+  }
 
   const [mostrarPopup, setMostrarPopup] = useState(false);
   const [mensagem, setMensagem] = useState("")
@@ -241,17 +250,17 @@ export default function CadastrarVendas() {
             <div className="alinhamento">
               <h1>Cadastre uma venda</h1>
               <p>Data</p>
-              <input type="text" placeholder='00/00/0000' ref={withMask("99/99/9999")} value={data} onChange={a => setData(a.target.value)} />
+              <input type="text" placeholder='00/00/0000' onKeyUp={keyUpCadastrar} ref={withMask("99/99/9999")} value={data} onChange={a => setData(a.target.value)} />
               <p>Endereço</p>
-              <input type="text" placeholder='Ex: Parque Cocaia' value={endereco} onChange={a => setEndereco(a.target.value)} />
+              <input type="text" placeholder='Ex: Parque Cocaia' onKeyUp={keyUpCadastrar} value={endereco} onChange={a => setEndereco(a.target.value)} />
               <p>Quantidade</p>
-              <input type="text" placeholder='Ex: 1' value={quantidade} onChange={a => setQuantidade(a.target.value)} />
+              <input type="text" placeholder='Ex: 1' onKeyUp={keyUpCadastrar} value={quantidade} onChange={a => setQuantidade(a.target.value)} />
               <p>Id do atendente</p>
-              <input type="text" placeholder='Ex: 1' value={idUsuario} onChange={a => setIdUsuario(a.target.value)} />
+              <input type="text" placeholder='Ex: 1' onKeyUp={keyUpCadastrar} value={idUsuario} onChange={a => setIdUsuario(a.target.value)} />
             </div>
             <div className="alinhamento">
               <p>ID do produto</p>
-              <input type="text" placeholder='0' value={idProduto} onChange={e => setIdProduto(e.target.value)} />
+              <input type="text" placeholder='0' onKeyUp={keyUpCadastrar} value={idProduto} onChange={e => setIdProduto(e.target.value)} />
               <p>Total: R${total}</p>
               <CardProdutoId
                 id={idProduto} token={token}
@@ -299,7 +308,7 @@ export default function CadastrarVendas() {
         <div className="alinharBotoes">
           <div className="textoInput">
             <p>Id da venda finalizada</p>
-            <input type="text" placeholder='ID da venda finalizada' value={idVenda} onChange={a => setIdVenda(a.target.value)} />
+            <input type="text" placeholder='ID da venda finalizada' onKeyUp={keyUpFinalizar} value={idVenda} onChange={a => setIdVenda(a.target.value)} />
           </div>
           <button onClick={recarregar}>FINALIZAR</button>
         </div>

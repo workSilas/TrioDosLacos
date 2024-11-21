@@ -6,6 +6,7 @@ import toast from 'react-hot-toast'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 import { urlApi } from '../../config/urlApi'
+import { enterKeyUp } from '../../config/enter'
 
 
 export default function Entrar() {
@@ -16,6 +17,10 @@ export default function Entrar() {
     useEffect(() => {
         document.title = 'Trio Dos Laços | Login Administrativo';
     }, []);
+
+    const keyUp = (event) => {
+        enterKeyUp(event, validarUsuario)
+    }
 
     const [email, setEmail] = useState('')
     const [senha, setSenha] = useState('')
@@ -44,15 +49,12 @@ export default function Entrar() {
             if (email == "") {
                 setEmailObrigatorio("*Campo Obrigatório")
             }
-
             if (senha == "") {
                 setSenhaObrigatorio("*Campo Obrigatório")
             }
-
             if (email != "") {
                 setEmailObrigatorio("")
             }
-
             if (senha != "") {
                 setSenhaObrigatorio("")
             }
@@ -84,12 +86,12 @@ export default function Entrar() {
 
             <div className='inputEntrar'>
                 <label>EMAIL<p>{emailObrigatorio}</p></label>
-                <input placeholder='usuário' type="text" value={email} onChange={a =>  setEmail(a.target.value)} />
+                <input placeholder='usuário' type="text" onKeyUp={keyUp} value={email} onChange={a =>  setEmail(a.target.value)} />
             </div>
 
             <div className='inputEntrar'>
                 <label>SENHA <p>{senhaObrigatorio}</p></label>
-                <input placeholder='senha' type="password" value={senha} onChange={a => setSenha(a.target.value)} />
+                <input placeholder='senha' type="password" onKeyUp={keyUp} value={senha} onChange={a => setSenha(a.target.value)} />
             </div>
 
             <div className='botaoEntrarSelect'>

@@ -47,6 +47,7 @@ export default function NavAdm(props) {
         setMensagem('Erro ao autenticar Usuário')
         popup()
         localStorage.removeItem('ADM')
+        navigate('/')
       } 
       else {
         return
@@ -56,6 +57,7 @@ export default function NavAdm(props) {
       setMensagem('Erro ao autenticar Usuário')
       popup()
       localStorage.removeItem('ADM')
+      navigate('/')
     }
   }
 

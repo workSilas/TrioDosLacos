@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { withMask } from 'use-mask-input';
 import { urlApi } from '../../../config/urlApi';
+import { enterKeyUp } from '../../../config/enter';
 import CardProdutoTemplate from '../../../components/CardProdutoTemplate';
 import CardProdutoId from '../../../components/CardProdutoId';
 import BotaoCatalogo from '../../../components/BotaoCatalogo';
@@ -18,6 +19,10 @@ export default function GerenciarProdutos() {
   useEffect(() => {
     document.title = 'Trio Dos Laços | Gerenciar Produtos';
   }, []);
+
+  const keyUp = (event) => {
+    enterKeyUp(event, inserirProduto)
+  }
 
   const [mostrarPopup, setMostrarPopup] = useState(false);
   const [mensagem, setMensagem] = useState("")
@@ -35,7 +40,7 @@ export default function GerenciarProdutos() {
 
     if (token === null || token === undefined) {
       navigate("/")
-    } 
+    }
     else {
       setToken(token)
     }
@@ -92,7 +97,7 @@ export default function GerenciarProdutos() {
       popup()
       return
     }
-    
+
     const url = `${urlApi}/tdl/produtos/inserir`
 
     try {
@@ -123,7 +128,7 @@ export default function GerenciarProdutos() {
             secondary: '#FFFAEE',
           },
         })
-  
+
         setSessaoSelecionada("")
         setImagem("")
         setNome("")
@@ -192,7 +197,7 @@ export default function GerenciarProdutos() {
       popup()
       return
     }
-    
+
     let url = `${urlApi}/tdl/produtos/alterar/${idProduto}`
 
     try {
@@ -223,7 +228,7 @@ export default function GerenciarProdutos() {
             secondary: '#FFFAEE',
           },
         })
-  
+
         setSessaoSelecionadaAlterar("")
         setImagem("")
         setNome("")
@@ -251,7 +256,7 @@ export default function GerenciarProdutos() {
         setMensagem('Erro: ', resp.data.erro)
         popup()
       }
-      else{
+      else {
         setIdProduto(0)
         toast.success("Produto Deletado com sucesso!", {
           style: {
@@ -294,15 +299,15 @@ export default function GerenciarProdutos() {
                 <option value="Laços Decorados">Laços decorados</option>
               </select>
               <p>Nome</p>
-              <input type="text" placeholder='Nome' value={nome} onChange={e => setNome(e.target.value)} />
+              <input type="text" placeholder='Nome' onKeyUp={keyUp} value={nome} onChange={e => setNome(e.target.value)} />
               <p>Valor</p>
-              <input type="text" placeholder='99,99' ref={withMask("99,99")} value={valor} onChange={e => setValor(e.target.value)} />
+              <input type="text" placeholder='99,99' onKeyUp={keyUp} ref={withMask("99,99")} value={valor} onChange={e => setValor(e.target.value)} />
               <p>Quantidade</p>
-              <input type="text" value={quantidade} onChange={e => setQuantidade(e.target.value)} />
+              <input type="text" value={quantidade} onKeyUp={keyUp} onChange={e => setQuantidade(e.target.value)} />
               <p>Imagem</p>
               <input type="file" accept='image/*' onChange={enviarImagem} />
               <p>Descrição</p>
-              <textarea type="text" placeholder='Laço Elegante...' value={descricao} onChange={e => setDescricao(e.target.value)} />
+              <textarea type="text" placeholder='Laço Elegante...' onKeyUp={keyUp} value={descricao} onChange={e => setDescricao(e.target.value)} />
             </div>
             <div className="alinhamento">
               <CardProdutoTemplate

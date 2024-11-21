@@ -6,6 +6,7 @@ import { useNavigate, Link } from 'react-router-dom'
 import { urlApi } from '../../../config/urlApi'
 import Popup from '../../../components/Popup'
 import { enterKeyUp } from '../../../config/enter'
+import { validarEmail } from '../../../config/email'
 
 
 export default function Cadastro() {
@@ -36,29 +37,30 @@ export default function Cadastro() {
         }
 
         try {
+            let verificarEmail = validarEmail(email)
+            if (verificarEmail === false) {
+                setEmailObrigatorio("*Email inválido")
+            }
+            if (senha.length < 6) {
+                setSenhaObrigatorio("*Mínimo 6 caracteres")
+            }
             if (nome === "") {
                 setNomeObrigatorio("*Campo Obrigatório")
-                return
             }
             if (email === "") {
                 setEmailObrigatorio("*Campo Obrigatório")
-                return
             }
             if (senha === "") {
                 setSenhaObrigatorio("*Campo Obrigatório")
-                return
             }
             if (nome !== "") {
                 setNomeObrigatorio("")
-                return
             }
             if (email !== "") {
                 setEmailObrigatorio("")
-                return
             }
             if (senha !== "") {
                 setSenhaObrigatorio("")
-                return
             }
 
             const url = `${urlApi}/tdl/usuarios/inserir`
@@ -76,6 +78,7 @@ export default function Cadastro() {
         catch (error) {
             setMensagem('ERRO. Tente novamente')
             popup()
+            return
         }
     }
 

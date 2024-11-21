@@ -15,6 +15,7 @@ import PoliticasPrivacidade from "./pages/user/PoliticasPrivacidade";
 import TermosUso from "./pages/user/TermosUso";
 import Cadastro from "./pages/user/Cadastro";
 import Login from "./pages/user/Login";
+import MeuPerfil from "./pages/user/MeuPerfil";
 import Erro from "./pages/Erro";
 
 export default function Rotas() {
@@ -37,10 +38,9 @@ export default function Rotas() {
                 <Route path="/TermosUso" element={<TermosUso />} />
                 <Route path="/Cadastro" element={<Cadastro />} />
                 <Route path="/Login" element={<Login />} />
+                <Route path="/MeuPerfil" element={<MeuPerfil />} />
                 <Route path="*" element={<Erro />} />
             </Routes>
         </BrowserRouter>
     )
 }
-
-// Falta fazere a 404
