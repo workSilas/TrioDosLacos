@@ -35,18 +35,19 @@ export default function Login() {
         try {
             if (email === "") {
                 setEmailObrigatorio("*Campo Obrigatório")
+                return
             }
-
             if (senha === "") {
                 setSenhaObrigatorio("*Campo Obrigatório")
+                return
             }
-
             if (email !== "") {
                 setEmailObrigatorio("")
+                return
             }
-
             if (senha !== "") {
                 setSenhaObrigatorio("")
+                return
             }
 
             const url = `${urlApi}/tdl/usuarios/entrar`

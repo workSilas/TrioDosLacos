@@ -38,26 +38,27 @@ export default function Cadastro() {
         try {
             if (nome === "") {
                 setNomeObrigatorio("*Campo Obrigatório")
+                return
             }
-
             if (email === "") {
                 setEmailObrigatorio("*Campo Obrigatório")
+                return
             }
-
             if (senha === "") {
                 setSenhaObrigatorio("*Campo Obrigatório")
+                return
             }
-
             if (nome !== "") {
                 setNomeObrigatorio("")
+                return
             }
-
             if (email !== "") {
                 setEmailObrigatorio("")
+                return
             }
-
             if (senha !== "") {
                 setSenhaObrigatorio("")
+                return
             }
 
             const url = `${urlApi}/tdl/usuarios/inserir`
