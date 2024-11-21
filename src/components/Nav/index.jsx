@@ -24,9 +24,10 @@ export default function Nav(props) {
   useEffect(() => {
     let token = localStorage.getItem('USUARIO')
 
-    if (token == null || token == undefined) {
+    if (token === null || token === undefined) {
       setCadastrado(false)
-    } else {
+    } 
+    else {
       autenticarUsuário(token)
     }
   }, [])

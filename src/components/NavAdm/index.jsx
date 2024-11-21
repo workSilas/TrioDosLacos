@@ -1,6 +1,10 @@
 import './index.scss';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import { Link, useNavigate } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { urlApi } from '../../config/urlApi';
+import Popup from '../Popup';
+
 
 export default function NavAdm(props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -8,6 +12,52 @@ export default function NavAdm(props) {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const [mostrarPopup, setMostrarPopup] = useState(false);
+  const [mensagem, setMensagem] = useState("")
+
+  const popup = () => {
+    setMostrarPopup(!mostrarPopup)
+
+    if (mostrarPopup === true) {
+      navigate('/')
+    }
+  }
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    let token = localStorage.getItem('ADM')
+
+    if (token === null && token === undefined) {
+      navigate('/')
+    } 
+    else {
+      autenticarUsuário(token)
+    }
+  }, [])
+
+  async function autenticarUsuário(token) {
+    let url = `${urlApi}/tdl/adm/autenticar?x-access-token=${token}`
+
+    try {
+      let resp = await axios.get(url)
+
+      if (resp.data.erro !== undefined && resp.data.erro !== null) {
+        setMensagem('Erro ao autenticar Usuário')
+        popup()
+        localStorage.removeItem('ADM')
+      } 
+      else {
+        return
+      }
+    }
+    catch (error) {
+      setMensagem('Erro ao autenticar Usuário')
+      popup()
+      localStorage.removeItem('ADM')
+    }
+  }
 
   return (
     <header className='Nav'>
@@ -44,6 +94,10 @@ export default function NavAdm(props) {
           </div>
 
         </nav>
+      )}
+
+      {mostrarPopup && (
+        <Popup mensagem={mensagem} funcao={popup} />
       )}
     </header>
   );
