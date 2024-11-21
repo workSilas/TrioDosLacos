@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { urlApi } from '../../../config/urlApi'
+import { enterKeyUp } from '../../../config/enter'
 import Popup from '../../../components/Popup'
 
 
@@ -12,6 +13,10 @@ export default function Login() {
     useEffect(() => {
         document.title = 'Trio Dos Laços | Login';
     }, []);
+
+    const keyUp = (event) => {
+        enterKeyUp(event, validarUsuario)
+    }
 
     const navigate = useNavigate()
 
@@ -47,18 +52,19 @@ export default function Login() {
             const url = `${urlApi}/tdl/usuarios/entrar`
             let resp = await axios.post(url, paramCorpo)
 
-            if (resp.data.erro !== undefined && resp.data.erro !== null) {
+            if (resp.data.erro !== undefined || resp.data.erro !== null) {
+                localStorage.setItem('USUARIO', resp.data.token)
+                setMensagem('Login feito com sucesso!')
                 popup()
-                setMensagem(resp.data.erro)
             }
             else {
-                localStorage.setItem('USUARIO', resp.data.token)
+                setMensagem('Erro: ', resp.data.erro)
                 popup()
-                setMensagem('Login feito com sucesso!')
             }
         }
         catch (error) {
-            setMensagem('ERRO. Tente novamente!')
+            setMensagem('ERRO: ' + error)
+            popup()
         }
     }
 
@@ -68,7 +74,7 @@ export default function Login() {
     const popup = () => {
         setMostrarPopup(!mostrarPopup)
 
-        if (mostrarPopup == true) {
+        if (mostrarPopup === true  && mensagem === 'Login feito com sucesso!') {
             navigate('/')
         }
     }
@@ -83,12 +89,12 @@ export default function Login() {
 
             <div className='inputEntrar'>
                 <label>EMAIL<p>{emailObrigatorio}</p></label>
-                <input placeholder='usuário' type="text" value={email} onChange={a => setEmail(a.target.value)} />
+                <input placeholder='usuário' type="text" onKeyUp={keyUp} value={email} onChange={a => setEmail(a.target.value)} />
             </div>
 
             <div className='inputEntrar'>
                 <label>SENHA <p>{senhaObrigatorio}</p></label>
-                <input placeholder='senha' type="password" value={senha} onChange={a => setSenha(a.target.value)} />
+                <input placeholder='senha' type="password" onKeyUp={keyUp} value={senha} onChange={a => setSenha(a.target.value)} />
             </div>
 
             <div className='botaoEntrarSelect'>

@@ -5,6 +5,7 @@ import { useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { urlApi } from '../../../config/urlApi'
 import Popup from '../../../components/Popup'
+import { enterKeyUp } from '../../../config/enter'
 
 
 export default function Cadastro() {
@@ -12,6 +13,10 @@ export default function Cadastro() {
     useEffect(() => {
         document.title = 'Trio Dos Laços | Cadastro'
     }, [])
+
+    const keyUp = (event) => {
+        enterKeyUp(event, inserirUsuario)
+    }
 
     const navigate = useNavigate()
 
@@ -58,18 +63,18 @@ export default function Cadastro() {
             const url = `${urlApi}/tdl/usuarios/inserir`
             let resp = await axios.post(url, paramCorpo)
 
-            if (resp.data.erro !== undefined && resp.data.erro !== null) {
+            if (resp.data.erro !== undefined || resp.data.erro !== null) {
+                setMensagem('Usuário cadastrado com sucesso!')
                 popup()
-                setMensagem(resp.data.erro)
             }
             else {
+                setMensagem(resp.data.erro)
                 popup()
-                setMensagem('Usuário cadastrado com sucesso!')
             }
         }
         catch (error) {
-            popup()
             setMensagem('ERRO. Tente novamente')
+            popup()
         }
     }
 
@@ -79,12 +84,12 @@ export default function Cadastro() {
     const popup = () => {
         setMostrarPopup(!mostrarPopup)
 
-        if (mostrarPopup && mensagem == 'Usuário cadastrado com sucesso!') {
+        if (mostrarPopup && mensagem === 'Usuário cadastrado com sucesso!') {
             navigate('/Login')
         }
     }
 
-
+    
     return (
         <div className="Cadastro">
 
@@ -94,17 +99,17 @@ export default function Cadastro() {
 
             <div className='inputEntrar'>
                 <label>NOME<p>{nomeObrigatorio}</p></label>
-                <input placeholder='usuário' type="text" value={nome} onChange={a => setNome(a.target.value)} />
+                <input placeholder='usuário' type="text" onKeyUp={keyUp} value={nome} onChange={a => setNome(a.target.value)} />
             </div>
 
             <div className='inputEntrar'>
                 <label>EMAIL<p>{emailObrigatorio}</p></label>
-                <input placeholder='endereço' type="text" value={email} onChange={a => setEmail(a.target.value)} />
+                <input placeholder='endereço' type="text" onKeyUp={keyUp} value={email} onChange={a => setEmail(a.target.value)} />
             </div>
 
             <div className='inputEntrar'>
                 <label>SENHA <p>{senhaObrigatorio}</p></label>
-                <input placeholder='senha' type="password" value={senha} onChange={a => setSenha(a.target.value)} />
+                <input placeholder='senha' type="password" onKeyUp={keyUp} value={senha} onChange={a => setSenha(a.target.value)} />
             </div>
 
             <div className='botaoEntrarSelect'>

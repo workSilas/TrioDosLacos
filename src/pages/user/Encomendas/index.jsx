@@ -6,12 +6,26 @@ import axios from 'axios';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import { urlApi } from '../../../config/urlApi';
+import { enterKeyUp } from '../../../config/enter';
+import Popup from '../../../components/Popup';
+
 
 export default function Encomendas() {
 
   useEffect(() => {
     document.title = 'Trio Dos Laços | Encomendas';
   }, []);
+
+  const keyUp = (event) => {
+    enterKeyUp(event, enviarEncomenda)
+  }
+
+  const [mostrarPopup, setMostrarPopup] = useState(false);
+  const [mensagem, setMensagem] = useState("")
+
+  const popup = () => {
+    setMostrarPopup(!mostrarPopup)
+  }
 
   const [encomenda, setEncomenda] = useState("");
   const [obrigatorio, setObrigatorio] = useState("")
@@ -24,58 +38,27 @@ export default function Encomendas() {
     };
 
     if (encomenda.length > 250) {
-      toast.error("Texto contém caractéres demais(máx:250).", {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#713200',
-          secondary: '#FFFAEE',
-        },
-      });
+      setMensagem('Texto contém caracteres demais (máx.: 250)')
+      popup()
       setObrigatorio("")
-      return;
+      return
     }
-
     if (encomenda.length <= 0) {
-      toast.error("Insira a descrição", {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#FF0000',
-          secondary: '#FFFAEE',
-        },
-      });
-
+      setMensagem('Insira uma descrição')
+      popup()
       setObrigatorio("*Obrigatório")
-      return;
+      return
     }
-
     if (encomenda.length <= 20) {
-      toast.error("O mínimo de caractéres para fazer uma encomenda é de 20.", {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#FF0000',
-          secondary: '#FFFAEE',
-        },
-      });
+      setMensagem('O mínimo de caracteres para fazer uma encomenda é 20')
+      popup()
       setObrigatorio("")
-      return;
+      return
     }
-
 
     try {
       let resp = await axios.post(url, valores);
-      toast.success(`Encomenda feita! ID: ${resp.data.novoId}`, {
+      toast.success(`Encomenda enviada!`, {
         style: {
           border: '1px solid #713200',
           padding: '16px',
@@ -89,18 +72,9 @@ export default function Encomendas() {
       setObrigatorio("")
     }
     catch (error) {
-      toast.error("ERRO", {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#FF0000',
-          secondary: '#FFFAEE',
-        },
-      });
-      return;
+      setMensagem('ERRO')
+      popup()
+      return
     }
     setEncomenda("");
   }
@@ -147,6 +121,7 @@ export default function Encomendas() {
               type="text"
               placeholder='Descrição'
               value={encomenda}
+              onKeyUp={keyUp}
               onChange={e => setEncomenda(e.target.value)}
             />
             <p className='obrigatorio' >{obrigatorio}</p>
@@ -158,6 +133,10 @@ export default function Encomendas() {
             to={`https://wa.me/5511977798407?text=
 ${encomenda}`}>ENVIAR</Link>}
       </div>
+
+      {mostrarPopup && (
+        <Popup mensagem={mensagem} funcao={popup} />
+      )}
 
       <Rodape />
     </div>
