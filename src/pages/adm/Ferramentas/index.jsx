@@ -1,11 +1,12 @@
 import './index.scss';
-import NavAdm from '../../../components/NavAdm';
-import Rodape from '../../../components/Rodape';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
 import toast from 'react-hot-toast';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { urlApi } from '../../../config/urlApi';
+import NavAdm from '../../../components/NavAdm';
+import Rodape from '../../../components/Rodape';
+import Popup from '../../../components/Popup';
 
 
 export default function Ferramentas() {
@@ -14,16 +15,25 @@ export default function Ferramentas() {
     document.title = 'Trio Dos Laços | Ferramentas';
   }, []);
 
+  const [mostrarPopup, setMostrarPopup] = useState(false);
+  const [mensagem, setMensagem] = useState("")
+
+  const popup = () => {
+    setMostrarPopup(!mostrarPopup)
+  }
+
   // Validação ADM
   const [token, setToken] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
     let token = localStorage.getItem('ADM')
-    setToken(token)
 
-    if (token == null) {
+    if (token === null || token === undefined) {
       navigate("/")
+    } 
+    else {
+      setToken(token)
     }
   }, [])
 
@@ -32,15 +42,45 @@ export default function Ferramentas() {
   const [vendasTotaisValor, setVendasTotaisValor] = useState([])
 
   async function buscarVendas() {
-    const url = `${urlApi}/tdl/vendas/consulta/`
-    let vendas = await axios.get(url)
-    setVendasTotais(vendas.data)
+    const url = `${urlApi}/tdl/vendas/consulta`
+
+    try {
+      let vendas = await axios.get(url)
+
+      if (vendas.data.erro !== undefined && vendas.data.erro !== null) {
+        setMensagem(vendas.data.erro)
+        popup()
+      }
+      else {
+        setVendasTotais(vendas.data)
+      }
+    } 
+    catch (error) {
+      setMensagem('Erro: ', error)
+      popup()
+      return  
+    }
   }
 
   async function buscarVendasValor() {
-    const url = `${urlApi}/tdl/vendas/consultaTotal/`
-    let vendasTotal = await axios.get(url)
-    setVendasTotaisValor(vendasTotal.data)
+    const url = `${urlApi}/tdl/vendas/consultaTotal`
+
+    try {
+      let vendasTotal = await axios.get(url)
+
+      if (vendasTotal.data.erro !== undefined && vendasTotal.data.erro !== null) {
+        setMensagem(vendasTotal.data.erro)
+        popup()
+      }
+      else {
+        setVendasTotaisValor(vendasTotal.data)
+      }
+    } 
+    catch (error) {
+      setMensagem('Erro: ', error)
+      popup()
+      return  
+    }
   }
 
   // SESSÃO
@@ -51,45 +91,68 @@ export default function Ferramentas() {
 
   async function buscarVendasSessao() {
     const url = `${urlApi}/tdl/vendas/consultaSessao/${sessaoSelecionada}`
-    let vendaSessao = await axios.post(url)
-    setVendasSessao(vendaSessao.data)
+
+    try {
+      let vendaSessao = await axios.post(url)
+
+      if (vendaSessao.data.erro !== undefined && vendaSessao.data.erro !== null) {
+        setMensagem(vendasSessao.data.erro)
+        popup()
+      }
+      else {
+        setVendasSessao(vendaSessao.data)
+      }
+    } 
+    catch (error) {
+      setMensagem('Erro: ', error)  
+      popup()
+      return
+    }
   }
 
   async function buscarVendasSessaoTotal() {
     const url = `${urlApi}/tdl/vendas/consultaSessaoTotal/${sessaoSelecionada}`
-    let vendasTotalSessao = await axios.post(url)
-    setVendasTotaisSessao(vendasTotalSessao.data)
-  }
-  async function botaoSessao() {
 
-    if (sessaoSelecionada == "" || sessaoSelecionada == "SELECIONAR"){
-      toast.error("Selecione uma sessão.", {
+    try {
+      let vendasTotalSessao = await axios.post(url)
+
+      if (vendasTotalSessao.data.erro !== undefined && vendasTotalSessao.data.erro !== null) {
+        setMensagem(vendasTotalSessao.data.erro)
+        popup()
+      }
+      else {
+        setVendasTotaisSessao(vendasTotalSessao.data)
+      }
+    } 
+    catch (error) {
+      setMensagem('Erro: ', error)
+      popup()
+      return  
+    }
+  }
+
+  async function botaoSessao() {
+    if (sessaoSelecionada === "" || sessaoSelecionada === "SELECIONAR"){
+      setMensagem('Selecione uma sessão')
+      popup()
+      return
+    } 
+    else {
+      toast.success(`Dados da ${sessaoSelecionada} encontrados!`, {
         style: {
           border: '1px solid #713200',
           padding: '16px',
           color: '#713200',
         },
         iconTheme: {
-          primary: '#FF0000',
+          primary: '#1EFF00',
           secondary: '#FFFAEE',
         },
       })
-      return
-    }
 
-    toast.success(`Dados da ${sessaoSelecionada} encontrados!`, {
-      style: {
-        border: '1px solid #713200',
-        padding: '16px',
-        color: '#713200',
-      },
-      iconTheme: {
-        primary: '#1EFF00',
-        secondary: '#FFFAEE',
-      },
-    })
-    await buscarVendasSessao()
-    await buscarVendasSessaoTotal()
+      await buscarVendasSessao()
+      await buscarVendasSessaoTotal()
+    }
   }
 
   // ESTOQUE
@@ -98,14 +161,43 @@ export default function Ferramentas() {
 
   async function buscarEstoque() {
     const url = `${urlApi}/tdl/produtos/estoque/`
-    let estoqueTotal = await axios.get(url)
-    setEstoque(estoqueTotal.data)
+
+    try {
+      let estoqueTotal = await axios.get(url)
+
+      if (estoqueTotal.data.erro !== undefined && estoqueTotal.data.erro !== null) {
+        setMensagem(estoqueTotal.data.erro)
+        popup()
+      }
+      else {
+        setEstoque(estoqueTotal.data)
+      }
+    } catch (error) {
+      setMensagem('Erro: ', error)
+      popup()
+      return
+    }
   }
 
   async function buscarSemEstoque() {
     const url = `${urlApi}/tdl/produtos/semEstoque/`
-    let semEstoqueTotal = await axios.get(url)
-    setSemEstoque(semEstoqueTotal.data)
+
+    try {
+      let semEstoqueTotal = await axios.get(url)
+
+      if (semEstoqueTotal.data.erro !== undefined && semEstoqueTotal.data.erro !== null) {
+        setMensagem(semEstoqueTotal.data.erro)
+        popup()
+      }
+      else {
+        setSemEstoque(semEstoqueTotal.data)
+      }
+    } 
+    catch (error) {
+      setMensagem('Erro: ', error)
+      popup()
+      return  
+    }
   }
 
   useEffect(() => {
@@ -270,13 +362,16 @@ export default function Ferramentas() {
                   <td>{item.id}</td>
                   <td>{item.nome}</td>
                   <td>{item.quantidade}</td>
-
                 </tr>
               )}
             </tbody>
           </table>
         </div>
       </div>
+
+      {mostrarPopup && (
+        <Popup mensagem={mensagem} funcao={popup} />
+      )}
 
       <Rodape />
     </div>

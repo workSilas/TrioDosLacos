@@ -1,13 +1,14 @@
 import './index.scss';
 import axios from 'axios';
+import toast from 'react-hot-toast';
 import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { withMask } from 'use-mask-input';
+import { urlApi } from '../../../config/urlApi';
+import Popup from '../../../components/Popup';
 import NavAdm from '../../../components/NavAdm';
 import Rodape from '../../../components/Rodape';
 import CardProdutoId from '../../../components/CardProdutoId';
-import toast from 'react-hot-toast';
-import { withMask } from 'use-mask-input';
-import { useNavigate } from 'react-router-dom';
-import { urlApi } from '../../../config/urlApi';
 
 
 export default function CadastrarVendas() {
@@ -16,18 +17,28 @@ export default function CadastrarVendas() {
     document.title = 'Trio Dos Laços | Cadastrar Vendas';
   }, []);
 
+  const [mostrarPopup, setMostrarPopup] = useState(false);
+  const [mensagem, setMensagem] = useState("")
+
+  const popup = () => {
+    setMostrarPopup(!mostrarPopup)
+  }
+
   // Validação ADM
   const [token, setToken] = useState(null)
   const navigate = useNavigate()
 
   useEffect(() => {
     let token = localStorage.getItem('ADM')
-    setToken(token)
 
-    if (token == null) {
+    if (token === null || token === undefined) {
       navigate("/")
+    } 
+    else {
+      setToken(token)
     }
   }, [])
+
 
   //Cadastrar uma Venda
   const [idUsuario, setIdUsuario] = useState(0)
@@ -41,10 +52,8 @@ export default function CadastrarVendas() {
   // setta o total
 
   async function buscar() {
-    if (idProduto <= 0) {
-      return;
-    }
     let url = `${urlApi}/tdl/produtos/consultaId/${idProduto}`;
+
     try {
       let produtos = await axios.post(url);
       setTotal(produtos.data[0].valor * quantidade);
@@ -52,94 +61,75 @@ export default function CadastrarVendas() {
       console.log(qtdEstoque);
     }
     catch (error) {
+      setMensagem('Erro: ', error)
+      popup()
       return
     }
   }
 
   useEffect(() => {
-    buscar();
+    if (idProduto > 0 && quantidade > 0) {
+      buscar();
+    }
   }, [idProduto, quantidade]);
 
   async function cadastrarVenda() {
-
     let dataFormatada = data.replace(/\//g, "-").split('-').reverse().join('-')
-
-    const url = `${urlApi}/tdl/vendas/inserir/`
-    const paramCorpo = {
-      "idProduto": idProduto,
-      "idUsuario": idUsuario,
-      "quantidade": quantidade,
-      "total": total,
-      "data": dataFormatada,
-      "endereco": endereco
-    }
-
+    const url = `${urlApi}/tdl/vendas/inserir`
+    
     if (endereco.length > 50) {
-      toast.error("Endereço contém caractéres demais.", {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#FF0000',
-          secondary: '#FFFAEE',
-        },
-      })
+      setMensagem('Endereço contém caracteres demais')
+      popup()
       return
     }
-
     if (quantidade > qtdEstoque) {
-      toast.error("Estoque insuficiente.", {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#FF0000',
-          secondary: '#FFFAEE',
-        },
-      })
+      setMensagem('Estoque insuficiente')
+      popup()
       return
     }
-
+    
     try {
+      const paramCorpo = {
+        "idProduto": idProduto,
+        "idUsuario": idUsuario,
+        "quantidade": quantidade,
+        "total": total,
+        "data": dataFormatada,
+        "endereco": endereco
+      }
       let resp = await axios.post(url, paramCorpo)
-      toast.success("Venda adicionada com sucesso!", {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#1EFF00',
-          secondary: '#FFFAEE',
-        },
-      })
-      setIdProduto(0)
-      setIdUsuario(0)
-      setQuantidade(0)
-      setTotal(0)
-      setData('')
-      setEndereco('')
-      conferirTodasAsVendas()
+
+      if (resp.data.erro !== undefined && resp.data.erro !== null) {
+        setMensagem('Erro: ', resp.data.erro)
+        popup()
+      }
+      else {
+        toast.success("Venda adicionada com sucesso!", {
+          style: {
+            border: '1px solid #713200',
+            padding: '16px',
+            color: '#713200',
+          },
+          iconTheme: {
+            primary: '#1EFF00',
+            secondary: '#FFFAEE',
+          },
+        })
+
+        setIdProduto(0)
+        setIdUsuario(0)
+        setQuantidade(0)
+        setTotal(0)
+        setData('')
+        setEndereco('')
+        conferirTodasAsVendas()
+      }
     }
     catch (error) {
-      toast.error("Erro ao adicionar venda. Verifique as informações.", {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#FF0000',
-          secondary: '#FFFAEE',
-        },
-      })
+      setMensagem('Erro ao adicionar venda. Verifique as informações')
+      popup()
       return
     }
-
   }
 
   //Exibir Tabela com TODAS as Vendas
@@ -151,57 +141,60 @@ export default function CadastrarVendas() {
 
   async function recarregar() {
     await finalizarVenda()
-    await conferirTodasAsVendas()
   }
 
   async function conferirTodasAsVendas() {
-    const url = `${urlApi}/tdl/vendas/consultaTodas/`
-    let resp = await axios.get(url)
+    const url = `${urlApi}/tdl/vendas/consultaTodas`
 
-    if (resp.data.erro !== undefined) {
-      alert(resp.data.erro)
-    }
-    else {
-      setVenda(resp.data)
+    try {
+      let resp = await axios.get(url)
+  
+      if (resp.data.erro !== null && resp.data.erro !== undefined) {
+        setMensagem('Erro: ', resp.data.erro)
+        popup()
+      }
+      else {
+        setVenda(resp.data)
+      }
+    } 
+    catch (error) {
+      setMensagem('Erro: ', error)
+      popup()
+      return
     }
   }
-
-  useEffect(() => {
-    conferirTodasAsVendas()
-  }, [])
 
   //Finalizar Venda (Marcar como Enviada)
   const [idVenda, setIdVenda] = useState(0)
 
   async function finalizarVenda() {
+    const url = `${urlApi}/tdl/vendas/alterar/${idVenda}`
 
     try {
-      const url = `${urlApi}/tdl/vendas/alterar/${idVenda}`
       let resp = await axios.put(url)
-      toast.success("Venda finalizada!.", {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#1EFF00',
-          secondary: '#FFFAEE',
-        },
-      });
+
+      if (resp.data.erro !== null && resp.data.erro !== undefined){
+        setMensagem("Erro: ", resp.data.erro)
+        popup()
+      }
+      else {
+        setIdVenda(0)
+        toast.success("Venda finalizada!.", {
+          style: {
+            border: '1px solid #713200',
+            padding: '16px',
+            color: '#713200',
+          },
+          iconTheme: {
+            primary: '#1EFF00',
+            secondary: '#FFFAEE',
+          },
+        });
+      }
     }
     catch (error) {
-      toast.error("ID inexistente.", {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#FF0000',
-          secondary: '#FFFAEE',
-        },
-      })
+      setMensagem('ID inexistente')
+      popup()
       return
     }
   }
@@ -210,9 +203,24 @@ export default function CadastrarVendas() {
   const [encomenda, setEncomenda] = useState([])
 
   async function buscarEncomendas() {
-    let url = `${urlApi}/tdl/encomendas/consulta/`
-    let resp = await axios.get(url)
-    setEncomenda(resp.data)
+    let url = `${urlApi}/tdl/encomendas/consulta`
+
+    try {
+      let resp = await axios.get(url)
+
+      if (resp.data.erro !== null && resp.data.errro !== undefined) {
+        setMensagem('Erro: ', resp.data.erro)
+        popup()
+      }
+      else {
+        setEncomenda(resp.data)
+      }
+    } 
+    catch (error) {
+      setMensagem('Erro: ', error)
+      popup()
+      return
+    }
   }
 
   useEffect(() => {
@@ -246,7 +254,7 @@ export default function CadastrarVendas() {
               <input type="text" placeholder='0' value={idProduto} onChange={e => setIdProduto(e.target.value)} />
               <p>Total: R${total}</p>
               <CardProdutoId
-                id={idProduto}
+                id={idProduto} token={token}
               />
             </div>
           </div>
@@ -320,6 +328,10 @@ export default function CadastrarVendas() {
           </table>
         </div>
       </div>
+
+      {mostrarPopup && (
+        <Popup mensagem={mensagem} funcao={popup} />
+      )}
 
       <Rodape />
     </div>
