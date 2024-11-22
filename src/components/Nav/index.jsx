@@ -38,7 +38,7 @@ export default function Nav(props) {
     try {
       let resp = await axios.get(url)
 
-      if (resp.data.erro !== undefined || resp.data.erro !== null) {
+      if (resp.data.erro !== undefined && resp.data.erro !== null) {
         setCadastrado(true)
       } else {
         setMensagem('Erro ao autenticar Usuário: ', resp.data.erro)
@@ -70,9 +70,11 @@ export default function Nav(props) {
               <Link to="/Encomendas">Encomendas</Link>
               <Link to="/CatalogoLacosDecorados">Catálogo</Link>
               <Link to="/Favoritos">Favoritos</Link>
+              <Link to="/Login">Login</Link>
 
                 <div className='botao-perfil'>
                   <img src="/assets/images/freepik-export-20241119171750qjuk.png" alt="Perfil do Usuário" />
+                  <p>Meu Perfil</p>
                 </div>
             </div>
             :
