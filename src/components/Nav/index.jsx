@@ -71,12 +71,9 @@ export default function Nav(props) {
               <Link to="/CatalogoLacosDecorados">Catálogo</Link>
               <Link to="/Favoritos">Favoritos</Link>
 
-              <Link to="/MeuPerfil">
                 <div className='botao-perfil'>
                   <img src="/assets/images/freepik-export-20241119171750qjuk.png" alt="Perfil do Usuário" />
-                  <p>Meu Perfil</p>
                 </div>
-              </Link>
             </div>
             :
             <div className='links'>

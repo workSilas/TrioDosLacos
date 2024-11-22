@@ -66,12 +66,12 @@ export default function Cadastro() {
             const url = `${urlApi}/tdl/usuarios/inserir`
             let resp = await axios.post(url, paramCorpo)
 
-            if (resp.data.erro !== undefined || resp.data.erro !== null) {
-                setMensagem('Usuário cadastrado com sucesso!')
+            if (resp.data.erro !== undefined && resp.data.erro !== null) {
+                setMensagem(resp.data.erro)
                 popup()
             }
             else {
-                setMensagem(resp.data.erro)
+                setMensagem('Usuário cadastrado com sucesso!')
                 popup()
             }
         }
