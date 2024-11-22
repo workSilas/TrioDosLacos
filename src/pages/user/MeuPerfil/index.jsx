@@ -78,61 +78,6 @@ export default function MeuPerfil() {
                 </div>
             </div>
 
-            <div className='edicoes'>
-                <div className='editar'>
-                    <h1>Editar Perfil</h1>
-
-                    <div className='info'>
-                        <label>Nome</label>
-                        <input type="text" value={nome} onChange={e => setNome(e.target.value)} />
-                    </div>
-
-                    <div className='info'>
-                        <label>E-mail</label>
-                        <input type="text" value={email} onChange={e => setEmail(e.target.value)} />
-                    </div>
-
-                    <div className='info'>
-                        <label>Confirmar E-mail</label>
-                        <input type="text" value={confirmarEmail} onChange={e => setConfirmarEmail(e.target.value)} />
-                    </div>
-
-                    <div className='info'>
-                        <label>Informe sua senha</label>
-                        <input type="text" value={senha} onChange={e => setSenha(e.target.value)} />
-                    </div>
-
-                    <div className='botoes'>
-                    <div className='cancelar'>Cancelar</div>
-                    <div className='salvar'>Salvar</div>
-                    </div>
-                </div>
-
-                <div className='editar'>
-                    <h1>Alterar senha</h1>
-
-                    <div className='info'>
-                        <label>Senha atual</label>
-                        <input type="text" />
-                    </div>
-
-                    <div className='info'>
-                        <label>Nova Senha</label>
-                        <input type="text" />
-                    </div>
-
-                    <div className='info'>
-                        <label>Confirmar nova senha</label>
-                        <input type="text" />
-                    </div>
-
-                    <div className='botoes'>
-                        <div className='cancelar'>Cancelar</div>
-                        <div className='salvar'>Salvar</div>
-                    </div>
-                </div>
-            </div>
-
             {mostrarPopup && (
                 <Popup mensagem={mensagem} funcao={popup} />
             )}

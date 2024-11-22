@@ -26,6 +26,7 @@ export default function Nav(props) {
 
     if (token === null || token === undefined) {
       setCadastrado(false)
+      localStorage.removeItem('USUARIO')
     } 
     else {
       autenticarUsuário(token)
@@ -43,12 +44,14 @@ export default function Nav(props) {
       } else {
         setMensagem('Erro ao autenticar Usuário: ', resp.data.erro)
         popup()
+        localStorage.removeItem('USUARIO')
         setCadastrado(false)
       }
     }
     catch (error) {
       setMensagem('Erro ao autenticar Usuário: ', error)
       popup()
+      localStorage.removeItem('USUARIO')
       setCadastrado(false)
     }
   }
