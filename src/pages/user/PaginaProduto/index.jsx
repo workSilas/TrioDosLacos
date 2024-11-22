@@ -33,7 +33,7 @@ export default function PaginaProduto() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
-  
+
   return (
     <div className="PaginaProduto">
       <Nav titulo="Produto" />
@@ -62,7 +62,9 @@ Quero saber mais sobre o produto:%0A%0A
               </div>
             </div>
           </div>
+
           <p>Quantidade disponível({item.quantidade})</p>
+
           <h1>Descrição</h1>
           <p>{item.descricao}</p>
         </div>

@@ -33,11 +33,11 @@ export default function Login() {
             senha: senha
         }
 
+        let verificarEmail = validarEmail(email)
+        if (verificarEmail === false) {
+            setEmailObrigatorio("*Email inválido")
+        }
         try {
-            let verificarEmail = validarEmail(email)
-            if (verificarEmail === false) {
-                setEmailObrigatorio("*Email inválido")
-            }
             if (senha.length < 6) {
                 setSenhaObrigatorio("*Mínimo 6 caracteres")
             }

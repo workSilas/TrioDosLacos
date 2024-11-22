@@ -35,7 +35,6 @@ export default function MeuPerfil() {
     const [confirmarEmail, setConfirmarEmail] = useState('')
     const [senha, setSenha] = useState('')
 
-
     function sair() {
         localStorage.removeItem('USUARIO')
         navigate('/')
@@ -50,7 +49,6 @@ export default function MeuPerfil() {
                 <div className='container'>
                     <div className='titulo'>
                         <h1>Perfil</h1>
-                        <p>Editar</p>
                     </div>
 
                     <div className='info'>
@@ -69,7 +67,6 @@ export default function MeuPerfil() {
                 <div className='container'>
                     <div className='titulo'>
                         <h1>Senha</h1>
-                        <p>Editar</p>
                     </div>
 
                     <div className='info'>

@@ -282,7 +282,6 @@ export default function CadastrarVendas() {
                 <th>Vendedor</th>
                 <th>Produto</th>
                 <th>Quantidade</th>
-                <th>Total</th>
                 <th>Data</th>
                 <th>Endereço</th>
                 <th>Enviado</th>
@@ -296,7 +295,6 @@ export default function CadastrarVendas() {
                   <td>{item.usuario_nome.length > 9 ? item.usuario_nome.substr(0, 9) + "." : item.usuario_nome}</td>
                   <td>{item.produto_nome}</td>
                   <td>{item.quantidade}</td>
-                  <td>{item.total}</td>
                   <td>{new Date(item.data).toLocaleDateString()}</td>
                   <td>{item.endereco.length > 20 ? item.endereco.substr(0, 9) + "." : item.endereco}</td>
                   <td>{item.enviado ? 'Sim' : 'Não'}</td>

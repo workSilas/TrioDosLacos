@@ -1,12 +1,12 @@
 import './index.scss';
-import Nav from '../../../components/Nav';
-import Rodape from '../../../components/Rodape';
-import { useState, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { urlApi } from '../../../config/urlApi';
 import { enterKeyUp } from '../../../config/enter';
+import Nav from '../../../components/Nav';
+import Rodape from '../../../components/Rodape';
 import Popup from '../../../components/Popup';
 
 
@@ -58,18 +58,25 @@ export default function Encomendas() {
 
     try {
       let resp = await axios.post(url, valores);
-      toast.success(`Encomenda enviada!`, {
-        style: {
-          border: '1px solid #713200',
-          padding: '16px',
-          color: '#713200',
-        },
-        iconTheme: {
-          primary: '#1EFF00',
-          secondary: '#FFFAEE',
-        },
-      });
-      setObrigatorio("")
+
+      if (resp.data.erro !== undefined && resp.data.erro !== null) {
+        setMensagem('Erro ao tentar enviar a encomenda', resp.data.erro)
+        popup()
+      }
+      else {
+        toast.success(`Encomenda enviada!`, {
+          style: {
+            border: '1px solid #713200',
+            padding: '16px',
+            color: '#713200',
+          },
+          iconTheme: {
+            primary: '#1EFF00',
+            secondary: '#FFFAEE',
+          },
+        });
+        setObrigatorio("")
+      }
     }
     catch (error) {
       setMensagem('ERRO')
